@@ -31,12 +31,10 @@
                                                     <i class="fas fa-angle-down"></i>
                                                 </a>
                                                 <ul class="submenu">
-                                                    <li><a href="shop.html">Shop Default</a></li>
-                                                    <li><a href="shop-list.html">Shop List</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                    <li><a href="shop-cart.html">Shop Cart</a></li>
-                                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
+                                                    <li><a href="{{ route('shop-default') }}">Shop Default</a></li>
+                                                    <li><a href="{{ route('shop-details') }}">Shop Details</a></li>
+                                                    <li><a href="{{ route('shop-cart') }}">Shop Cart</a></li>
+                                                    <li><a href="{{ route('about') }}">Checkout</a></li>
                                                 </ul>
                                             </li>
                                             <li class="has-dropdown">
@@ -45,17 +43,7 @@
                                                     <i class="fas fa-angle-down"></i>
                                                 </a>
                                                 <ul class="submenu">
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li class="has-dropdown">
-                                                        <a href="team.html">
-                                                            Author
-                                                            <i class="fas fa-angle-down"></i>
-                                                        </a>
-                                                        <ul class="submenu">
-                                                            <li><a href="team.html">Author</a></li>
-                                                            <li><a href="team-details.html">Author Profile</a></li>
-                                                        </ul>
-                                                    </li>
+                                                    <li><a href="{{ route('about') }}">About Us</a></li>
                                                     <li><a href="faq.html">Faq's</a></li>
                                                     <li><a href="404.html">404 Page</a></li>
                                                 </ul>
@@ -66,13 +54,12 @@
                                                     <i class="fas fa-angle-down"></i>
                                                 </a>
                                                 <ul class="submenu">
-                                                    <li><a href="news-grid.html">Blog Grid</a></li>
-                                                    <li><a href="news.html">Blog List</a></li>
-                                                    <li><a href="news-details.html">Blog Details</a></li>
+                                                    <li><a href="{{ route('blog') }}">Blog Grid</a></li>
+                                                    <li><a href="{{ route('blog-details') }}">Blog Details</a></li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="contact.html">Contact</a>
+                                                <a href="{{ route('contact') }}">Contact</a>
                                             </li>
                                         </ul>
                                     </nav>
