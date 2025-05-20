@@ -34,6 +34,11 @@ class PlatformProvider extends OrchidServiceProvider
     public function menu(): array
     {
         return [
+            Menu::make('Blogs')
+                ->icon('bs.book')
+                ->title('Navigation')
+                ->route('platform.blog.list'),
+
             Menu::make('Get Started')
                 ->icon('bs.book')
                 ->title('Navigation')
