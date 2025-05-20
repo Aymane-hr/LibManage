@@ -3,9 +3,13 @@
 namespace App\Orchid\Resources;
 
 use Orchid\Screen\TD;
+use App\Models\Auteur;
 use Orchid\Screen\Sight;
+use App\Models\Categorie;
 use Orchid\Crud\Resource;
 use Illuminate\Validation\Rule;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Select;
 use Illuminate\Database\Eloquent\Model;
 
 class ProduitResource extends Resource
@@ -21,6 +25,18 @@ class ProduitResource extends Resource
     {
         return 'bs.dropbox';
     }
+ /**
+ * Get relationships that should be eager loaded when performing an index query.
+ *
+ * @return array
+ */
+public  function with(): array
+{
+    return ['auteur', 'categorie'];
+}
+
+
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -28,7 +44,40 @@ class ProduitResource extends Resource
      */
     public function fields(): array
     {
-        return [];
+        return [
+            Input::make('isbn')
+                ->title('ISBN')
+                ->placeholder('ISBN...'),
+
+            Input::make('designation')
+                ->title('Designation')
+                ->placeholder('Designation...'),
+
+            Select::make('auteur_id')
+                ->fromModel(Auteur::class, 'nom') // assuming 'nom' is the author's name column
+                ->title('Auteur')
+                ->required()
+                ->help('Choisissez l’auteur de ce produit'),
+
+            Select::make('categorie_id')
+                ->fromModel(Categorie::class, 'categorie') // assuming 'libelle' is the category name
+                ->title('Catégorie')
+                ->required()
+                ->help('Choisissez la catégorie du produit'),
+
+            Input::make('stock')
+                ->title('Stock')
+                ->placeholder('Stock...'),
+
+            Input::make('prix_ht')
+                ->title('Prix HT')
+                ->placeholder('Prix HT...'),
+
+            Input::make('tva')
+                ->title('TVA')
+                ->placeholder('TVA...'),
+
+        ];
     }
 
     /**
@@ -41,6 +90,8 @@ class ProduitResource extends Resource
         return [
             TD::make('id'),
             TD::make('designation'),
+            TD::make('auteur.nom', 'Auteur'),
+            TD::make('categorie.categorie', 'Catégorie'),
             TD::make('stock'),
             TD::make('prix_ht'),
             TD::make('tva'),
@@ -68,6 +119,8 @@ class ProduitResource extends Resource
         return [
             Sight::make('id'),
             Sight::make('designation'),
+            Sight::make('auteur.nom', 'Auteur'),
+            Sight::make('categorie.categorie', 'Catégorie'),
             Sight::make('stock'),
             Sight::make('prix_ht'),
             Sight::make('tva'),
