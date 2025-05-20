@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auteur;
+use App\Models\Blog;
 use App\Models\Categorie;
 use App\Models\Commentaire;
 use App\Models\Produit;
@@ -19,7 +20,8 @@ class HomeController extends Controller
         $categoris=Categorie::all();
         $commentaires=Commentaire::all();
         $auteurs = Auteur::all();
-        return view('home', compact('produits','categoris','commentaires','auteurs'));
+        $blogs = Blog::all();
+        return view('home', compact('produits','categoris','commentaires','auteurs','blogs'));
     }
 
     /**
