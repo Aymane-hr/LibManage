@@ -34,7 +34,7 @@
                                                     <li><a href="{{ route('shop-default') }}">Shop Default</a></li>
                                                     <li><a href="{{ route('shop-details') }}">Shop Details</a></li>
                                                     <li><a href="{{ route('shop-cart') }}">Shop Cart</a></li>
-                                                    <li><a href="{{ route('about') }}">Checkout</a></li>
+                                                    <li><a href="#">Checkout</a></li>
                                                 </ul>
                                             </li>
                                             <li class="has-dropdown">
@@ -43,7 +43,7 @@
                                                     <i class="fas fa-angle-down"></i>
                                                 </a>
                                                 <ul class="submenu">
-                                                    <li><a href="{{ route('about') }}">About Us</a></li>
+                                                    <li><a href="#">About Us</a></li>
                                                     <li><a href="faq.html">Faq's</a></li>
                                                     <li><a href="404.html">404 Page</a></li>
                                                 </ul>
@@ -59,7 +59,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="{{ route('contact') }}">Contact</a>
+                                                <a href="#">Contact</a>
                                             </li>
                                         </ul>
                                     </nav>
