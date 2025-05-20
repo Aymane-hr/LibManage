@@ -113,6 +113,23 @@ class BlogResource extends Resource
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+
+            'titre.required' => 'Le titre est obligatoire.',
+            'titre.string' => 'Le titre doit être une chaîne de caractères.',
+            'titre.max' => 'Le titre ne peut pas dépasser 100 caractères.',
+            'titre.unique' => 'Ce titre existe déjà.',
+
+            'contenu.required' => 'Le contenu est obligatoire.',
+            'contenu.string' => 'Le contenu doit être une chaîne de caractères.',
+            'contenu.max' => 'Le contenu ne peut pas dépasser 255 caractères.',
+            'contenu.unique' => 'Ce contenu existe déjà.',
+        ];
+    }
+
+
     /**
      * Get the number of models to return per page
      *

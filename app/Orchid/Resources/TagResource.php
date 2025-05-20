@@ -108,6 +108,15 @@ class TagResource extends Resource
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+            'tag.required' => 'Le champ tag est obligatoire.',
+            'tag.unique' => 'Ce tag existe déjà.',
+        ];
+    }
+
+
     /**
      * Get the number of models to return per page
      *

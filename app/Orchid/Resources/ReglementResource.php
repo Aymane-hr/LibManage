@@ -83,7 +83,7 @@ class ReglementResource extends Resource
         return [new DefaultSorted('id', 'desc'),];
     }
 
-     /**
+    /**
      * Get the validation rules that apply to save/update.
      *
      * @return array
@@ -99,6 +99,17 @@ class ReglementResource extends Resource
             ],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'reglement.required' => 'Le champ règlement est obligatoire.',
+            'reglement.string' => 'Le règlement doit être une chaîne de caractères.',
+            'reglement.max' => 'Le règlement ne peut pas dépasser 50 caractères.',
+            'reglement.unique' => 'Ce règlement existe déjà.',
+        ];
+    }
+
 
     /**
      * Get the number of models to return per page

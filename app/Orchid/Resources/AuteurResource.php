@@ -100,6 +100,15 @@ class AuteurResource extends Resource
             ],
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'nom.required' => 'Le nom est obligatoire.',
+            'nom.string' => 'Le nom doit être une chaîne de caractères.',
+            'nom.max' => 'Le nom ne peut pas dépasser 50 caractères.',
+            'nom.unique' => 'Ce nom existe déjà.',
+        ];
+    }
 
     /**
      * Get the number of models to return per page

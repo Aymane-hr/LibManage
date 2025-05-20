@@ -81,7 +81,7 @@ class CategorieResource extends Resource
      */
     public function filters(): array
     {
-        return [ new DefaultSorted('id', 'desc'),];
+        return [new DefaultSorted('id', 'desc'),];
     }
 
     /**
@@ -96,6 +96,13 @@ class CategorieResource extends Resource
                 'required',
                 Rule::unique(self::$model, 'categorie')->ignore($categorie),
             ],
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'categorie.required' => 'Le champ catégorie est obligatoire.',
+            'categorie.unique' => 'Cette catégorie existe déjà.',
         ];
     }
 

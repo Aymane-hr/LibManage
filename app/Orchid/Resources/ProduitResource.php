@@ -173,6 +173,31 @@ public  function with(): array
         ];
     }
 
+    public function messages(): array
+{
+    return [
+        'designation.required' => 'Le champ Désignation est obligatoire.',
+        'designation.string' => 'Le champ Désignation doit être une chaîne de caractères.',
+        'designation.max' => 'Le champ Désignation ne peut pas dépasser 50 caractères.',
+        'designation.unique' => 'Cette désignation est déjà utilisée.',
+
+        'stock.required' => 'Le champ Stock est obligatoire.',
+        'stock.numeric' => 'Le champ Stock doit être un nombre.',
+
+        'prix_ht.required' => 'Le champ Prix HT est obligatoire.',
+        'prix_ht.numeric' => 'Le champ Prix HT doit être un nombre.',
+
+        'tva.required' => 'Le champ TVA est obligatoire.',
+        'tva.numeric' => 'Le champ TVA doit être un nombre.',
+
+        'isbn.required' => 'Le champ ISBN est obligatoire.',
+        'isbn.string' => 'Le champ ISBN doit être une chaîne de caractères.',
+        'isbn.max' => 'Le champ ISBN ne peut pas dépasser 50 caractères.',
+        'isbn.unique' => 'Cet ISBN est déjà utilisé.',
+    ];
+}
+
+
     /**
      * Get the number of models to return per page
      *
