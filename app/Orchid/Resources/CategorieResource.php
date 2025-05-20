@@ -4,21 +4,26 @@ namespace App\Orchid\Resources;
 
 use Orchid\Screen\TD;
 use Orchid\Screen\Sight;
+use App\Models\Categorie;
 use Orchid\Crud\Resource;
 use Illuminate\Validation\Rule;
 use Orchid\Screen\Fields\Input;
 use Orchid\Crud\Filters\DefaultSorted;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogResource extends Resource
+class CategorieResource extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Blog::class;
+    public static $model = Categorie::class;
 
+    public static function icon(): string
+    {
+        return 'bs.layers';
+    }
     /**
      * Get the fields displayed by the resource.
      *
@@ -27,12 +32,9 @@ class BlogResource extends Resource
     public function fields(): array
     {
         return [
-            Input::make('titre')
-                ->title('Titre')
-                ->placeholder('Titre...'),
-            Input::make('contenu')
-                ->title('Contenu')
-                ->placeholder('Contenu...'),
+            Input::make('categorie')
+                ->title('Categorie')
+                ->placeholder('Categorie...'),
         ];
     }
 
@@ -45,21 +47,16 @@ class BlogResource extends Resource
     {
         return [
             TD::make('id'),
-            TD::make('titre'),
-            TD::make('contenu'),
+            TD::make('categorie'),
 
             TD::make('created_at', 'Date of creation')
                 ->render(function ($model) {
-                    return $model->created_at
-                        ? $model->created_at->toDateTimeString()
-                        : '-';
+                    return $model->created_at->toDateTimeString();
                 }),
 
             TD::make('updated_at', 'Update date')
                 ->render(function ($model) {
-                    return $model->updated_at
-                        ? $model->updated_at->toDateTimeString()
-                        : '-';
+                    return $model->updated_at->toDateTimeString();
                 }),
         ];
     }
@@ -73,8 +70,7 @@ class BlogResource extends Resource
     {
         return [
             Sight::make('id'),
-            Sight::make('titre'),
-            Sight::make('contenu'),
+            Sight::make('categorie'),
         ];
     }
 
@@ -85,9 +81,7 @@ class BlogResource extends Resource
      */
     public function filters(): array
     {
-        return [
-            new DefaultSorted('id', 'desc'),
-        ];
+        return [ new DefaultSorted('id', 'desc'),];
     }
 
     /**
@@ -95,20 +89,12 @@ class BlogResource extends Resource
      *
      * @return array
      */
-    public function rules(Model $blog): array
+    public function rules(Model $categorie): array
     {
         return [
-            'titre' => [
+            'categorie' => [
                 'required',
-                'string',
-                'max:100',
-                Rule::unique(self::$model, 'titre')->ignore($blog),
-            ],
-            'contenu' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique(self::$model, 'contenu')->ignore($blog),
+                Rule::unique(self::$model, 'categorie')->ignore($categorie),
             ],
         ];
     }

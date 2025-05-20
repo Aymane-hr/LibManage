@@ -103,7 +103,7 @@ class TagResource extends Resource
         return [
             'tag' => [
                 'required',
-                Rule::unique(self::$model, 'slug')->ignore($tag),
+                Rule::unique(self::$model, 'tag')->ignore($tag),
             ],
         ];
     }

@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Orchid\Attachment\Attachable;
+use Orchid\Filters\Filterable;
+use Orchid\Screen\AsSource;
 class Produit extends Model
 {
+    use AsSource, Filterable, Attachable;
     protected $guarded = ['id'];
 
     public function categorie()
@@ -20,5 +23,5 @@ class Produit extends Model
     public function auteur(){
         return $this->belongsTo(Auteur::class);
     }
-    
+
 }
