@@ -10,21 +10,14 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Crud\Filters\DefaultSorted;
 use Illuminate\Database\Eloquent\Model;
 
-class TagResource extends Resource
+class BlogResource extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Tag::class;
-
-
-    public static function icon(): string
-    {
-        return 'bs.tag'; // Bootstrap Icon: tag
-    }
-
+    public static $model = \App\Models\Blog::class;
 
     /**
      * Get the fields displayed by the resource.
@@ -34,9 +27,12 @@ class TagResource extends Resource
     public function fields(): array
     {
         return [
-            Input::make('tag')
-                ->title('Tag')
-                ->placeholder('Tag'),
+            Input::make('titre')
+                ->title('Titre')
+                ->placeholder('Titre...'),
+            Input::make('contenu')
+                ->title('Contenu')
+                ->placeholder('Contenu...'),
         ];
     }
 
@@ -48,19 +44,22 @@ class TagResource extends Resource
     public function columns(): array
     {
         return [
-            TD::make('id')->sort(),
-            TD::make('tag')->sort(),
+            TD::make('id'),
+            TD::make('titre'),
+            TD::make('contenu'),
 
             TD::make('created_at', 'Date of creation')
-                ->sort()
                 ->render(function ($model) {
-                    return $model->created_at->toDateTimeString();
+                    return $model->created_at
+                        ? $model->created_at->toDateTimeString()
+                        : '-';
                 }),
 
             TD::make('updated_at', 'Update date')
-                ->sort()
                 ->render(function ($model) {
-                    return $model->updated_at->toDateTimeString();
+                    return $model->updated_at
+                        ? $model->updated_at->toDateTimeString()
+                        : '-';
                 }),
         ];
     }
@@ -74,11 +73,10 @@ class TagResource extends Resource
     {
         return [
             Sight::make('id'),
-            Sight::make('tag'),
+            Sight::make('titre'),
+            Sight::make('contenu'),
         ];
     }
-
-
 
     /**
      * Get the filters available for the resource.
@@ -92,18 +90,17 @@ class TagResource extends Resource
         ];
     }
 
-
     /**
      * Get the validation rules that apply to save/update.
      *
      * @return array
      */
-    public function rules(Model $tag): array
+    public function rules(Model $blog): array
     {
         return [
             'tag' => [
                 'required',
-                Rule::unique(self::$model, 'slug')->ignore($tag),
+                Rule::unique(self::$model, 'slug')->ignore($blog),
             ],
         ];
     }

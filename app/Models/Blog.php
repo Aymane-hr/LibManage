@@ -2,20 +2,12 @@
 
 namespace App\Models;
 
-use Orchid\Screen\AsSource;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Attachment\Attachable;
+use Orchid\Filters\Filterable;
+use Orchid\Screen\AsSource;
 
 class Blog extends Model
 {
-    use AsSource;
-
-    /**
-     * @var array
-     */
-    protected $fillable = [
-        'contenu',
-        'titre',
-        'created_at',
-        'updated_at'
-    ];
+    use AsSource, Filterable, Attachable;
 }

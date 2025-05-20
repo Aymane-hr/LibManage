@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Orchid\Screens\Blog\BlogEditScreen;
-use App\Orchid\Screens\Blog\BlogListScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -102,6 +100,3 @@ Route::screen('/examples/layouts', ExampleLayoutsScreen::class)->name('platform.
 Route::screen('/examples/grid', ExampleGridScreen::class)->name('platform.example.grid');
 Route::screen('/examples/charts', ExampleChartsScreen::class)->name('platform.example.charts');
 Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.example.cards');
-
-Route::screen('blogs', BlogListScreen::class)->name('platform.blog.list');
-Route::screen('blog/{blog?}', BlogEditScreen::class)->name('platform.blog.edit');
