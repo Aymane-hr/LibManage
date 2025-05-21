@@ -105,6 +105,18 @@
                                 </a>
                                 <a href="shop-cart.html" class="cart-icon">
                                     <i class="fa-regular fa-cart-shopping"></i>
+                                    {{-- <span class="cart-count" id="cart-count">5</span>
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            fetch('/cart')
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    const cartCountElement = document.getElementById('cart-count');
+                                                    cartCountElement.textContent = data.cartCount || 0;
+                                                })
+                                                .catch(error => console.error('Error fetching cart data:', error));
+                                        });
+                                    </script> --}}
                                 </a>
                                 <div class="header-humbager ml-30">
                                     <a class="sidebar__toggle" href="javascript:void(0)">
@@ -242,16 +254,35 @@
                                 <a href="wishlist.html" class="cart-icon">
                                     <i class="fa-regular fa-heart"></i>
                                 </a>
-                                <a href="shop-cart.html" class="cart-icon">
+                                <a href="{{route('shop-cart')}}" class="cart-icon">
                                     <i class="fa-regular fa-cart-shopping"></i>
+                                    <span class="cart-count" id="cart-count"></span>
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            fetch('/cart')
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    let count = 0;
+                                                    for (const item of Object.values(data)) {
+                                                        if (item.quantity) {
+                                                            count += 1;
+                                                        }
+                                                    }
+                                                    console.log('count :', count);
+                                                    const cartCountElement = document.getElementById('cart-count');
+                                                    cartCountElement.textContent = count || 0;
+                                                })
+                                                .catch(error => console.error('Error fetching cart data:', error));
+                                        });
+                                    </script>
                                 </a>
-                                <div class="header-humbager ml-30">
+                                {{-- <div class="header-humbager ml-30">
                                     <a class="sidebar__toggle" href="javascript:void(0)">
                                         <div class="bar-icon-2">
                                             <img src="assets/img/icon/icon-13.svg" alt="img">
                                         </div>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
