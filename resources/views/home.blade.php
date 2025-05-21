@@ -1304,7 +1304,7 @@
             </p>
         </div>
         <div class="row">
-            @foreach ($blogs as $blog) 
+            @foreach ($blogs as $blog)
                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                 <div class="news-card-items">
                     <div class="news-image">
@@ -1324,7 +1324,7 @@
                             </li> --}}
                         </ul>
                         <h3><a href="news-details.html">{{$blog->titre}}</a></h3>
-                        <a href="news-details.html" class="theme-btn-2">Lire la suite <i
+                        <a href="{{route('blog-details',$blog->id)}}" class="theme-btn-2">Lire la suite <i
                                 class="fa-regular fa-arrow-right-long"></i></a>
                     </div>
                 </div>

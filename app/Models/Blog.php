@@ -10,4 +10,11 @@ use Orchid\Screen\AsSource;
 class Blog extends Model
 {
     use AsSource, Filterable, Attachable;
+
+    protected $guarded = [];
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'blog_id');
+    }
 }

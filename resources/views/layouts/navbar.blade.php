@@ -55,7 +55,7 @@
                                                 </a>
                                                 <ul class="submenu">
                                                     <li><a href="{{ route('blog') }}">Blog Grid</a></li>
-                                                    <li><a href="{{ route('blog-details') }}">Blog Details</a></li>
+                                                    <li><a href="#">Blog Details</a></li>
                                                 </ul>
                                             </li>
                                             <li>

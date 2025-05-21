@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -16,8 +17,16 @@ Route::get('/shop-default', function () {
 Route::get('/shop-details', function () {
     return view('shop-details');
 })->name('shop-details');
-Route::get('/blog-details', function () {
-    return view('blog-details');
+Route::get('/blog-details/{id}', function ($id) {
+
+    $blog=Blog::find($id);
+    if (!$blog) {
+        abort(404);
+    }
+    $titre = $blog->titre;
+    $description = $blog->contenu;
+    $images=$blog->images;
+    return view('blog-details',compact('titre', 'description','images'));
 })->name('blog-details');
 Route::get('/blog', function () {
     return view('blog');
