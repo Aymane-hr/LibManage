@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProduitController;
 use App\Models\Blog;
@@ -9,13 +10,19 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/shop', function () {
     return view('shop');
 })->name('shop');
-Route::get('/shop-cart', function () {
-    return view('shop-cart');
-})->name('shop-cart');
+Route::get('/shop-cart', [CartController::class,'index'])->name('shop-cart');
 Route::get('/shop-default', function () {
     return view('shop-default');
 })->name('shop-default');
 Route::get('/shop-details/{id}', [ProduitController::class,'index'])->name('shop-details');
+Route::post('/shop-details/{id}', [ProduitController::class,'store'])->name('shop-details.store');
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
+Route::get('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
+Route::post('/clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout');
 Route::get('/blog-details/{id}', function ($id) {
 
     $blog=Blog::find($id);

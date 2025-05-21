@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Registration Modal -->
     <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
         aria-hidden="true">
@@ -179,114 +179,135 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    @foreach ($cart as $cartItem)
+
                                     <tr>
                                         <td>
                                             <span class="d-flex gap-5 align-items-center">
-                                                <a href="shop-cart.html" class="remove-icon">
+                                                {{-- <a href="shop-cart.html" class="remove-icon">
                                                     <img src="assets/img/icon/icon-9.svg" alt="img">
-                                                </a>
+                                                </a> --}}
                                                 <span class="cart">
-                                                    <img src="assets/img/shop-cart/01.png" alt="img">
+
+                                                    <img src="  {{ $cartItem['image'] ?? ''}}" width="70" alt="img">
                                                 </span>
                                                 <span class="cart-title">
-                                                    simple Things You To Save Book
+
+                                                        {{ $cartItem['name'] }}
+
                                                 </span>
                                             </span>
                                         </td>
                                         <td>
-                                            <span class="cart-price">$30.00</span>
+                                            <span class="cart-price">{{$cartItem['price']}}</span>
                                         </td>
                                         <td>
                                             <span class="quantity-basket">
                                                 <span class="qty">
-                                                    <button class="qtyminus" aria-hidden="true">−</button>
-                                                    <input type="number" name="qty" id="qty2" min="1" max="10" step="1"
-                                                        value="1">
-                                                    <button class="qtyplus" aria-hidden="true">+</button>
+                                                    {{-- <button class="qtyminus"   aria-hidden="true">−</button> --}}
+                                                    <input type="number" onchange="subtotal({{ $loop->index }})" name="qty" id="qty{{$loop->index}}" min="1" max="10" step="1"
+                                                        value="{{ $cartItem['quantity'] }}" data-price="{{ $cartItem['price'] }}">
+                                                    {{-- <button class="qtyplus"  aria-hidden="true">+</button> --}}
                                                 </span>
                                             </span>
                                         </td>
                                         <td>
-                                            <span class="subtotal-price">$120.00</span>
+                                            <span class="subtotal-price" id="subtotal-{{ $loop->index }}">
+                                                {{$cartItem['price'] * $cartItem['quantity']}}
+                                            </span>
+                                            <script>
+
+                                                    window.subtotal=(index)=>{
+                                                        e = document.querySelector('#qty'+index);
+                                                        const price = parseFloat(e.dataset.price);
+                                                        const quantity = parseInt(e.value);
+                                                        console.log(price, quantity);
+                                                        const subtotalElement = document.getElementById(`subtotal-${index}`);
+                                                        subtotalElement.textContent = (price * quantity).toFixed(2);
+                                                        calculateTotal();
+                                                    }
+
+                                                    window.onload = () => {
+                                                        subtotal({{ $loop->index }});
+                                                    }
+
+                                                    // document.querySelectorAll('input[name="qty"]').forEach((input, index) => {
+                                                    //     input.addEventListener('change', () => subtotal(index));
+                                                    // });
+
+                                                    window.calculateTotal = () => {
+                                                        let total = 0;
+                                                        document.querySelectorAll('.subtotal-price').forEach(subtotalElement => {
+                                                            total += parseFloat(subtotalElement.textContent) || 0;
+                                                        });
+                                                        document.querySelector('.sub-price-total').textContent = total.toFixed(2);
+                                                    };
+
+                                                    document.querySelectorAll('input[name="qty"]').forEach((input, index) => {
+                                                        input.addEventListener('change', () => {
+                                                            subtotal(index);
+                                                            calculateTotal();
+                                                        });
+                                                    });
+
+                                                    // Calculate total on page load
+                                                    window.onload = () => {
+                                                        document.querySelectorAll('input[name="qty"]').forEach((input, index) => {
+                                                            subtotal(index);
+                                                        });
+                                                        calculateTotal();
+                                                    };
+
+
+                                            </script>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0)" class="remove-icon" onclick="removeItem({{ $cartItem['id'] }})">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="d-flex gap-5 align-items-center">
-                                                <a href="shop-cart.html" class="remove-icon">
-                                                    <img src="assets/img/icon/icon-9.svg" alt="img">
-                                                </a>
-                                                <span class="cart">
-                                                    <img src="assets/img/shop-cart/02.png" alt="img">
-                                                </span>
-                                                <span class="cart-title">
-                                                    Qple GPad With Retina Sisplay
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="cart-price">$30.00</span>
-                                        </td>
-                                        <td>
-                                            <span class="quantity-basket">
-                                                <span class="qty">
-                                                    <button class="qtyminus" aria-hidden="true">−</button>
-                                                    <input type="number" name="qty" id="qty3" min="1" max="10" step="1"
-                                                        value="1">
-                                                    <button class="qtyplus" aria-hidden="true">+</button>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="subtotal-price">$120.00</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="d-flex gap-5 align-items-center">
-                                                <a href="shop-cart.html" class="remove-icon">
-                                                    <img src="assets/img/icon/icon-9.svg" alt="img">
-                                                </a>
-                                                <span class="cart">
-                                                    <img src="assets/img/shop-cart/03.png" alt="img">
-                                                </span>
-                                                <span class="cart-title">
-                                                    Flovely and Unicom Erna
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="cart-price">$30.00</span>
-                                        </td>
-                                        <td>
-                                            <span class="quantity-basket">
-                                                <span class="qty">
-                                                    <button class="qtyminus" aria-hidden="true">−</button>
-                                                    <input type="number" name="qty" id="qty" min="1" max="10" step="1"
-                                                        value="1">
-                                                    <button class="qtyplus" aria-hidden="true">+</button>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="subtotal-price">$120.00</span>
-                                        </td>
-                                    </tr>
+                                    @endforeach
+                                    <script>
+                                        window.removeItem = (id) => {
+                                            // Make an AJAX request to remove the item from the cart
+                                            fetch(`/remove-from-cart/${id}`, {
+                                                method: 'DELETE',
+                                                headers: {
+                                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                                    'Content-Type': 'application/json'
+                                                }
+                                            })
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                if (data.success) {
+                                                    // Optionally, you can refresh the page or update the cart UI
+                                                    location.reload();
+                                                } else {
+                                                    alert('Failed to remove item from cart.');
+                                                }
+                                            })
+                                            .catch(error => console.error('Error:', error));
+                                        }
+                                    </script>
+
+
                                 </tbody>
                             </table>
                         </div>
                         <div class="cart-wrapper-footer">
-                            <form action="shop-cart.html">
+                            {{-- <form action="shop-cart.html">
                                 <div class="input-area">
                                     <input type="text" name="Coupon Code" id="CouponCode" placeholder="Coupon Code">
                                     <button type="submit" class="theme-btn">
                                         Apply
-                                    </button> 
+                                    </button>
                                 </div>
-                            </form>
-                            <a href="shop-cart.html" class="theme-btn">
+                            </form> --}}
+                            {{-- <a href="shop-cart.html" class="theme-btn">
                                 Update Cart
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                     <div class="col-xl-3">
@@ -298,29 +319,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {{-- <tr>
                                         <td>
                                             <span class="d-flex gap-5 align-items-center justify-content-between">
                                                 <span class="sub-title">Subtotal:</span>
                                                 <span class="sub-price">$84.00</span>
                                             </span>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="d-flex gap-5 align-items-center  justify-content-between">
-                                                <span class="sub-title">Shipping:</span>
-                                                <span class="sub-text">
-                                                    Free
-                                                </span>
-                                            </span>
-                                        </td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
                                         <td>
                                             <span class="d-flex gap-5 align-items-center  justify-content-between">
                                                 <span class="sub-title">Total:  </span>
-                                                <span class="sub-price sub-price-total">$84.00</span>
+                                                <span class="sub-price sub-price-total">{{$total}}</span>
                                             </span>
                                         </td>
                                     </tr>
