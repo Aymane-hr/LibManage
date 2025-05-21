@@ -24,6 +24,8 @@ class ImageEditScreen extends Screen
      */
     public function query(Image $image): iterable
     {
+        $this->image = $image;
+
         return [
             'image' => $image,
         ];
@@ -68,8 +70,6 @@ class ImageEditScreen extends Screen
      */
     public function layout(): iterable
     {
-        $imageType = request('image.image_type') ?? ($this->image->exists ? $this->getImageType() : null);
-
         return [
             Layout::rows([
                 Upload::make('image.attachment')
@@ -86,25 +86,24 @@ class ImageEditScreen extends Screen
                     ])
                     ->empty('Select image type')
                     ->required()
-                    ->value($imageType)
+                    ->value($this->image->exists ? $this->getImageType() : null)
                     ->help('Choose whether this image is for a blog or product'),
 
                 Select::make('image.blog_id')
                     ->title('Blog')
                     ->fromModel(Blog::class, 'titre', 'id')
                     ->empty('Select a blog')
-                    ->canSee($imageType === 'blog')
-                    ->required($imageType === 'blog')
                     ->help('Select the blog this image belongs to'),
 
                 Select::make('image.produit_id')
                     ->title('Product')
                     ->fromModel(Produit::class, 'designation', 'id')
                     ->empty('Select a product')
-                    ->canSee($imageType === 'product')
-                    ->required($imageType === 'product')
                     ->help('Select the product this image belongs to'),
             ]),
+
+            // Use a simple view for JavaScript
+            Layout::view('admin.partials.dynamic-select-script'),
         ];
     }
 
@@ -126,6 +125,12 @@ class ImageEditScreen extends Screen
      */
     public function save(Request $request, Image $image)
     {
+        // Get all form data
+        $formData = $request->all();
+
+        // Debug: Log the received data
+        \Log::info('Form data received:', $formData);
+
         $data = $request->validate([
             'image.attachment' => 'nullable',
             'image.image_type' => 'required|in:blog,product',
@@ -134,6 +139,9 @@ class ImageEditScreen extends Screen
         ]);
 
         $imageData = $data['image'];
+
+        // Debug: Log the validated data
+        \Log::info('Validated image data:', $imageData);
 
         // Handle attachment
         if (isset($imageData['attachment'])) {
@@ -144,31 +152,44 @@ class ImageEditScreen extends Screen
             unset($imageData['attachment']);
         }
 
+        // Prepare data for saving
+        $saveData = [];
+
         // Clear both foreign keys first
-        $imageData['blog_id'] = null;
-        $imageData['produit_id'] = null;
+        $saveData['blog_id'] = null;
+        $saveData['produit_id'] = null;
 
         // Set the appropriate foreign key based on type
         if ($imageData['image_type'] === 'blog') {
-            $imageData['blog_id'] = $imageData['blog_id'] ?? null;
+            $blogId = $imageData['blog_id'] ?? null;
 
-            if (!$imageData['blog_id']) {
+            if (!$blogId) {
                 Toast::error('Please select a blog.');
-                return;
+                return back()->withInput();
             }
-        } elseif ($imageData['image_type'] === 'product') {
-            $imageData['produit_id'] = $imageData['produit_id'] ?? null;
 
-            if (!$imageData['produit_id']) {
+            $saveData['blog_id'] = $blogId;
+
+        } elseif ($imageData['image_type'] === 'product') {
+            $productId = $imageData['produit_id'] ?? null;
+
+            if (!$productId) {
                 Toast::error('Please select a product.');
-                return;
+                return back()->withInput();
             }
+
+            $saveData['produit_id'] = $productId;
         }
 
-        // Remove the temporary image_type field
-        unset($imageData['image_type']);
+        // Add other fields if they exist
+        if (isset($imageData['image'])) {
+            $saveData['image'] = $imageData['image'];
+        }
 
-        $image->fill($imageData)->save();
+        // Debug: Log the data being saved
+        \Log::info('Data being saved:', $saveData);
+
+        $image->fill($saveData)->save();
 
         // Sync attachments
         if (isset($data['image']['attachment'])) {
