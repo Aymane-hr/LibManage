@@ -34,6 +34,14 @@ class PlatformProvider extends OrchidServiceProvider
     public function menu(): array
     {
         return [
+            // Add your Images menu item here
+            Menu::make('Images')
+                ->icon('picture')
+                ->route('platform.images')
+                // ->permission('platform.images')
+                ->badge(function () {
+                    return \App\Models\Image::count();
+                }, Color::PRIMARY()),
             // Menu::make('Get Started')
             //     ->icon('bs.book')
             //     ->title('Navigation')
