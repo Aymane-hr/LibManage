@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Registration Modal -->
     <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
         aria-hidden="true">
@@ -170,66 +170,34 @@
                     <div class="col-lg-5">
                         <div class="shop-details-image">
                             <div class="tab-content">
-                                <div id="thumb1" class="tab-pane fade show active">
+                                @foreach ($images as $key =>$image )
+                                <div id="thumb{{$loop->index + 1}}" class="tab-pane fade @if($key == 0) show active @endif">
                                     <div class="shop-details-thumb">
-                                        <img src="assets/img/shop-details/01.png" alt="img">
+                                        <img src="{{ $image->image }}" alt="img">
                                     </div>
                                 </div>
-                                <div id="thumb2" class="tab-pane fade">
-                                    <div class="shop-details-thumb">
-                                        <img src="assets/img/shop-details/02.png" alt="img">
-                                    </div>
-                                </div>
-                                <div id="thumb3" class="tab-pane fade">
-                                    <div class="shop-details-thumb">
-                                        <img src="assets/img/shop-details/03.png" alt="img">
-                                    </div>
-                                </div>
-                                <div id="thumb4" class="tab-pane fade">
-                                    <div class="shop-details-thumb">
-                                        <img src="assets/img/shop-details/04.png" alt="img">
-                                    </div>
-                                </div>
-                                <div id="thumb5" class="tab-pane fade">
-                                    <div class="shop-details-thumb">
-                                        <img src="assets/img/shop-details/05.png" alt="img">
-                                    </div>
-                                </div>
+                                @endforeach
+
+
+
                             </div>
                             <ul class="nav">
+                                @foreach ($images as $key =>$image )
                                 <li class="nav-item">
-                                    <a href="#thumb1" data-bs-toggle="tab" class="nav-link active">
-                                        <img src="assets/img/shop-details/sm-1.png" alt="img">
+                                    <a href="#thumb{{$loop->index + 1}}" data-bs-toggle="tab" class="nav-link  @if($key == 0)active @endif">
+                                        <img src="{{ $image->image }}" width="50" alt="img">
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#thumb2" data-bs-toggle="tab" class="nav-link">
-                                        <img src="assets/img/shop-details/sm-2.png" alt="img">
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#thumb3" data-bs-toggle="tab" class="nav-link">
-                                        <img src="assets/img/shop-details/sm-3.png" alt="img">
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#thumb4" data-bs-toggle="tab" class="nav-link">
-                                        <img src="assets/img/shop-details/sm-4.png" alt="img">
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#thumb5" data-bs-toggle="tab" class="nav-link">
-                                        <img src="assets/img/shop-details/sm-5.png" alt="img">
-                                    </a>
-                                </li>
+                                @endforeach
+
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-7">
                         <div class="shop-details-content">
                             <div class="title-wrapper">
-                                <h2>Castle The Sky</h2>
-                                <h5>Stock availability.</h5>
+                                <h2>{{$designation}}</h2>
+                                {{-- <h5>Stock availability.</h5> --}}
                             </div>
                             <div class="star">
                                 <a href="shop-details.html"> <i class="fas fa-star"></i></a>
@@ -239,14 +207,9 @@
                                 <a href="shop-details.html"><i class="fa-regular fa-star"></i></a>
                                 <span>(1 Customer Reviews)</span>
                             </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar, tortor quis
-                                varius pretium est felis scelerisque nulla, vitae placerat justo nunc a massa. Aenean
-                                nec montes vestibulum urna vel imperdiet ipsum. Orci varius natoque penatibus et magnis
-                                dis ridicul parturient montes.
-                            </p>
+
                             <div class="price-list">
-                                <h3>$16.00</h3>
+                                <h3>{{$prix}}</h3>
                             </div>
                             <div class="cart-wrapper">
                                 <div class="quantity-basket">
@@ -255,20 +218,20 @@
                                         <input type="number" name="qty" id="qty2" min="1" max="10" step="1" value="1">
                                         <button class="qtyplus" aria-hidden="true">+</button>
                                     </p>
-                                </div> 
-                                <button type="button"  class="theme-btn style-2" data-bs-toggle="modal" data-bs-target="#readMoreModal">
+                                </div>
+                                {{-- <button type="button"  class="theme-btn style-2" data-bs-toggle="modal" data-bs-target="#readMoreModal">
                                     Read A little
-                                  </button>
+                                  </button> --}}
                                   <!-- Read More Modal -->
-                                <div class="modal fade" id="readMoreModal" tabindex="-1" aria-labelledby="readMoreModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog"> 
+                                {{-- <div class="modal fade" id="readMoreModal" tabindex="-1" aria-labelledby="readMoreModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <div class="modal-body" style="background-image: url(assets/img/popupBg.png);"> 
+                                            <div class="modal-body" style="background-image: url(assets/img/popupBg.png);">
                                                 <div class="close-btn">
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <div class="readMoreBox"> 
+                                                <div class="readMoreBox">
                                                     <div class="content">
                                                         <h3 id="readMoreModalLabel">The Role Of Book</h3>
                                                         <p>
@@ -287,55 +250,33 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <a href="shop-details.html" class="theme-btn"><i
                                         class="fa-solid fa-basket-shopping"></i> Add To Cart</a>
                                 <div class="icon-box">
                                     <a href="shop-details.html" class="icon">
                                         <i class="far fa-heart"></i>
                                     </a>
-                                    <a href="shop-details.html" class="icon-2">
+                                    {{-- <a href="shop-details.html" class="icon-2">
                                         <img src="assets/img/icon/shuffle.svg" alt="svg-icon">
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div>
                             <div class="category-box">
                                 <div class="category-list">
                                     <ul>
                                         <li>
-                                            <span>SKU:</span> FTC1020B65D
+                                            <span>ISBN:</span> {{$isbn}}
                                         </li>
                                         <li>
-                                            <span>Category:</span> Kids Toys
+                                            <span>Catégorie :</span> {{$category}}
                                         </li>
                                     </ul>
-                                    <ul>
-                                        <li>
-                                            <span>Tags:</span> Design Low Book
-                                        </li>
-                                        <li>
-                                            <span>Format:</span> Hardcover
-                                        </li>
-                                    </ul>
-                                    <ul>
-                                        <li>
-                                            <span>Total page:</span> 330
-                                        </li>
-                                        <li>
-                                            <span>Language:</span> English
-                                        </li>
-                                    </ul>
-                                    <ul>
-                                        <li>
-                                            <span>Publish Years:</span> 2021
-                                        </li>
-                                        <li>
-                                            <span>Century:</span> United States
-                                        </li>
-                                    </ul>
+
+
                                 </div>
                             </div>
-                            <div class="box-check">
+                            {{-- <div class="box-check">
                                 <div class="check-list">
                                     <ul>
                                         <li>
@@ -364,11 +305,11 @@
                                 <a href="https://www.customer.io/"><img src="assets/img/cutomerio.png" alt="cutomer.io"></a>
                                 <a href="https://www.amazon.com/"><img src="assets/img/amazon.png" alt="amazon"></a>
                                 <a href="https://www.dropbox.com/"><img src="assets/img/dropbox.png" alt="dropbox"></a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
-                <div class="single-tab section-padding pb-0">
+                {{-- <div class="single-tab section-padding pb-0">
                     <ul class="nav mb-5" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a href="#description" data-bs-toggle="tab" class="nav-link ps-0 active"
@@ -534,7 +475,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -551,55 +492,40 @@
             </div>
             <div class="swiper book-slider">
                 <div class="swiper-wrapper">
+                    @foreach($produits as $produit)
+                    @php
+                        $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()->image;
+
+                    @endphp
                     <div class="swiper-slide">
                         <div class="shop-box-items style-2">
                             <div class="book-thumb center">
-                                <a href="shop-details"><img src="assets/img/book/01.png" alt="img"></a>
-                                <ul class="post-box">
-                                    <li>
-                                        Hot
-                                    </li>
-                                    <li>
-                                        -30%
-                                    </li>
-                                </ul>
-                                <ul class="shop-icon d-grid justify-content-center align-items-center">
-                                    <li>
-                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                </ul>
+                                <a href="shop-details"><img src="{{ $imagePath }}" alt="img"></a>
                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                     <li>
                                         <a href="shop-cart.html"><i class="far fa-heart"></i></a>
                                     </li>
                                     <li>
-                                        <a href="shop-cart.html">
-
-                                            <img class="icon" src="assets/img/icon/shuffle.svg" alt="svg-icon">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-details.html"><i class="far fa-eye"></i></a>
+                                        <a href="{{route('shop-details',$produit->id)}}"><i class="far fa-eye"></i></a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="shop-content">
-                                <h5> Design Low Book </h5>
-                                <h3><a href="shop-details.html">Simple Things You To <br> Save BOOK</a></h3>
+                                <h5> {{$produit->designation}}</h5>
+                                <h3><a href="shop-details.html">{{$produit->designation}}</a></h3>
                                 <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li>
-                                        <del>$39.99</del>
-                                    </li>
+                                    <li>{{$produit->prix_ht}}</li>
+                                    <!-- <li>
+                                        <del>{{$produit->prix_ht}}</del>
+                                    </li> -->
                                 </ul>
                                 <ul class="author-post">
                                     <li class="authot-list">
                                         <span class="thumb">
-                                            <img src="assets/img/testimonial/client-1.png" alt="img">
+                                            <!-- <img src="assets/img/testimonial/client-1.png" alt="img"> -->
                                         </span>
-                                        <span class="content">Wilson</span>
+                                        <span class="content">{{$produit->auteur->nom}}</span>
                                     </li>
-
                                     <li class="star">
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
@@ -610,220 +536,12 @@
                                 </ul>
                             </div>
                             <div class="shop-button">
-                                <a href="shop-details.html" class="theme-btn"><i
-                                        class="fa-solid fa-basket-shopping"></i> Add To Cart</a>
+                                <a href="shop-details.html" class="theme-btn"><i class="fa-solid fa-basket-shopping"></i>
+                                    Add To Cart</a>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="shop-box-items style-2">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="assets/img/book/02.png" alt="img"></a>
-                                <ul class="shop-icon d-grid justify-content-center align-items-center">
-                                    <li>
-                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-cart.html">
-
-                                            <img class="icon" src="assets/img/icon/shuffle.svg" alt="svg-icon">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-details.html"><i class="far fa-eye"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="shop-content">
-                                <h5> Design Low Book </h5>
-                                <h3><a href="shop-details.html">How Deal With Very <br> Bad BOOK</a></h3>
-                                <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li>
-                                        <del>$39.99</del>
-                                    </li>
-                                </ul>
-                                <ul class="author-post">
-                                    <li class="authot-list">
-                                        <span class="thumb">
-                                            <img src="assets/img/testimonial/client-2.png" alt="img">
-                                        </span>
-                                        <span class="content">Alexander</span>
-                                    </li>
-
-                                    <li class="star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="shop-button">
-                                <a href="shop-details.html" class="theme-btn"><i
-                                        class="fa-solid fa-basket-shopping"></i> Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="shop-box-items style-2">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="assets/img/book/03.png" alt="img"></a>
-                                <ul class="shop-icon d-grid justify-content-center align-items-center">
-                                    <li>
-                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-cart.html">
-
-                                            <img class="icon" src="assets/img/icon/shuffle.svg" alt="svg-icon">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-details.html"><i class="far fa-eye"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="shop-content">
-                                <h5> Design Low Book </h5>
-                                <h3><a href="shop-details.html">Qple GPad With Retina <br> Sisplay</a></h3>
-                                <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li>
-                                        <del>$39.99</del>
-                                    </li>
-                                </ul>
-                                <ul class="author-post">
-                                    <li class="authot-list">
-                                        <span class="thumb">
-                                            <img src="assets/img/testimonial/client-3.png" alt="img">
-                                        </span>
-                                        <span class="content">Esther</span>
-                                    </li>
-
-                                    <li class="star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="shop-button">
-                                <a href="shop-details.html" class="theme-btn"><i
-                                        class="fa-solid fa-basket-shopping"></i> Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="shop-box-items style-2">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="assets/img/book/04.png" alt="img"></a>
-                                <ul class="post-box">
-                                    <li>
-                                        Hot
-                                    </li>
-                                </ul>
-                                <ul class="shop-icon d-grid justify-content-center align-items-center">
-                                    <li>
-                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-cart.html">
-
-                                            <img class="icon" src="assets/img/icon/shuffle.svg" alt="svg-icon">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-details.html"><i class="far fa-eye"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="shop-content">
-                                <h5> Design Low Book </h5>
-                                <h3><a href="shop-details.html">Qple GPad With Retina <br> Sisplay</a></h3>
-                                <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li>
-                                        <del>$39.99</del>
-                                    </li>
-                                </ul>
-                                <ul class="author-post">
-                                    <li class="authot-list">
-                                        <span class="thumb">
-                                            <img src="assets/img/testimonial/client-4.png" alt="img">
-                                        </span>
-                                        <span class="content">Hawkins</span>
-                                    </li>
-
-                                    <li class="star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="shop-button">
-                                <a href="shop-details.html" class="theme-btn"><i
-                                        class="fa-solid fa-basket-shopping"></i> Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="shop-box-items style-2">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="assets/img/book/05.png" alt="img"></a>
-                                <ul class="shop-icon d-grid justify-content-center align-items-center">
-                                    <li>
-                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-cart.html">
-
-                                            <img class="icon" src="assets/img/icon/shuffle.svg" alt="svg-icon">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-details.html"><i class="far fa-eye"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="shop-content">
-                                <h5> Design Low Book </h5>
-                                <h3><a href="shop-details.html">Simple Things You To <br> Save BOOK</a></h3>
-                                <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li>
-                                        <del>$39.99</del>
-                                    </li>
-                                </ul>
-                                <ul class="author-post">
-                                    <li class="authot-list">
-                                        <span class="thumb">
-                                            <img src="assets/img/testimonial/client-5.png" alt="img">
-                                        </span>
-                                        <span class="content">(Author) Albert</span>
-                                    </li>
-
-                                    <li class="star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="shop-button">
-                                <a href="shop-details.html" class="theme-btn"><i
-                                        class="fa-solid fa-basket-shopping"></i> Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@
                                                 </a>
                                                 <ul class="submenu">
                                                     <li><a href="{{ route('shop-default') }}">Shop Default</a></li>
-                                                    <li><a href="{{ route('shop-details') }}">Shop Details</a></li>
+                                                    <li><a href="#">Shop Details</a></li>
                                                     <li><a href="{{ route('shop-cart') }}">Shop Cart</a></li>
                                                     <li><a href="#">Checkout</a></li>
                                                 </ul>

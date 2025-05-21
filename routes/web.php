@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProduitController;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,7 @@ Route::get('/shop-cart', function () {
 Route::get('/shop-default', function () {
     return view('shop-default');
 })->name('shop-default');
-Route::get('/shop-details', function () {
-    return view('shop-details');
-})->name('shop-details');
+Route::get('/shop-details/{id}', [ProduitController::class,'index'])->name('shop-details');
 Route::get('/blog-details/{id}', function ($id) {
 
     $blog=Blog::find($id);

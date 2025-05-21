@@ -249,7 +249,7 @@
                                     <a href="shop-cart.html"><i class="far fa-heart"></i></a>
                                 </li>
                                 <li>
-                                    <a href="shop-details.html"><i class="far fa-eye"></i></a>
+                                    <a href="{{route('shop-details',$produit->id)}}"><i class="far fa-eye"></i></a>
                                 </li>
                             </ul>
                         </div>

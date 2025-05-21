@@ -194,7 +194,6 @@
                                                     <img src="{{ asset('storage/' . $image->image) }}" alt="img">
                                                 </div>
                                             </div>
-
                                         @endforeach
                                         {{-- <div class="col-lg-6">
                                             <div class="details-image">
