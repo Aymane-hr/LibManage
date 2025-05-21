@@ -238,7 +238,7 @@
                 @foreach($produits as $produit)
                 @php
                     $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()->image;
-                   
+
                 @endphp
                 <div class="swiper-slide">
                     <div class="shop-box-items style-2">
@@ -1244,7 +1244,7 @@
                             </div>
 
 
-                           
+
                         </div>
                     </div>
                 </div>
@@ -1288,7 +1288,7 @@
                     </div>
                 </div>
                 @endforeach
-             
+
             </div>
         </div>
     </div>
@@ -1304,7 +1304,7 @@
             </p>
         </div>
         <div class="row">
-            @foreach ($blogs as $blog) )
+            @foreach ($blogs as $blog) 
                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                 <div class="news-card-items">
                     <div class="news-image">
@@ -1317,20 +1317,20 @@
                     <div class="news-content">
                         <ul>
                             <li>
-                                <i class="fa-light fa-calendar-days"></i> Feb 10, 2024
+                                <i class="fa-light fa-calendar-days"></i>{{ $blog->created_at->format('d M Y') }}
                             </li>
-                            <li>
+                            {{-- <li>
                                 <i class="fa-regular fa-user"></i> By Admin
-                            </li>
+                            </li> --}}
                         </ul>
-                        <h3><a href="news-details.html">Montes suspendisse massa curae malesuada</a></h3>
-                        <a href="news-details.html" class="theme-btn-2">Read More <i
+                        <h3><a href="news-details.html">{{$blog->titre}}</a></h3>
+                        <a href="news-details.html" class="theme-btn-2">Lire la suite <i
                                 class="fa-regular fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>
             @endforeach
-         
+
         </div>
     </div>
 </section>
