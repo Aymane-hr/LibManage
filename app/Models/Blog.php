@@ -17,4 +17,9 @@ class Blog extends Model
     {
         return $this->hasMany(Image::class, 'blog_id');
     }
+
+    public function blogsTags()
+    {
+        return $this->hasMany(BlogTag::class);
+    }
 }

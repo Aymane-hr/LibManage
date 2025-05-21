@@ -212,6 +212,14 @@
                                 <h3>{{$prix}}</h3>
                             </div>
                             <div class="cart-wrapper">
+                                <form action="{{route('add-to-cart')}}" method="POST">
+                                    @csrf
+                                    @method('POST')
+                                    <input type="text" name="image" value="{{$images[0]['image']}}" hidden>
+                                        <input type="hidden" name="id" value="{{$id}}">
+                                    <input type="hidden" name="prix" value="{{$prix}}">
+                                    <input type="hidden" name="designation" value="{{$designation}}">
+                                    <input type="hidden" name="isbn" value="{{$isbn}}">
                                 <div class="quantity-basket">
                                     <p class="qty">
                                         <button class="qtyminus" aria-hidden="true">−</button>
@@ -251,8 +259,9 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                <a href="shop-details.html" class="theme-btn"><i
-                                        class="fa-solid fa-basket-shopping"></i> Add To Cart</a>
+                                <button type="submit" class="theme-btn"><i
+                                        class="fa-solid fa-basket-shopping"></i> Add To Cart</button>
+                                    </form>
                                 <div class="icon-box">
                                     <a href="shop-details.html" class="icon">
                                         <i class="far fa-heart"></i>
