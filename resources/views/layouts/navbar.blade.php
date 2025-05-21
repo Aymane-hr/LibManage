@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-6 col-md-6 col-lg-2 col-xl-4 col-xxl-2">
                         <div class="header-right">
-                            <div class="category-oneadjust gap-6 d-flex align-items-center">
+                            {{-- <div class="category-oneadjust gap-6 d-flex align-items-center">
                                 <div class="icon">
                                     <i class="fa-sharp fa-solid fa-grid-2"></i>
                                 </div>
@@ -98,7 +98,7 @@
                                         </button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                             <div class="menu-cart">
                                 <a href="wishlist.html" class="cart-icon">
                                     <i class="fa-regular fa-heart"></i>
@@ -208,7 +208,7 @@
                     </div>
                     <div class="col-6 col-md-6 col-lg-2 col-xl-4 col-xxl-2">
                         <div class="header-right">
-                            <div class="category-oneadjust gap-6 d-flex align-items-center">
+                            {{-- <div class="category-oneadjust gap-6 d-flex align-items-center">
                                 <div class="icon">
                                     <i class="fa-sharp fa-solid fa-grid-2"></i>
                                 </div>
@@ -237,7 +237,7 @@
                                         </button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                             <div class="menu-cart">
                                 <a href="wishlist.html" class="cart-icon">
                                     <i class="fa-regular fa-heart"></i>
