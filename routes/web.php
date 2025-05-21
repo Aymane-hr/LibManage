@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProduitController;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
+
+
+Route::get('/login',[AuthController::class,'index'])->name('login');
+Route::post('/register',[AuthController::class,'index2'])->name('register');
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/shop', function () {
