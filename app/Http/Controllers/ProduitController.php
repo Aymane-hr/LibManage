@@ -27,6 +27,13 @@ class ProduitController extends Controller
         return view('shop-details', compact('designation', 'images','prix', 'isbn','category','produits','stock','id'));
     }
 
+    public function index2()
+    {
+        $produits = Produit::paginate(10);
+
+        return view('shop-default', compact('produits'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

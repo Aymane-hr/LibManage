@@ -11,9 +11,7 @@ Route::get('/shop', function () {
     return view('shop');
 })->name('shop');
 Route::get('/shop-cart', [CartController::class,'index'])->name('shop-cart');
-Route::get('/shop-default', function () {
-    return view('shop-default');
-})->name('shop-default');
+Route::get('/shop-default',[ProduitController::class,'index2'])->name('shop-default');
 Route::get('/shop-details/{id}', [ProduitController::class,'index'])->name('shop-details');
 Route::post('/shop-details/{id}', [ProduitController::class,'store'])->name('shop-details.store');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
