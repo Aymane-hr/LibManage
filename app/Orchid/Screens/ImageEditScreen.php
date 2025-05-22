@@ -5,15 +5,16 @@ namespace App\Orchid\Screens;
 use App\Models\Blog;
 use App\Models\Image;
 use App\Models\Produit;
-use Illuminate\Http\Request;
-use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\Input;
-use Orchid\Attachment\File;
-use Orchid\Screen\Fields\Upload;
-use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
-use Orchid\Support\Facades\Layout;
+use Orchid\Attachment\File;
+use Illuminate\Http\Request;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\Upload;
+use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Toast;
+use Orchid\Support\Facades\Layout;
+use Illuminate\Support\Facades\Log;
 
 class ImageEditScreen extends Screen
 {
@@ -129,7 +130,7 @@ class ImageEditScreen extends Screen
         $formData = $request->all();
 
         // Debug: Log the received data
-        \Log::info('Form data received:', $formData);
+        Log::info('Form data received:', $formData);
 
         $data = $request->validate([
             'image.attachment' => 'nullable',
@@ -141,7 +142,7 @@ class ImageEditScreen extends Screen
         $imageData = $data['image'];
 
         // Debug: Log the validated data
-        \Log::info('Validated image data:', $imageData);
+        Log::info('Validated image data:', $imageData);
 
         // Handle attachment
         if (isset($imageData['attachment'])) {
@@ -187,7 +188,7 @@ class ImageEditScreen extends Screen
         }
 
         // Debug: Log the data being saved
-        \Log::info('Data being saved:', $saveData);
+        Log::info('Data being saved:', $saveData);
 
         $image->fill($saveData)->save();
 
