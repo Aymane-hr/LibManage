@@ -3,7 +3,7 @@
 ?>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("turbo:load", () => {
     console.log("Dynamic select script loaded");
 
     // Wait a bit for Orchid to fully render the form
