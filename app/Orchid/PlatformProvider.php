@@ -34,14 +34,6 @@ class PlatformProvider extends OrchidServiceProvider
     public function menu(): array
     {
         return [
-            // Add your Images menu item here
-            Menu::make('Images')
-                ->icon('picture')
-                ->route('platform.images')
-                // ->permission('platform.images')
-                ->badge(function () {
-                    return \App\Models\Image::count();
-                }, Color::PRIMARY()),
             // Menu::make('Get Started')
             //     ->icon('bs.book')
             //     ->title('Navigation')
@@ -74,17 +66,24 @@ class PlatformProvider extends OrchidServiceProvider
             //     ->route('platform.example.cards')
             //     ->divider(),
 
-            // Menu::make(__('Users'))
-            //     ->icon('bs.people')
-            //     ->route('platform.systems.users')
-            //     ->permission('platform.systems.users')
-            //     ->title(__('Access Controls')),
+            Menu::make(__('Users'))
+                ->icon('bs.people')
+                ->route('platform.systems.users')
+                ->permission('platform.systems.users')
+                ->title(__('Access Controls')),
 
-            // Menu::make(__('Roles'))
-            //     ->icon('bs.shield')
-            //     ->route('platform.systems.roles')
-            //     ->permission('platform.systems.roles')
-            //     ->divider(),
+            Menu::make(__('Roles'))
+                ->icon('bs.shield')
+                ->route('platform.systems.roles')
+                ->permission('platform.systems.roles')
+                ->divider(),
+
+            // Add your Images menu item here
+            Menu::make('Images')
+                ->icon('picture')
+                ->route('platform.images'),
+                // ->permission('platform.images')
+
 
         ];
     }

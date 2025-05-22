@@ -344,4 +344,13 @@ class ImageResource extends Resource
             Layout::view('admin.partials.dynamic-select-script'),
         ];
     }
+    /**
+ * Get the resource should be displayed in the navigation
+ *
+ * @return bool
+ */
+public static function displayInNavigation(): bool
+{
+    return false;
+}
 }
