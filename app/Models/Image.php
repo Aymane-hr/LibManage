@@ -65,7 +65,7 @@ class Image extends Model
     public function getRelatedTitleAttribute(): string
     {
         if ($this->blog_id && $this->blog) {
-            return $this->blog->title ?? 'Unknown Blog';
+            return $this->blog->titre ?? 'Unknown Blog';
         } elseif ($this->produit_id && $this->produit) {
             return $this->produit->designation ?? 'Unknown Product';
         }
