@@ -338,26 +338,14 @@ class ImageResource extends Resource
         ];
     }
     /**
- * Get the resource should be displayed in the navigation
- *
- * @return bool
- */
-public static function displayInNavigation(): bool
-{
-    return false;
-}
+     * Get the resource should be displayed in the navigation
+     *
+     * @return bool
+     */
+    public static function displayInNavigation(): bool
+    {
+        return false;
+    }
 
-    // Override creation text
-    public static function createButtonLabel(): string
-    {
-        return __('Créer Image');
-    }
-    public static function updateButtonLabel(): string
-    {
-        return __('Modifier Image');
-    }
-    public static function deleteButtonLabel(): string
-    {
-        return __('Supprimer Image');
-    }
+
 }

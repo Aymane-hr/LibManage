@@ -208,17 +208,4 @@ public  function with(): array
         return 10;
     }
 
-    // Override creation text
-    public static function createButtonLabel(): string
-    {
-        return __('Créer Produit');
-    }
-    public static function updateButtonLabel(): string
-    {
-        return __('Modifier Produit');
-    }
-    public static function deleteButtonLabel(): string
-    {
-        return __('Supprimer Produit');
-    }
 }

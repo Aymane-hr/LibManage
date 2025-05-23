@@ -116,17 +116,4 @@ class CategorieResource extends Resource
         return 10;
     }
 
-    // Override creation text
-    public static function createButtonLabel(): string
-    {
-        return __('Créer Catégorie');
-    }
-    public static function updateButtonLabel(): string
-    {
-        return __('Modifier Catégorie');
-    }
-    public static function deleteButtonLabel(): string
-    {
-        return __('Supprimer Catégorie');
-    }
 }

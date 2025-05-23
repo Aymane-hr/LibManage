@@ -152,5 +152,21 @@
     "No records found": "Aucun enregistrement trouvé",
     "Empty": "Vide",
     "Create :name": "Créer :name",
-    "New": "Nouveau"
+    "New": "Nouveau",
+    "Create :resource": "Créer :resource",
+    "Update :resource": "Modifier :resource",
+    "Delete :resource": "Supprimer :resource",
+    "Save :resource": "Enregistrer :resource",
+    "You have successfully updated the :resource.": "Vous avez mis à jour le :resource avec succès.",
+    "You have successfully saved the :resource.": "Vous avez enregistré le :resource avec succès.",
+    "You have successfully deleted the :resource.": "Vous avez supprimé le :resource avec succès.",
+    "The :resource was updated!": ":resource a été mis à jour!",
+    "The :resource was created!": ":resource a été créé!",
+    "The :resource was deleted!": ":resource a été supprimé!",
+    "An error has occurred": "Une erreur est survenue",
+    "Are you sure you want to delete this resource?": "Êtes-vous sûr de vouloir supprimer cette ressource ?",
+    "Are you sure you want to force delete this resource?": "Êtes-vous sûr de vouloir forcer la suppression de cette ressource ?",
+    "Since the :resource was edited, its values have changed. Refresh the page to see them or click \":button\" again to replace them.": "Depuis la dernière modification, les valeurs de :resource ont changé. Rafraîchissez la page pour les voir ou cliquez à nouveau sur \":button\" pour les écraser.",
+    "Resources": "Ressources",
+    "Are you sure?" : "Êtes-vous sure?"
 }

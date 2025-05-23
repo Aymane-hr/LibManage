@@ -126,17 +126,4 @@ class TagResource extends Resource
     {
         return 10;
     }
-    // Override creation text
-    public static function createButtonLabel(): string
-    {
-        return __('Créer Tag');
-    }
-    public static function updateButtonLabel(): string
-    {
-        return __('Modifier Tag');
-    }
-    public static function deleteButtonLabel(): string
-    {
-        return __('Supprimer Tag');
-    }
 }
