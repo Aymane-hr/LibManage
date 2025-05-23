@@ -54,7 +54,7 @@ class ImageScreen extends Screen
         ];
     }
 
-      public function remove(Request $request): void
+    public function remove(Request $request): void
     {
         Image::findOrFail($request->get('id'))->delete();
 
@@ -74,12 +74,15 @@ class ImageScreen extends Screen
 
                 TD::make('image', 'Image')
                     ->render(function (Image $image) {
-                        if ($image->attachment->first()) {
-                            $attachment = $image->attachment->first();
-                            return "<img src='{$attachment->url()}' alt='Image' style='width: 60px; height: 60px; object-fit: cover; border-radius: 4px;'>";
+                        $imageUrl = $image->getImageFromAttachment();
+
+                        if ($imageUrl) {
+                            return "<img src='{$imageUrl}' alt='Image' style='width: 60px; height: 60px; object-fit: cover; border-radius: 4px;'>";
                         }
+
                         return '<span class="text-muted">No image</span>';
                     }),
+
 
                 TD::make('type', 'Type')
                     ->render(function (Image $image) {

@@ -13,6 +13,7 @@ use Orchid\Platform\Events\UploadFileEvent;
 use Orchid\Attachment\Events\AttachmentEvent;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Orchid\Attachment\Models\Attachment;
 
 class Image extends Model
 {
@@ -76,4 +77,10 @@ class Image extends Model
         }
         return 'No relation';
     }
+
+    public function getImageFromAttachment(): ?string
+{
+    return $this->image ? asset($this->image) : null;
+}
+
 }
