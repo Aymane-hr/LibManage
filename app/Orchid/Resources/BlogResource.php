@@ -139,4 +139,17 @@ class BlogResource extends Resource
     {
         return 10;
     }
+
+     public static function createButtonLabel(): string
+    {
+        return __('Créer Blog');
+    }
+    public static function updateButtonLabel(): string
+    {
+        return __('Modifier Blog');
+    }
+    public static function deleteButtonLabel(): string
+    {
+        return __('Supprimer Blog');
+    }
 }

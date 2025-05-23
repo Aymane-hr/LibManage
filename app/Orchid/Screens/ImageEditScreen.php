@@ -45,7 +45,7 @@ class ImageEditScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'Create or edit image for blogs and products';
+        return __('Créer ou modifier l\'image pour les blogs et produits');
     }
 
     /**

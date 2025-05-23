@@ -45,7 +45,7 @@ class ImageScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Link::make('Create Image')
+            Link::make('Créer Image')
                 ->icon('plus')
                 ->route('platform.images.create'),
         ];

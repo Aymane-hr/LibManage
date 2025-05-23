@@ -150,5 +150,7 @@
     "Import or create objects, or check back later for updates": "Importez ou créez des objets, ou revenez plus tard pour les mises à jour",
     "No data available": "Aucune donnée disponible",
     "No records found": "Aucun enregistrement trouvé",
-    "Empty": "Vide"
+    "Empty": "Vide",
+    "Create :name": "Créer :name",
+    "New": "Nouveau"
 }

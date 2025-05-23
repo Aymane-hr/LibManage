@@ -120,4 +120,18 @@ class ReglementResource extends Resource
     {
         return 10;
     }
+
+    // Override creation text
+    public static function createButtonLabel(): string
+    {
+        return __('Créer Règlement');
+    }
+    public static function updateButtonLabel(): string
+    {
+        return __('Modifier Règlement');
+    }
+    public static function deleteButtonLabel(): string
+    {
+        return __('Supprimer Règlement');
+    }
 }

@@ -119,4 +119,40 @@ class AuteurResource extends Resource
     {
         return 10;
     }
+
+    /**
+     * Get the displayable label of the resource.
+     */
+    // public static function label(): string
+    // {
+    //     return __('Your Resource Name');
+    // }
+
+    /**
+     * Get the displayable singular label of the resource.
+     */
+    // public static function singularLabel(): string
+    // {
+    //     return __('Your Resource Item');
+    // }
+
+    // Override creation text
+    public static function createButtonLabel(): string
+    {
+        return __('Créer Auteur');
+    }
+    public static function updateButtonLabel(): string
+    {
+        return __('Modifier Auteur');
+    }
+    public static function deleteButtonLabel(): string
+    {
+        return __('Supprimer Auteur');
+    }
+
+    // Or you can override the entire creation text
+    // public static function createText(): string
+    // {
+    //     return __('Créer') . ' ' . static::singularLabel();
+    // }
 }

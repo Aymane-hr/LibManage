@@ -278,13 +278,6 @@ class ImageResource extends Resource
         return 'Image';
     }
 
-    /**
-     * Get the text for the create resource button.
-     */
-    public static function createButtonLabel(): string
-    {
-        return 'Create Image';
-    }
 
     /**
      * Get the text for the create resource toast.
@@ -353,4 +346,18 @@ public static function displayInNavigation(): bool
 {
     return false;
 }
+
+    // Override creation text
+    public static function createButtonLabel(): string
+    {
+        return __('Créer Image');
+    }
+    public static function updateButtonLabel(): string
+    {
+        return __('Modifier Image');
+    }
+    public static function deleteButtonLabel(): string
+    {
+        return __('Supprimer Image');
+    }
 }
