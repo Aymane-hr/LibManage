@@ -168,5 +168,10 @@
     "Are you sure you want to force delete this resource?": "Êtes-vous sûr de vouloir forcer la suppression de cette ressource ?",
     "Since the :resource was edited, its values have changed. Refresh the page to see them or click \":button\" again to replace them.": "Depuis la dernière modification, les valeurs de :resource ont changé. Rafraîchissez la page pour les voir ou cliquez à nouveau sur \":button\" pour les écraser.",
     "Resources": "Ressources",
-    "Are you sure?" : "Êtes-vous sure?"
+    "Are you sure?" : "Êtes-vous sure?",
+    "Once the image is deleted, all of its resources and data will be permanently deleted.": "Une fois l'image supprimée, toutes ses ressources et données seront supprimées de maniere permanente.",
+    "Image was removed": "L'image a été supprimée",
+    "Image was saved": "L'image a été enregistrée",
+    "Image was deleted": "L'image a been supprimée",
+    "Image was updated": "L'image a been mise à jour"
 }

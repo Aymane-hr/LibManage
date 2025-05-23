@@ -3,11 +3,14 @@
 namespace App\Orchid\Screens;
 
 use App\Models\Image;
-use Orchid\Screen\Actions\Link;
-use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
-use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Screen;
+use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Fields\Group;
+use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Toast;
+use Orchid\Support\Facades\Layout;
 
 class ImageScreen extends Screen
 {
@@ -49,6 +52,13 @@ class ImageScreen extends Screen
                 ->icon('plus')
                 ->route('platform.images.create'),
         ];
+    }
+
+      public function remove(Request $request): void
+    {
+        Image::findOrFail($request->get('id'))->delete();
+
+        Toast::info(__('Image was removed'));
     }
 
     /**
@@ -95,11 +105,20 @@ class ImageScreen extends Screen
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
                     ->render(function (Image $image) {
-                        return Link::make('Edit')
-                            ->route('platform.images.edit', $image->id)
-                            ->icon('pencil')
-                            ->class('btn btn-sm btn-outline-primary');
-                    }),
+                        return Group::make([
+                            Link::make('Edit')
+                                ->route('platform.images.edit', $image->id)
+                                ->icon('pencil')
+                                ->class('btn btn-sm btn-outline-primary'),
+
+                            Button::make('Delete')
+                                ->icon('bs.trash3')
+                                ->confirm('Once the image is deleted, all of its resources and data will be permanently deleted.')
+                                ->method('remove', [
+                                    'id' => $image->id,
+                                ])
+                        ]);
+                    })
             ]),
         ];
     }

@@ -9,6 +9,7 @@ use Orchid\Screen\Screen;
 use Orchid\Attachment\File;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Attach;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Actions\Button;
@@ -73,11 +74,14 @@ class ImageEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Upload::make('image.attachment')
+
+                Attach::make('image')
                     ->title('Image')
-                    ->acceptedFiles('image/*')
+                    ->groups('image') // Optional, for grouping
                     ->maxFiles(1)
+                    ->acceptedFiles('image/*')
                     ->help('Upload your image file'),
+
 
                 Select::make('image.image_type')
                     ->title('Image Type')
@@ -107,6 +111,40 @@ class ImageEditScreen extends Screen
             Layout::view('admin.partials.dynamic-select-script'),
         ];
     }
+
+    public function createOrUpdate(Image $image, Request $request)
+    {
+        dd($request->all());
+        $this->image->fill($request->get('image'))->save();
+
+        // Get the first attachment (Orchid stores attachment IDs)
+        $attachmentId = $request->input('image')[0] ?? null;
+
+        if ($attachmentId) {
+            $attachment = \Orchid\Attachment\Models\Attachment::find($attachmentId);
+
+            if ($attachment) {
+                $originalPath = storage_path("app/public/{$attachment->path}/{$attachment->name}.{$attachment->extension}");
+                $newDir = storage_path('app/public/image');
+                $newPath = $newDir . '/' . $attachment->name . '.' . $attachment->extension;
+
+                if (!file_exists($newDir)) {
+                    mkdir($newDir, 0755, true);
+                }
+
+                copy($originalPath, $newPath);
+
+                // Store new path in your model
+                $this->image->update([
+                    'image' => '/image/' . $attachment->name . '.' . $attachment->extension,
+                ]);
+            }
+        }
+
+        Toast::info('Image saved!');
+        return redirect()->route('platform.image.list');
+    }
+
 
     /**
      * Get the current image type for existing images.
@@ -213,4 +251,5 @@ class ImageEditScreen extends Screen
 
         return redirect()->route('platform.images');
     }
+    
 }
