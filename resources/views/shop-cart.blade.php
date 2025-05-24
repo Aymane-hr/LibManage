@@ -210,7 +210,7 @@
                                                         {{-- <button class="qtyminus"   aria-hidden="true">−</button> --}}
                                                         <input type="number" onchange="subtotal({{ $loop->index }})"
                                                             name="qty" id="qty{{ $loop->index }}" min="1"
-                                                            max="10" step="1"
+                                                             step="1"
                                                             value="{{ $cartItem['quantity'] }}"
                                                             data-price="{{ $cartItem['price'] }}">
                                                         {{-- <button class="qtyplus"  aria-hidden="true">+</button> --}}

@@ -103,7 +103,7 @@
                                 <a href="wishlist.html" class="cart-icon">
                                     <i class="fa-regular fa-heart"></i>
                                 </a>
-                                <a href="shop-cart.html" class="cart-icon">
+                                <a href="{{route('shop-cart')}}" class="cart-icon">
                                     <i class="fa-regular fa-cart-shopping"></i>
                                     <span class="cart-count" id="cart-count1"></span>
                                     <script>
