@@ -25,15 +25,15 @@ class ProduitResource extends Resource
     {
         return 'bs.dropbox';
     }
- /**
- * Get relationships that should be eager loaded when performing an index query.
- *
- * @return array
- */
-public  function with(): array
-{
-    return ['auteur', 'categorie'];
-}
+    /**
+     * Get relationships that should be eager loaded when performing an index query.
+     *
+     * @return array
+     */
+    public function with(): array
+    {
+        return ['auteur', 'categorie'];
+    }
 
 
 
@@ -93,19 +93,19 @@ public  function with(): array
             TD::make('auteur.nom', 'Auteur'),
             TD::make('categorie.categorie', 'Catégorie'),
             TD::make('stock'),
-            TD::make('prix_ht'),
+            TD::make('prix_ht', 'Prix HT'),
             TD::make('tva'),
             TD::make('isbn'),
 
-            TD::make('created_at', 'Date of creation')
-                ->render(function ($model) {
-                    return $model->created_at->toDateTimeString();
-                }),
+            // TD::make('created_at', 'Date of creation')
+            //     ->render(function ($model) {
+            //         return $model->created_at->toDateTimeString();
+            //     }),
 
-            TD::make('updated_at', 'Update date')
-                ->render(function ($model) {
-                    return $model->updated_at->toDateTimeString();
-                }),
+            // TD::make('updated_at', 'Update date')
+            //     ->render(function ($model) {
+            //         return $model->updated_at->toDateTimeString();
+            //     }),
         ];
     }
 
@@ -174,28 +174,28 @@ public  function with(): array
     }
 
     public function messages(): array
-{
-    return [
-        'designation.required' => 'Le champ Désignation est obligatoire.',
-        'designation.string' => 'Le champ Désignation doit être une chaîne de caractères.',
-        'designation.max' => 'Le champ Désignation ne peut pas dépasser 50 caractères.',
-        'designation.unique' => 'Cette désignation est déjà utilisée.',
+    {
+        return [
+            'designation.required' => 'Le champ Désignation est obligatoire.',
+            'designation.string' => 'Le champ Désignation doit être une chaîne de caractères.',
+            'designation.max' => 'Le champ Désignation ne peut pas dépasser 50 caractères.',
+            'designation.unique' => 'Cette désignation est déjà utilisée.',
 
-        'stock.required' => 'Le champ Stock est obligatoire.',
-        'stock.numeric' => 'Le champ Stock doit être un nombre.',
+            'stock.required' => 'Le champ Stock est obligatoire.',
+            'stock.numeric' => 'Le champ Stock doit être un nombre.',
 
-        'prix_ht.required' => 'Le champ Prix HT est obligatoire.',
-        'prix_ht.numeric' => 'Le champ Prix HT doit être un nombre.',
+            'prix_ht.required' => 'Le champ Prix HT est obligatoire.',
+            'prix_ht.numeric' => 'Le champ Prix HT doit être un nombre.',
 
-        'tva.required' => 'Le champ TVA est obligatoire.',
-        'tva.numeric' => 'Le champ TVA doit être un nombre.',
+            'tva.required' => 'Le champ TVA est obligatoire.',
+            'tva.numeric' => 'Le champ TVA doit être un nombre.',
 
-        'isbn.required' => 'Le champ ISBN est obligatoire.',
-        'isbn.string' => 'Le champ ISBN doit être une chaîne de caractères.',
-        'isbn.max' => 'Le champ ISBN ne peut pas dépasser 50 caractères.',
-        'isbn.unique' => 'Cet ISBN est déjà utilisé.',
-    ];
-}
+            'isbn.required' => 'Le champ ISBN est obligatoire.',
+            'isbn.string' => 'Le champ ISBN doit être une chaîne de caractères.',
+            'isbn.max' => 'Le champ ISBN ne peut pas dépasser 50 caractères.',
+            'isbn.unique' => 'Cet ISBN est déjà utilisé.',
+        ];
+    }
 
 
     /**
@@ -206,6 +206,11 @@ public  function with(): array
     public static function perPage(): int
     {
         return 10;
+    }
+
+    public static function displayInNavigation(): bool
+    {
+        return false;
     }
 
 }

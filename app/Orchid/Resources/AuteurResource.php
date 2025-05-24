@@ -120,4 +120,8 @@ class AuteurResource extends Resource
         return 10;
     }
 
+    public static function displayInNavigation(): bool
+    {
+        return false;
+    }
 }
