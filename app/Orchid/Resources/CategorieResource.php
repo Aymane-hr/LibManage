@@ -8,8 +8,12 @@ use App\Models\Categorie;
 use Orchid\Crud\Resource;
 use Illuminate\Validation\Rule;
 use Orchid\Screen\Fields\Input;
+use Orchid\Crud\ResourceRequest;
+use Orchid\Screen\Fields\Attach;
+use Orchid\Support\Facades\Toast;
 use Orchid\Crud\Filters\DefaultSorted;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Attachment\Models\Attachment;
 
 class CategorieResource extends Resource
 {
@@ -35,6 +39,13 @@ class CategorieResource extends Resource
             Input::make('categorie')
                 ->title('Categorie')
                 ->placeholder('Categorie...'),
+
+            Attach::make('image')
+                ->title('Image')
+                ->groups('image') // Optional, for grouping
+                ->maxFiles(1)
+                ->acceptedFiles('image/*')
+                ->help('Upload your image file'),
         ];
     }
 
@@ -48,6 +59,14 @@ class CategorieResource extends Resource
         return [
             TD::make('id'),
             TD::make('categorie'),
+
+            TD::make('image', 'Image')
+            ->render(function ($model) {
+                if ($model->image) {
+                    return "<img src='{$model->image}' alt='Categorie Image' style='max-width: 80px; max-height: 80px; object-fit: contain;' />";
+                }
+                return '--';
+            }),
 
             TD::make('created_at', 'Date of creation')
                 ->render(function ($model) {
@@ -71,6 +90,14 @@ class CategorieResource extends Resource
         return [
             Sight::make('id'),
             Sight::make('categorie'),
+
+             Sight::make('image')
+            ->render(function ($model) {
+                if ($model->image) {
+                    return "<img src='{$model->image}' alt='Categorie Image' style='max-width: 150px; max-height: 150px; object-fit: contain;' />";
+                }
+                return '--';
+            }),
         ];
     }
 
@@ -92,6 +119,7 @@ class CategorieResource extends Resource
     public function rules(Model $categorie): array
     {
         return [
+            'image' => 'nullable',
             'categorie' => [
                 'required',
                 Rule::unique(self::$model, 'categorie')->ignore($categorie),
@@ -120,4 +148,37 @@ class CategorieResource extends Resource
     {
         return false;
     }
+
+    public function onSave(ResourceRequest $request, Model $model)
+    {
+        $imageData = $request->input('image'); // Expecting attachment ID
+
+        if ($imageData) {
+            $attachment = Attachment::find($imageData);
+
+            if ($attachment) {
+                $sourcePath = storage_path("app/public/{$attachment->path}{$attachment->name}.{$attachment->extension}");
+                $folder = "images/categorie"; // custom folder for categories
+                $targetDir = storage_path("app/public/{$folder}");
+
+                if (!file_exists($targetDir)) {
+                    mkdir($targetDir, 0755, true);
+                }
+
+                $targetPath = "{$targetDir}/{$attachment->name}.{$attachment->extension}";
+
+                copy($sourcePath, $targetPath);
+
+                $model->image = "/storage/{$folder}/{$attachment->name}.{$attachment->extension}";
+            }
+        }
+
+        $model->categorie = $request->input('categorie');
+        $model->save();
+
+        Toast::info('Categorie saved with image.');
+
+        return redirect()->route('platform.resource.list', ['resource' => static::uriKey()]);
+    }
+
 }

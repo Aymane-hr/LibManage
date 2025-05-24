@@ -7,8 +7,13 @@ use Orchid\Screen\Sight;
 use Orchid\Crud\Resource;
 use Illuminate\Validation\Rule;
 use Orchid\Screen\Fields\Input;
+use Orchid\Crud\ResourceRequest;
+use Orchid\Screen\Fields\Attach;
+use Orchid\Support\Facades\Toast;
+use Illuminate\Support\Facades\Auth;
 use Orchid\Crud\Filters\DefaultSorted;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Attachment\Models\Attachment;
 
 class AuteurResource extends Resource
 {
@@ -35,6 +40,13 @@ class AuteurResource extends Resource
             Input::make('nom')
                 ->title('Nom')
                 ->placeholder('Nom...'),
+
+            Attach::make('image')
+                ->title('Image')
+                ->groups('image') // Optional, for grouping
+                ->maxFiles(1)
+                ->acceptedFiles('image/*')
+                ->help('Upload your image file'),
         ];
     }
 
@@ -48,6 +60,16 @@ class AuteurResource extends Resource
         return [
             TD::make('id'),
             TD::make('nom'),
+
+            TD::make('image')
+                ->render(function ($model) {
+                    if ($model->image) {
+                        return "<img src='{$model->image}' alt='Image' style='max-height: 60px; max-width: 60px; object-fit: contain;' />";
+                    }
+                    return '--';
+                })
+                ->width('80px')
+                ->align('center'),
 
             TD::make('created_at', 'Date of creation')
                 ->render(function ($model) {
@@ -71,6 +93,14 @@ class AuteurResource extends Resource
         return [
             Sight::make('id'),
             Sight::make('nom'),
+            Sight::make('image')
+            ->render(function ($model) {
+                if ($model->image) {
+                    return "<img src='{$model->image}' alt='Image' style='max-width: 150px; max-height: 150px; object-fit: contain;' />";
+                }
+                return '--';
+            }),
+
         ];
     }
 
@@ -92,6 +122,7 @@ class AuteurResource extends Resource
     public function rules(Model $auteur): array
     {
         return [
+            'image' => 'nullable',
             'nom' => [
                 'required',
                 'string',
@@ -124,4 +155,53 @@ class AuteurResource extends Resource
     {
         return false;
     }
+
+    public function onSave(ResourceRequest $request, Model $model)
+    {
+        // Validate inputs
+        $data = [
+            'image' => $request->input('image'),
+            'nom' => $request->input('nom'), // Added auteur option if needed
+        ];
+
+        $imageData = $data['image'] ?? null;
+        if ($imageData) {
+            $attachmentId = $imageData;
+            $attachment = Attachment::find($attachmentId);
+
+            if ($attachment) {
+                // Original file path
+                $sourcePath = storage_path("app/public/{$attachment->path}{$attachment->name}.{$attachment->extension}");
+
+                // Custom folder path: store under auteur folder with user_id
+                $folder = "images/auteur";
+                $targetDir = storage_path("app/public/{$folder}");
+
+                // Make sure directory exists
+                if (!file_exists($targetDir)) {
+                    mkdir($targetDir, 0755, true);
+                }
+
+                $targetPath = "{$targetDir}/{$attachment->name}.{$attachment->extension}";
+
+                // Copy the file from temp storage to auteur folder
+                copy($sourcePath, $targetPath);
+
+                // Save the public path to the model image field
+                $model->image = "/storage/{$folder}/{$attachment->name}.{$attachment->extension}";
+            }
+        }
+
+        // Optional: if you want to save nom and related ids
+        $model->nom = $data['nom'];
+
+        // Save model
+        $model->save();
+
+        Toast::info('Image uploaded successfully.');
+
+        // Redirect back to your resource list page or wherever you want
+        return redirect()->route('platform.resource.list', ['resource' => static::uriKey()]);
+    }
+
 }
