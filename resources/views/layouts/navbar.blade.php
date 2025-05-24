@@ -8,58 +8,37 @@
                         <div class="header-left">
                             <div class="logo">
                                 <a href="index.html" class="header-logo">
-                                    <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                                    <img src="assets/img/logo/logo.png" alt="logo-img">
                                 </a>
                             </div>
                             <div class="mean__menu-wrapper">
                                 <div class="main-menu">
                                     <nav>
                                         <ul>
-                                            <li>
-                                                <a href="index.html">
-                                                    Home
-                                                    <i class="fas fa-angle-down"></i>
+                                            {{-- hadi ghi khlih --}}
+                                            <li class="has-dropdown">
+                                                <a href="accuiller.html">
+                                                    accuiller
                                                 </a>
-                                                <ul class="submenu">
-                                                    <li><a href="index.html">Home 01</a></li>
-                                                    <li><a href="index-2.html">Home 02</a></li>
-                                                </ul>
                                             </li>
+                                            {{-- ok --}}
                                             <li>
-                                                <a href="shop.html">
+                                                <a href="home.html">
                                                     Shop
-                                                    <i class="fas fa-angle-down"></i>
                                                 </a>
-                                                <ul class="submenu">
-                                                    <li><a href="{{ route('shop-default') }}">Shop Default</a></li>
-                                                    <li><a href="#">Shop Details</a></li>
-                                                    <li><a href="{{ route('shop-cart') }}">Shop Cart</a></li>
-                                                    <li><a href="#">Checkout</a></li>
-                                                </ul>
                                             </li>
                                             <li class="has-dropdown">
                                                 <a href="about.html">
-                                                    Pages
-                                                    <i class="fas fa-angle-down"></i>
+                                                    About Us
                                                 </a>
-                                                <ul class="submenu">
-                                                    <li><a href="#">About Us</a></li>
-                                                    <li><a href="faq.html">Faq's</a></li>
-                                                    <li><a href="404.html">404 Page</a></li>
-                                                </ul>
                                             </li>
                                             <li>
-                                                <a href="news.html">
+                                                <a href="blog.html">
                                                     Blog
-                                                    <i class="fas fa-angle-down"></i>
                                                 </a>
-                                                <ul class="submenu">
-                                                    <li><a href="{{ route('blog') }}">Blog Grid</a></li>
-                                                    <li><a href="#">Blog Details</a></li>
-                                                </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Contact</a>
+                                                <a href="login.html">login</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -103,7 +82,7 @@
                                 <a href="wishlist.html" class="cart-icon">
                                     <i class="fa-regular fa-heart"></i>
                                 </a>
-                                <a href="shop-cart.html" class="cart-icon">
+                                <a href="{{route('shop-cart')}}" class="cart-icon">
                                     <i class="fa-regular fa-cart-shopping"></i>
                                     {{-- <span class="cart-count" id="cart-count">5</span>
                                     <script>
@@ -146,71 +125,37 @@
                         <div class="header-left">
                             <div class="logo">
                                 <a href="index.html" class="header-logo">
-                                    <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                                    <img src="assets/img/logo/logo.png" alt="logo-img">
                                 </a>
                             </div>
                             <div class="mean__menu-wrapper">
                                 <div class="main-menu">
-                                    <nav id="mobile-menu">
+                                    <nav>
                                         <ul>
-                                            <li>
-                                                <a href="index.html">
-                                                    Home
-                                                    <i class="fas fa-angle-down"></i>
+                                            {{-- hadi ghi khlih --}}
+                                            <li class="has-dropdown">
+                                                <a href="accuiller.html">
+                                                    accuiller
                                                 </a>
-                                                <ul class="submenu">
-                                                    <li><a href="index.html">Home 01</a></li>
-                                                    <li><a href="index-2.html">Home 02</a></li>
-                                                </ul>
                                             </li>
-                                            <li>
-                                                <a href="shop.html">
+                                            {{-- ok --}}
+                                            <li class="has-dropdown">
+                                                <a href="home.html">
                                                     Shop
-                                                    <i class="fas fa-angle-down"></i>
                                                 </a>
-                                                <ul class="submenu">
-                                                    <li><a href="shop.html">Shop Default</a></li>
-                                                    <li><a href="shop-list.html">Shop List</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                    <li><a href="shop-cart.html">Shop Cart</a></li>
-                                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                </ul>
                                             </li>
                                             <li class="has-dropdown">
                                                 <a href="about.html">
-                                                    Pages
-                                                    <i class="fas fa-angle-down"></i>
+                                                    About Us
                                                 </a>
-                                                <ul class="submenu">
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li class="has-dropdown">
-                                                        <a href="team.html">
-                                                            Author
-                                                            <i class="fas fa-angle-down"></i>
-                                                        </a>
-                                                        <ul class="submenu">
-                                                            <li><a href="team.html">Author</a></li>
-                                                            <li><a href="team-details.html">Author Profile</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="faq.html">Faq's</a></li>
-                                                    <li><a href="404.html">404 Page</a></li>
-                                                </ul>
                                             </li>
                                             <li>
-                                                <a href="news.html">
+                                                <a href="blog.html">
                                                     Blog
-                                                    <i class="fas fa-angle-down"></i>
                                                 </a>
-                                                <ul class="submenu">
-                                                    <li><a href="news-grid.html">Blog Grid</a></li>
-                                                    <li><a href="news.html">Blog List</a></li>
-                                                    <li><a href="news-details.html">Blog Details</a></li>
-                                                </ul>
                                             </li>
                                             <li>
-                                                <a href="contact.html">Contact</a>
+                                                <a href="login.html">login</a>
                                             </li>
                                         </ul>
                                     </nav>

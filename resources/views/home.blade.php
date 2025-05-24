@@ -237,7 +237,8 @@
                 <div class="swiper-wrapper">
                     @foreach ($produits as $produit)
                         @php
-                            $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()->image;
+                            // $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()->image;
+                            $imagePath='';
 
                         @endphp
                         <div class="swiper-slide">

@@ -215,7 +215,7 @@
                                 <form action="{{route('add-to-cart')}}" method="POST">
                                     @csrf
                                     @method('POST')
-                                    <input type="text" name="image" value="{{$images[0]['image']}}" hidden>
+                                    <input type="text" name="image" value="{{$images[0]['image']}} ?? ' '" hidden>
                                         <input type="hidden" name="id" value="{{$id}}">
                                     <input type="hidden" name="prix" value="{{$prix}}">
                                     <input type="hidden" name="designation" value="{{$designation}}">
