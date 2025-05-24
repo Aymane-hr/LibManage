@@ -20,7 +20,7 @@ Route::get('/shop-default',[ProduitController::class,'index2'])->name('shop-defa
 Route::get('/shop-details/{id}', [ProduitController::class,'index'])->name('shop-details');
 Route::post('/shop-details/{id}', [ProduitController::class,'store'])->name('shop-details.store');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
-Route::get('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
+Route::delete('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
 Route::post('/clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
 Route::get('/checkout', function () {

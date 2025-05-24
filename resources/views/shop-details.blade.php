@@ -173,7 +173,7 @@
                                 @foreach ($images as $key =>$image )
                                 <div id="thumb{{$loop->index + 1}}" class="tab-pane fade @if($key == 0) show active @endif">
                                     <div class="shop-details-thumb">
-                                        <img src="{{ $image->image }}" alt="img">
+                                        <img src="{{ $image->image }}" width="450" height="450" alt="img">
                                     </div>
                                 </div>
                                 @endforeach
@@ -205,7 +205,7 @@
                                 <a href="shop-details.html"> <i class="fas fa-star"></i></a>
                                 <a href="shop-details.html"><i class="fas fa-star"></i></a>
                                 <a href="shop-details.html"><i class="fa-regular fa-star"></i></a>
-                                <span>(1 Customer Reviews)</span>
+                                {{-- <span>(1 Customer Reviews)</span> --}}
                             </div>
 
                             <div class="price-list">

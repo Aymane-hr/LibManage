@@ -107,12 +107,19 @@
                                     <i class="fa-regular fa-cart-shopping"></i>
                                     <span class="cart-count" id="cart-count1"></span>
                                     <script>
-                                        document.addEventListener('DOMContentLoaded', function () {
+                                       document.addEventListener('DOMContentLoaded', function () {
                                             fetch('/cart')
                                                 .then(response => response.json())
                                                 .then(data => {
+                                                    let count = 0;
+                                                    for (const item of Object.values(data)) {
+                                                        if (item.quantity) {
+                                                            count += 1;
+                                                        }
+                                                    }
+                                                    console.log('count :', count);
                                                     const cartCountElement = document.getElementById('cart-count1');
-                                                    cartCountElement.textContent = data.cartCount || 0;
+                                                    cartCountElement.textContent = count || 0;
                                                 })
                                                 .catch(error => console.error('Error fetching cart data:', error));
                                         });

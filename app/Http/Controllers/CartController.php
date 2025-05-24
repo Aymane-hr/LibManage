@@ -30,8 +30,10 @@ class CartController extends Controller
 
     public function removeFromCart($id)
     {
-        $this->cart->remove($id);
-        return back()->with('message', 'Produit retiré du panier');
+        // dd($id);
+        $r=$this->cart->remove($id);
+        // dd($r);
+return response()->json(['message' => 'Item removed from cart successfully']);
     }
 
     public function clearCart()

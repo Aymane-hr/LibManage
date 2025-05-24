@@ -236,12 +236,12 @@
 
                 <div class="swiper-wrapper">
                     @foreach ($produits as $produit)
-                    
+
                         <div class="swiper-slide">
                             <div class="shop-box-items style-2">
                                 <div class="book-thumb center">
                                     <a href="shop-details">
-                                        <img src="{{ asset('storage/' . $produit->images->first()->image) }}" alt="img">
+                                        <img src="{{ asset($produit->images->first()->image) }}" alt="img">
                                     </a>
                                     <ul class="shop-icon d-grid justify-content-center align-items-center">
                                         <li>
@@ -296,7 +296,7 @@
         <div class="container">
             <div class="book-catagories-wrapper">
                 <div class="section-title text-center">
-                    <h2 class="wow fadeInUp" data-wow-delay=".3s">Top Categories Book</h2>
+                    <h2 class="wow fadeInUp" data-wow-delay=".3s">Meilleures Catégories de Livres</h2>
                 </div>
                 <div class="array-button">
                     <button class="array-prev"><i class="fal fa-arrow-left"></i></button>
@@ -308,13 +308,13 @@
                             <div class="swiper-slide">
                                 <div class="book-catagories-items">
                                     <div class="book-thumb">
-                                        <img src="assets/img/book-categori/01.png" alt="img">
+                                        <img src="{{ asset($categorie->image) }}" width="100" height="100" alt="img">
                                         <div class="circle-shape">
                                             <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
                                         </div>
                                     </div>
                                     <div class="number"> 01 </div>
-                                    <h3><a href="shop-details.html">Romance Books (80)</a></h3>
+                                    <h3><a href="shop-details.html">{{$categorie->categorie}}</a></h3>
                                 </div>
                             </div>
                         @endforeach
@@ -576,10 +576,10 @@
                 </div>
                 <div class="cta-content text-center">
                     <h2 class="mb-40 wow fadeInUp" data-wow-delay=".3s"
-                        style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Get 25% discount in
-                        all <br> kind of super Selling</h2>
+                        style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Obtenez 25% de réduction sur
+                        tous <br> les types de super ventes</h2>
                     <a href="shop.html" class="theme-btn wow fadeInUp" data-wow-delay=".5s"
-                        style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">Shop Now <i
+                        style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">Acheter maintenant <i
                             class="fa-solid fa-arrow-right-long"></i></a>
                 </div>
             </div>
@@ -1277,7 +1277,7 @@
                             <div class="team-box-items">
                                 <div class="team-image">
                                     <div class="thumb">
-                                        <img src="assets/img/team/01.jpg" alt="img">
+<img src="{{$auteur->image}}" width="100" height="100" style="border-radius: 50%; object-fit: cover;" alt="img">
                                     </div>
                                     <div class="shape-img">
                                         <img src="assets/img/team/shape-img.png" alt="img">
@@ -1310,8 +1310,8 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                         <div class="news-card-items">
                             <div class="news-image">
-                               
                                 @foreach ($blog->images as $image)
+
                                     <img src="{{ $image->image }}" alt="img">
                                 @endforeach
                                 @foreach ($blog->blogsTags as $tag)

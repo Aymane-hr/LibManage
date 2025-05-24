@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
-
-     <!-- Login Modal -->
-     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -16,8 +15,7 @@
                             <input class="inputField" type="password" name="password" placeholder="Enter Password">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next"
-                                        id="saveForNext">
+                                    <input type="checkbox" class="form-check-input" name="save-for-next" id="saveForNext">
                                     <label for="saveForNext">Remember me</label>
                                 </div>
                                 <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
@@ -80,12 +78,10 @@
                             <input class="inputField" type="text" name="name" id="name" placeholder="User Name">
                             <input class="inputField" type="email" name="email" placeholder="Email Address">
                             <input class="inputField" type="password" name="password" placeholder="Enter Password">
-                            <input class="inputField" type="password" name="password"
-                                placeholder="Enter Confirm Password">
+                            <input class="inputField" type="password" name="password" placeholder="Enter Confirm Password">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next"
-                                        id="rememberMe">
+                                    <input type="checkbox" class="form-check-input" name="save-for-next" id="rememberMe">
                                     <label for="rememberMe">Remember me</label>
                                 </div>
                                 <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
@@ -179,47 +175,55 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+@if(empty($cart))
+    <tr>
+        <td colspan="4" class="text-center">
+            <p class="h4">Le panier est vide</p>
+        </td>
+    </tr>
+@endif
                                     @foreach ($cart as $cartItem)
-
-                                    <tr>
-                                        <td>
-                                            <span class="d-flex gap-5 align-items-center">
-                                                {{-- <a href="shop-cart.html" class="remove-icon">
+                                        <tr>
+                                            <td>
+                                                <span class="d-flex gap-5 align-items-center">
+                                                    {{-- <a href="shop-cart.html" class="remove-icon">
                                                     <img src="assets/img/icon/icon-9.svg" alt="img">
                                                 </a> --}}
-                                                <span class="cart">
+                                                    <span class="cart">
 
-                                                    <img src="  {{ $cartItem['image'] ?? ''}}" width="70" alt="img">
-                                                </span>
-                                                <span class="cart-title">
+                                                        <img src="  {{ $cartItem['image'] ?? '' }}" width="70"
+                                                            alt="img">
+                                                    </span>
+                                                    <span class="cart-title">
 
                                                         {{ $cartItem['name'] }}
 
+                                                    </span>
                                                 </span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="cart-price">{{$cartItem['price']}}</span>
-                                        </td>
-                                        <td>
-                                            <span class="quantity-basket">
-                                                <span class="qty">
-                                                    {{-- <button class="qtyminus"   aria-hidden="true">−</button> --}}
-                                                    <input type="number" onchange="subtotal({{ $loop->index }})" name="qty" id="qty{{$loop->index}}" min="1" max="10" step="1"
-                                                        value="{{ $cartItem['quantity'] }}" data-price="{{ $cartItem['price'] }}">
-                                                    {{-- <button class="qtyplus"  aria-hidden="true">+</button> --}}
+                                            </td>
+                                            <td>
+                                                <span class="cart-price">{{ $cartItem['price'] }}</span>
+                                            </td>
+                                            <td>
+                                                <span class="quantity-basket">
+                                                    <span class="qty">
+                                                        {{-- <button class="qtyminus"   aria-hidden="true">−</button> --}}
+                                                        <input type="number" onchange="subtotal({{ $loop->index }})"
+                                                            name="qty" id="qty{{ $loop->index }}" min="1"
+                                                            max="10" step="1"
+                                                            value="{{ $cartItem['quantity'] }}"
+                                                            data-price="{{ $cartItem['price'] }}">
+                                                        {{-- <button class="qtyplus"  aria-hidden="true">+</button> --}}
+                                                    </span>
                                                 </span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="subtotal-price" id="subtotal-{{ $loop->index }}">
-                                                {{$cartItem['price'] * $cartItem['quantity']}}
-                                            </span>
-                                            <script>
-
-                                                    window.subtotal=(index)=>{
-                                                        e = document.querySelector('#qty'+index);
+                                            </td>
+                                            <td>
+                                                <span class="subtotal-price" id="subtotal-{{ $loop->index }}">
+                                                    {{ $cartItem['price'] * $cartItem['quantity'] }}
+                                                </span>
+                                                <script>
+                                                    window.subtotal = (index) => {
+                                                        e = document.querySelector('#qty' + index);
                                                         const price = parseFloat(e.dataset.price);
                                                         const quantity = parseInt(e.value);
                                                         console.log(price, quantity);
@@ -258,38 +262,70 @@
                                                         });
                                                         calculateTotal();
                                                     };
-
-
-                                            </script>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:void(0)" class="remove-icon" onclick="removeItem({{ $cartItem['id'] }})">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                                </script>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:void(0)" class="remove-icon"
+                                                    onclick="removeItem({{ $cartItem['id'] }})">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                     <script>
                                         window.removeItem = (id) => {
-                                            // Make an AJAX request to remove the item from the cart
-                                            fetch(`/remove-from-cart/${id}`, {
-                                                method: 'DELETE',
-                                                headers: {
-                                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                                                    'Content-Type': 'application/json'
+                                            Swal.fire({
+                                                title: 'Are you sure?',
+                                                text: "You won't be able to revert this!",
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Yes, delete it!'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    // Make an AJAX request to remove the item from the cart
+                                                    fetch(`/remove-from-cart/${id}`, {
+                                                        method: 'DELETE',
+                                                        headers: {
+                                                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                                            'Content-Type': 'application/json'
+                                                        }
+                                                    })
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        console.log(data);
+                                                        if (data.message) {
+                                                            // Show success message
+                                                            Swal.fire({
+                                                                title: 'Deleted!',
+                                                                text: 'Item has been removed from cart.',
+                                                                icon: 'success',
+                                                                timer: 1500,
+                                                                showConfirmButton: false
+                                                            }).then(() => {
+                                                                // Refresh the page after showing success message
+                                                                location.reload();
+                                                            });
+                                                        } else {
+                                                            Swal.fire({
+                                                                title: 'Error!',
+                                                                text: 'Failed to remove item from cart.',
+                                                                icon: 'error'
+                                                            });
+                                                        }
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error:', error);
+                                                        Swal.fire({
+                                                            title: 'Error!',
+                                                            text: 'An error occurred while removing the item.',
+                                                            icon: 'error'
+                                                        });
+                                                    });
                                                 }
-                                            })
-                                            .then(response => response.json())
-                                            .then(data => {
-                                                if (data.success) {
-                                                    // Optionally, you can refresh the page or update the cart UI
-                                                    location.reload();
-                                                } else {
-                                                    alert('Failed to remove item from cart.');
-                                                }
-                                            })
-                                            .catch(error => console.error('Error:', error));
-                                        }
+                                            });
+                                        };
                                     </script>
 
 
@@ -330,8 +366,8 @@
                                     <tr>
                                         <td>
                                             <span class="d-flex gap-5 align-items-center  justify-content-between">
-                                                <span class="sub-title">Total:  </span>
-                                                <span class="sub-price sub-price-total">{{$total}}</span>
+                                                <span class="sub-title">Total: </span>
+                                                <span class="sub-price sub-price-total">{{ $total }}</span>
                                             </span>
                                         </td>
                                     </tr>
@@ -344,5 +380,4 @@
             </div>
         </div>
     </div>
-
 @endsection
