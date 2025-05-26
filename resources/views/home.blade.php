@@ -240,7 +240,7 @@
                         <div class="swiper-slide">
                             <div class="shop-box-items style-2">
                                 <div class="book-thumb center">
-                                    <a href="shop-details">
+                                    <a href="{{ route('shop-details', $produit->id) }}">
                                         <img src="{{ asset($produit->images->first()->image) }}" alt="img">
                                     </a>
                                     <ul class="shop-icon d-grid justify-content-center align-items-center">
@@ -255,7 +255,7 @@
                                 </div>
                                 <div class="shop-content">
                                     <h5> {{ $produit->designation }}</h5>
-                                    <h3><a href="shop-details.html">{{ $produit->designation }}</a></h3>
+                                    <h3><a href="{{ route('shop-details', $produit->id) }}">{{ $produit->designation }}</a></h3>
                                     <ul class="price-list">
                                         <li>{{ $produit->prix_ht }}</li>
                                         <!-- <li>
@@ -279,9 +279,14 @@
                                     </ul>
                                 </div>
                                 <div class="shop-button">
-                                    <a href="shop-details.html" class="theme-btn"><i
+                                    <form  action="{{ route('add-to-cart',$produit->id) }}" method="POST" class="d-flex align-items-center gap-3 flex-wrap mb-0">
+                                        @csrf
+                                        @method('POST')
+                                         <button class="theme-btn"><i
                                             class="fa-solid fa-basket-shopping"></i>
-                                        Add To Cart</a>
+                                        Add To Cart</button>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produit;
 use Illuminate\Http\Request;
 use App\Services\Cart;
 
@@ -14,14 +15,20 @@ class CartController extends Controller
         $this->cart = $cart;
     }
 
-    public function addToCart(Request $request)
+    public function addToCart(Request $request,$id)
     {
+        $product = Produit::find($id);
+        $qty = $request->input('qty', 1); // Default quantity to 1 if not provided
+        $image = $product->images->first()->image ?? null;
+        if (!$product) {
+            return back()->with('error', 'Produit non trouvé');
+        }
         $this->cart->add(
-            $request->id,
-            $request->designation,
-            $request->prix,
-            $request->qty,
-            $request->image
+            $product->id,
+            $product->designation,
+            $product->prix_ht,
+            $qty,
+            $image
         );
 
 

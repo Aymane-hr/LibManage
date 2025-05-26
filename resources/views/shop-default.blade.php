@@ -201,11 +201,14 @@
                                 <div class="wid-title">
                                     <h5>Search</h5>
                                 </div>
-                                <form action="{{route('shop-default-search')}}" method="POST" class="search-toggle-box">
+                                <form action="{{ route('shop-default-search') }}" method="POST"
+                                    class="search-toggle-box">
                                     @csrf
                                     @method('POST')
                                     <div class="input-area search-container">
-                                        <input class="search-input" name="search" value="{{old('search',$search ?? null) }}" type="text" placeholder="Search here">
+                                        <input class="search-input" name="search"
+                                            value="{{ old('search', $search ?? null) }}" type="text"
+                                            placeholder="Search here">
                                         <button type="submit" class="cmn-btn search-icon">
                                             <i class="far fa-search"></i>
                                         </button>
@@ -219,10 +222,9 @@
                                 <div class="categories-list">
                                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                         @foreach ($categorys as $category)
-
                                             <li class="nav-item" role="categorie">
                                                 <a href="{{ route('shop-default-filter', ['id_categorie' => $category->id]) }}"
-                                                    class="nav-link {{ ($id_categorie ?? null  )== $category->id ? 'active' : '' }}"
+                                                    class="nav-link {{ ($id_categorie ?? null) == $category->id ? 'active' : '' }}"
                                                     id="pills-arts-tab">{{ $category->categorie }}</a>
                                             </li>
                                         @endforeach
@@ -451,11 +453,18 @@
                                                             3.4 (25)
                                                         </li>
                                                     </ul>
-                                                    {{-- <div class="shop-button">
-                                                        <a href="{{ route('shop-details', $produit->id) }}"
-                                                            class="theme-btn"><i class="fa-solid fa-basket-shopping"></i>
-                                                            Add To Cart</a>
-                                                    </div> --}}
+                                                    <div class="shop-button">
+                                                        <form action="{{ route('add-to-cart',$produit->id) }}" method="POST"
+                                                            class="d-flex align-items-center gap-3 flex-wrap mb-0">
+                                                            @csrf
+                                                            @method('POST')
+                                                            <button type="submit" href="{{ route('shop-details', $produit->id) }}"
+                                                                class="theme-btn"><i
+                                                                    class="fa-solid fa-basket-shopping"></i>
+                                                                Add To Cart</button>
+                                                        </form>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

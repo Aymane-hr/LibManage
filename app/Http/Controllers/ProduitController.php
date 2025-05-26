@@ -25,7 +25,7 @@ class ProduitController extends Controller
         $category= $produit->categorie->categorie;
         $stock = $produit->stock;
         $produits = Produit::where('id', '!=', $id)->inRandomOrder()->take(4)->get();
-        return view('shop-details', compact('designation', 'images','prix', 'isbn','category','produits','stock','id'));
+        return view('shop-details', compact('id','designation', 'images','prix', 'isbn','category','produits','stock','id'));
     }
 
     public function index2()
