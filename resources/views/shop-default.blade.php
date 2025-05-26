@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
-
-     <!-- Login Modal -->
-     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -16,8 +15,7 @@
                             <input class="inputField" type="password" name="password" placeholder="Enter Password">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next"
-                                        id="saveForNext">
+                                    <input type="checkbox" class="form-check-input" name="save-for-next" id="saveForNext">
                                     <label for="saveForNext">Remember me</label>
                                 </div>
                                 <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
@@ -80,12 +78,10 @@
                             <input class="inputField" type="text" name="name" id="name" placeholder="User Name">
                             <input class="inputField" type="email" name="email" placeholder="Email Address">
                             <input class="inputField" type="password" name="password" placeholder="Enter Password">
-                            <input class="inputField" type="password" name="password"
-                                placeholder="Enter Confirm Password">
+                            <input class="inputField" type="password" name="password" placeholder="Enter Confirm Password">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next"
-                                        id="rememberMe">
+                                    <input type="checkbox" class="form-check-input" name="save-for-next" id="rememberMe">
                                     <label for="rememberMe">Remember me</label>
                                 </div>
                                 <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
@@ -205,10 +201,12 @@
                                 <div class="wid-title">
                                     <h5>Search</h5>
                                 </div>
-                                <form action="#" class="search-toggle-box">
+                                <form action="{{route('shop-default-search')}}" method="POST" class="search-toggle-box">
+                                    @csrf
+                                    @method('POST')
                                     <div class="input-area search-container">
-                                        <input class="search-input" type="text" placeholder="Search here">
-                                        <button class="cmn-btn search-icon">
+                                        <input class="search-input" name="search" value="{{old('search',$search ?? null) }}" type="text" placeholder="Search here">
+                                        <button type="submit" class="cmn-btn search-icon">
                                             <i class="far fa-search"></i>
                                         </button>
                                     </div>
@@ -220,42 +218,14 @@
                                 </div>
                                 <div class="categories-list">
                                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="pills-arts-tab" data-bs-toggle="pill"
-                                                data-bs-target="#pills-arts" type="button" role="tab"
-                                                aria-controls="pills-arts" aria-selected="true">Arts &
-                                                Photography</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-Biographies-tab" data-bs-toggle="pill"
-                                                data-bs-target="#pills-Biographies" type="button" role="tab"
-                                                aria-controls="pills-Biographies" aria-selected="false">Biographies &
-                                                Memoirs</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-ChristianBooks-tab" data-bs-toggle="pill"
-                                                data-bs-target="#pills-ChristianBooks" type="button" role="tab"
-                                                aria-controls="pills-ChristianBooks" aria-selected="false">Christian
-                                                Books & Bibles</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-ResearchPublishing-tab"
-                                                data-bs-toggle="pill" data-bs-target="#pills-ResearchPublishing"
-                                                type="button" role="tab" aria-controls="pills-ResearchPublishing"
-                                                aria-selected="false">Research & Publishing Guides</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-SportsOutdoors-tab" data-bs-toggle="pill"
-                                                data-bs-target="#pills-SportsOutdoors" type="button" role="tab"
-                                                aria-controls="pills-SportsOutdoors" aria-selected="false">Sports &
-                                                Outdoors</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-FoodDrink-tab" data-bs-toggle="pill"
-                                                data-bs-target="#pills-FoodDrink" type="button" role="tab"
-                                                aria-controls="pills-FoodDrink" aria-selected="false">Food &
-                                                Drink</button>
-                                        </li>
+                                        @foreach ($categorys as $category)
+
+                                            <li class="nav-item" role="categorie">
+                                                <a href="{{ route('shop-default-filter', ['id_categorie' => $category->id]) }}"
+                                                    class="nav-link {{ ($id_categorie ?? null  )== $category->id ? 'active' : '' }}"
+                                                    id="pills-arts-tab">{{ $category->categorie }}</a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -445,25 +415,35 @@
                             <div class="tab-pane fade show active" id="pills-arts" role="tabpanel"
                                 aria-labelledby="pills-arts-tab" tabindex="0">
                                 <div class="row">
+                                    @if ($produits->isEmpty())
+                                        <div class="col-12 text-center">
+                                            <p>Aucun produit trouvé.</p>
+                                        </div>
+                                    @endif
                                     @foreach ($produits as $produit)
                                         @php
-                                            $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()->image;
+                                            $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()
+                                                ->image;
                                         @endphp
                                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                                             <div class="shop-box-items">
                                                 <div class="book-thumb center">
-                                                    <a href="{{ route('shop-details', $produit->id) }}"><img src="{{ $imagePath }}" alt="img"></a>
+                                                    <a href="{{ route('shop-details', $produit->id) }}"><img
+                                                            src="{{ $imagePath }}" alt="img"></a>
                                                     <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                         <li>
                                                             <a href="shop-cart.html"><i class="far fa-heart"></i></a>
                                                         </li>
                                                         <li>
-                                                            <a href="{{ route('shop-details', $produit->id) }}"><i class="far fa-eye"></i></a>
+                                                            <a href="{{ route('shop-details', $produit->id) }}"><i
+                                                                    class="far fa-eye"></i></a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                                 <div class="shop-content">
-                                                    <h3><a href="{{ route('shop-details', $produit->id) }}">{{ $produit->designation }}</a></h3>
+                                                    <h3><a
+                                                            href="{{ route('shop-details', $produit->id) }}">{{ $produit->designation }}</a>
+                                                    </h3>
                                                     <ul class="price-list">
                                                         <li>${{ $produit->prix_ht }}</li>
                                                         <li>
@@ -471,10 +451,11 @@
                                                             3.4 (25)
                                                         </li>
                                                     </ul>
-                                                    <div class="shop-button">
-                                                        <a href="{{ route('shop-details', $produit->id) }}" class="theme-btn"><i
-                                                                class="fa-solid fa-basket-shopping"></i> Add To Cart</a>
-                                                    </div>
+                                                    {{-- <div class="shop-button">
+                                                        <a href="{{ route('shop-details', $produit->id) }}"
+                                                            class="theme-btn"><i class="fa-solid fa-basket-shopping"></i>
+                                                            Add To Cart</a>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -482,15 +463,14 @@
 
                                 </div>
                             </div>
-                          
+
                         </div>
                         <div class="page-nav-wrap text-center">
-                        {{ $produits->links() }}
+                            {{ $produits->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
- @endsection
+@endsection
