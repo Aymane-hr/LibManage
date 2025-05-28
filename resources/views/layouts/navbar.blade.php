@@ -18,18 +18,18 @@
                                             {{-- hadi ghi khlih --}}
                                             <li class="has-dropdown">
                                                 <a href="accuiller.html">
-                                                    accuiller
+                                                    Accueil
                                                 </a>
                                             </li>
                                             {{-- ok --}}
                                             <li>
                                                 <a href="home.html">
-                                                    Shop
+                                                    Boutique
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
                                                 <a href="about.html">
-                                                    About Us
+                                                    À propos de nous
                                                 </a>
                                             </li>
                                             <li>
@@ -38,7 +38,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="login.html">login</a>
+                                                <a href="login.html">Connexion</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -54,24 +54,24 @@
                                 </div>
                                 <select name="cate" class="category">
                                     <option value="1">
-                                        Category
+                                        Catégorie
                                     </option>
                                     <option value="1">
                                         Web Design
                                     </option>
                                     <option value="1">
-                                        Web Development
+                                        Développement Web
                                     </option>
                                     <option value="1">
-                                        Graphic Design
+                                        Design Graphique
                                     </option>
                                     <option value="1">
-                                        Softwer Eng
+                                        Ingénierie Logicielle
                                     </option>
                                 </select>
                                 <form action="#" class="search-toggle-box d-md-block">
                                     <div class="input-area">
-                                        <input type="text" placeholder="Author">
+                                        <input type="text" placeholder="Auteur">
                                         <button class="cmn-btn">
                                             <i class="far fa-search"></i>
                                         </button>
@@ -100,7 +100,7 @@
                                                     const cartCountElement = document.getElementById('cart-count1');
                                                     cartCountElement.textContent = count || 0;
                                                 })
-                                                .catch(error => console.error('Error fetching cart data:', error));
+                                                .catch(error => console.error('Erreur lors de la récupération du panier :', error));
                                         });
                                     </script>
                                 </a>
@@ -142,18 +142,18 @@
                                             {{-- hadi ghi khlih --}}
                                             <li class="has-dropdown">
                                                 <a href="accuiller.html">
-                                                    accuiller
+                                                    Accueil
                                                 </a>
                                             </li>
                                             {{-- ok --}}
                                             <li class="has-dropdown">
                                                 <a href="home.html">
-                                                    Shop
+                                                    Boutique
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
                                                 <a href="about.html">
-                                                    About Us
+                                                    À propos de nous
                                                 </a>
                                             </li>
                                             <li>
@@ -162,7 +162,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="login.html">login</a>
+                                                <a href="login.html">Connexion</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -178,24 +178,24 @@
                                 </div>
                                 <select name="cate" class="category">
                                     <option value="1">
-                                        Category
+                                        Catégorie
                                     </option>
                                     <option value="1">
                                         Web Design
                                     </option>
                                     <option value="1">
-                                        Web Development
+                                        Développement Web
                                     </option>
                                     <option value="1">
-                                        Graphic Design
+                                        Design Graphique
                                     </option>
                                     <option value="1">
-                                        Softwer Eng
+                                        Ingénierie Logicielle
                                     </option>
                                 </select>
                                 <form action="#" class="search-toggle-box d-md-block">
                                     <div class="input-area">
-                                        <input type="text" placeholder="Author">
+                                        <input type="text" placeholder="Auteur">
                                         <button class="cmn-btn">
                                             <i class="far fa-search"></i>
                                         </button>
@@ -224,7 +224,7 @@
                                                     const cartCountElement = document.getElementById('cart-count');
                                                     cartCountElement.textContent = count || 0;
                                                 })
-                                                .catch(error => console.error('Error fetching cart data:', error));
+                                                .catch(error => console.error('Erreur lors de la récupération du panier :', error));
                                         });
                                     </script>
                                 </a>

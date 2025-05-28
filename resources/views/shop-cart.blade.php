@@ -1,58 +1,57 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Login Modal -->
+    <!-- Modal de Connexion -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="close-btn">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="identityBox">
                         <div class="form-wrapper">
-                            <h1 id="loginModalLabel">welcome back!</h1>
-                            <input class="inputField" type="email" name="email" placeholder="Email Address">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Password">
+                            <h1 id="loginModalLabel">Bon retour !</h1>
+                            <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
+                            <input class="inputField" type="password" name="password" placeholder="Mot de passe">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next" id="saveForNext">
-                                    <label for="saveForNext">Remember me</label>
+                                    <label for="saveForNext">Se souvenir de moi</label>
                                 </div>
-                                <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
+                                <div class="text"> <a href="index-2.html">Mot de passe oublié ?</a> </div>
                             </div>
                             <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Log in </a>
+                                <a href="index-2.html" class="theme-btn rounded-0"> Se connecter </a>
                             </div>
                             <div class="orting-badge">
-                                Or
+                                Ou
                             </div>
                             <div>
                                 <a class="another-option" href="https://www.google.com/">
                                     <img src="assets/img/google.png" alt="google">
-                                    Continue With Google
+                                    Continuer avec Google
                                 </a>
                             </div>
                             <div>
                                 <a class="another-option another-option-two" href="https://www.facebook.com/">
                                     <img src="assets/img/facebook.png" alt="google">
-                                    Continue With Facebook
+                                    Continuer avec Facebook
                                 </a>
                             </div>
 
                             <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault">
                                 <label class="form-check-label">
-                                    I Accept Your Terms & Conditions
+                                    J'accepte vos termes & conditions
                                 </label>
                             </div>
                         </div>
 
                         <div class="banner">
                             <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Log in</button>
+                                data-bs-target="#loginModal">Se connecter</button>
                             <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Create
-                                Account</button>
+                                data-bs-target="#registrationModal">Créer un compte</button>
                             <div class="loginBg">
                                 <img src="assets/img/signUpbg.jpg" alt="signUpBg">
                             </div>
@@ -63,61 +62,60 @@
         </div>
     </div>
 
-    <!-- Registration Modal -->
+    <!-- Modal d'Inscription -->
     <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="close-btn">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="identityBox">
                         <div class="form-wrapper">
-                            <h1 id="registrationModalLabel">Create account!</h1>
-                            <input class="inputField" type="text" name="name" id="name" placeholder="User Name">
-                            <input class="inputField" type="email" name="email" placeholder="Email Address">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Password">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Confirm Password">
+                            <h1 id="registrationModalLabel">Créer un compte !</h1>
+                            <input class="inputField" type="text" name="name" id="name" placeholder="Nom d'utilisateur">
+                            <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
+                            <input class="inputField" type="password" name="password" placeholder="Mot de passe">
+                            <input class="inputField" type="password" name="password" placeholder="Confirmer le mot de passe">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next" id="rememberMe">
-                                    <label for="rememberMe">Remember me</label>
+                                    <label for="rememberMe">Se souvenir de moi</label>
                                 </div>
-                                <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
+                                <div class="text"> <a href="index-2.html">Mot de passe oublié ?</a> </div>
                             </div>
                             <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Log in </a>
+                                <a href="index-2.html" class="theme-btn rounded-0"> Se connecter </a>
                             </div>
                             <div class="orting-badge">
-                                Or
+                                Ou
                             </div>
                             <div>
                                 <a class="another-option" href="https://www.google.com/">
                                     <img src="assets/img/google.png" alt="google">
-                                    Continue With Google
+                                    Continuer avec Google
                                 </a>
                             </div>
                             <div>
                                 <a class="another-option another-option-two" href="https://www.facebook.com/">
                                     <img src="assets/img/facebook.png" alt="google">
-                                    Continue With Facebook
+                                    Continuer avec Facebook
                                 </a>
                             </div>
                             <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault">
                                 <label class="form-check-label">
-                                    I Accept Your Terms & Conditions
+                                    J'accepte vos termes & conditions
                                 </label>
                             </div>
                         </div>
 
                         <div class="banner">
                             <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Log in</button>
+                                data-bs-target="#loginModal">Se connecter</button>
                             <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Create
-                                Account</button>
+                                data-bs-target="#registrationModal">Créer un compte</button>
                             <div class="signUpBg">
                                 <img src="assets/img/registrationbg.jpg" alt="signUpBg">
                             </div>
@@ -128,29 +126,29 @@
         </div>
     </div>
 
-    <!-- Breadcumb Section Start -->
+    <!-- Section Fil d'Ariane -->
     <div class="breadcrumb-wrapper">
         <div class="book1">
-            <img src="assets/img/hero/book1.png" alt="book">
+            <img src="assets/img/hero/book1.png" alt="livre">
         </div>
         <div class="book2">
-            <img src="assets/img/hero/book2.png" alt="book">
+            <img src="assets/img/hero/book2.png" alt="livre">
         </div>
         <div class="container">
             <div class="page-heading">
-                <h1>Cart</h1>
+                <h1>Panier</h1>
                 <div class="page-header">
                     <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
                         <li>
                             <a href="index.html">
-                                Home
+                                Accueil
                             </a>
                         </li>
                         <li>
                             <i class="fa-solid fa-chevron-right"></i>
                         </li>
                         <li>
-                            Cart
+                            Panier
                         </li>
                     </ul>
                 </div>
@@ -158,7 +156,7 @@
         </div>
     </div>
 
-    <!-- Shop Cart Section Start -->
+    <!-- Section Panier -->
     <div class="cart-section section-padding">
         <div class="container">
             <div class="main-cart-wrapper">
@@ -168,10 +166,10 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Subtotal</th>
+                                        <th>Produit</th>
+                                        <th>Prix</th>
+                                        <th>Quantité</th>
+                                        <th>Sous-total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -186,18 +184,12 @@
                                         <tr>
                                             <td>
                                                 <span class="d-flex gap-5 align-items-center">
-                                                    {{-- <a href="shop-cart.html" class="remove-icon">
-                                                    <img src="assets/img/icon/icon-9.svg" alt="img">
-                                                </a> --}}
                                                     <span class="cart">
-
                                                         <img src="  {{ $cartItem['image'] ?? '' }}" width="70"
                                                             alt="img">
                                                     </span>
                                                     <span class="cart-title">
-
                                                         {{ $cartItem['name'] }}
-
                                                     </span>
                                                 </span>
                                             </td>
@@ -207,13 +199,11 @@
                                             <td>
                                                 <span class="quantity-basket">
                                                     <span class="qty">
-                                                        {{-- <button class="qtyminus"   aria-hidden="true">−</button> --}}
                                                         <input type="number" onchange="subtotal({{ $loop->index }})"
                                                             name="qty" id="qty{{ $loop->index }}" min="1"
                                                              step="1"
                                                             value="{{ $cartItem['quantity'] }}"
                                                             data-price="{{ $cartItem['price'] }}">
-                                                        {{-- <button class="qtyplus"  aria-hidden="true">+</button> --}}
                                                     </span>
                                                 </span>
                                             </td>
@@ -236,10 +226,6 @@
                                                         subtotal({{ $loop->index }});
                                                     }
 
-                                                    // document.querySelectorAll('input[name="qty"]').forEach((input, index) => {
-                                                    //     input.addEventListener('change', () => subtotal(index));
-                                                    // });
-
                                                     window.calculateTotal = () => {
                                                         let total = 0;
                                                         document.querySelectorAll('.subtotal-price').forEach(subtotalElement => {
@@ -255,7 +241,6 @@
                                                         });
                                                     });
 
-                                                    // Calculate total on page load
                                                     window.onload = () => {
                                                         document.querySelectorAll('input[name="qty"]').forEach((input, index) => {
                                                             subtotal(index);
@@ -275,16 +260,15 @@
                                     <script>
                                         window.removeItem = (id) => {
                                             Swal.fire({
-                                                title: 'Are you sure?',
-                                                text: "You won't be able to revert this!",
+                                                title: 'Êtes-vous sûr ?',
+                                                text: "Vous ne pourrez pas revenir en arrière !",
                                                 icon: 'warning',
                                                 showCancelButton: true,
                                                 confirmButtonColor: '#3085d6',
                                                 cancelButtonColor: '#d33',
-                                                confirmButtonText: 'Yes, delete it!'
+                                                confirmButtonText: 'Oui, supprimer !'
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
-                                                    // Make an AJAX request to remove the item from the cart
                                                     fetch(`/remove-from-cart/${id}`, {
                                                         method: 'DELETE',
                                                         headers: {
@@ -296,30 +280,28 @@
                                                     .then(data => {
                                                         console.log(data);
                                                         if (data.message) {
-                                                            // Show success message
                                                             Swal.fire({
-                                                                title: 'Deleted!',
-                                                                text: 'Item has been removed from cart.',
+                                                                title: 'Supprimé !',
+                                                                text: 'L\'article a été retiré du panier.',
                                                                 icon: 'success',
                                                                 timer: 1500,
                                                                 showConfirmButton: false
                                                             }).then(() => {
-                                                                // Refresh the page after showing success message
                                                                 location.reload();
                                                             });
                                                         } else {
                                                             Swal.fire({
-                                                                title: 'Error!',
-                                                                text: 'Failed to remove item from cart.',
+                                                                title: 'Erreur !',
+                                                                text: 'Échec de la suppression de l\'article du panier.',
                                                                 icon: 'error'
                                                             });
                                                         }
                                                     })
                                                     .catch(error => {
-                                                        console.error('Error:', error);
+                                                        console.error('Erreur:', error);
                                                         Swal.fire({
-                                                            title: 'Error!',
-                                                            text: 'An error occurred while removing the item.',
+                                                            title: 'Erreur !',
+                                                            text: 'Une erreur est survenue lors de la suppression de l\'article.',
                                                             icon: 'error'
                                                         });
                                                     });
@@ -327,23 +309,10 @@
                                             });
                                         };
                                     </script>
-
-
                                 </tbody>
                             </table>
                         </div>
                         <div class="cart-wrapper-footer">
-                            {{-- <form action="shop-cart.html">
-                                <div class="input-area">
-                                    <input type="text" name="Coupon Code" id="CouponCode" placeholder="Coupon Code">
-                                    <button type="submit" class="theme-btn">
-                                        Apply
-                                    </button>
-                                </div>
-                            </form> --}}
-                            {{-- <a href="shop-cart.html" class="theme-btn">
-                                Update Cart
-                            </a> --}}
                         </div>
                     </div>
                     <div class="col-xl-3">
@@ -351,29 +320,21 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Cart Total</th>
+                                        <th>Total du panier</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- <tr>
-                                        <td>
-                                            <span class="d-flex gap-5 align-items-center justify-content-between">
-                                                <span class="sub-title">Subtotal:</span>
-                                                <span class="sub-price">$84.00</span>
-                                            </span>
-                                        </td>
-                                    </tr> --}}
                                     <tr>
                                         <td>
                                             <span class="d-flex gap-5 align-items-center  justify-content-between">
-                                                <span class="sub-title">Total: </span>
+                                                <span class="sub-title">Total : </span>
                                                 <span class="sub-price sub-price-total">{{ $total }}</span>
                                             </span>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="checkout.html" class="theme-btn">Proceed to checkout</a>
+                            <a href="checkout.html" class="theme-btn">Procéder au paiement</a>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@
                         <i class="icon-icon-5"></i>
                     </div>
                     <div class="content">
-                        <p>Call Us 7/24</p>
+                        <p>Appelez-nous 7j/7 et 24h/24</p>
                         <h3>
                             <a href="tel:+2085550112">+212-123-4567</a>
                         </h3>
@@ -18,7 +18,7 @@
                         <i class="icon-icon-6"></i>
                     </div>
                     <div class="content">
-                        <p>Make a Quote</p>
+                        <p>Demander un devis</p>
                         <h3>
                             <a href="mailto:example@gmail.com">libmanage@gmail.com</a>
                         </h3>
@@ -29,9 +29,9 @@
                         <i class="icon-icon-7"></i>
                     </div>
                     <div class="content">
-                        <p>Opening Hour</p>
+                        <p>Heures d'ouverture</p>
                         <h3>
-                            Sunday - Fri: 8 aM - 6 pM
+                            Dimanche - Ven : 8h - 18h
                         </h3>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         <i class="icon-icon-8"></i>
                     </div>
                     <div class="content">
-                        <p>Location</p>
+                        <p>Localisation</p>
                         <h3>
                             zone fesshore ifmotica.
                         </h3>
@@ -78,31 +78,31 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 ps-lg-5 wow fadeInUp" data-wow-delay=".4s">
                         <div class="single-footer-widget">
                             <div class="widget-head">
-                                <h3>Costumers Support</h3>
+                                <h3>Support Clients</h3>
                             </div>
                             <ul class="list-area">
                                 <li>
                                     <a href="shop.html">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        Store List
+                                        Liste des magasins
                                     </a>
                                 </li>
                                 <li>
                                     <a href="contact.html">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        Opening Hours
+                                        Heures d'ouverture
                                     </a>
                                 </li>
                                 <li>
                                     <a href="contact.html">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        Contact Us
+                                        Contactez-nous
                                     </a>
                                 </li>
                                 <li>
                                     <a href="contact.html">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        Return Policy
+                                        Politique de retour
                                     </a>
                                 </li>
                             </ul>
@@ -111,31 +111,31 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 ps-lg-5 wow fadeInUp" data-wow-delay=".6s">
                         <div class="single-footer-widget">
                             <div class="widget-head">
-                                <h3>Categories</h3>
+                                <h3>Catégories</h3>
                             </div>
                             <ul class="list-area">
                                 <li>
                                     <a href="shop.html">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        Novel Books
+                                        Romans
                                     </a>
                                 </li>
                                 <li>
                                     <a href="shop.html">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        Poetry Books
+                                        Livres de poésie
                                     </a>
                                 </li>
                                 <li>
                                     <a href="contact.html">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        Political Books
+                                        Livres politiques
                                     </a>
                                 </li>
                                 <li>
                                     <a href="contact.html">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        History Books
+                                        Livres d'histoire
                                     </a>
                                 </li>
                             </ul>
@@ -147,9 +147,9 @@
                                 <h3>Newsletter</h3>
                             </div>
                             <div class="footer-content">
-                                <p>Sign up to searing weekly newsletter to get the latest updates.</p>
+                                <p>Inscrivez-vous à notre newsletter hebdomadaire pour recevoir les dernières mises à jour.</p>
                                 <div class="footer-input">
-                                    <input type="email" id="email2" placeholder="Enter Email Address">
+                                    <input type="email" id="email2" placeholder="Entrez votre adresse e-mail">
                                     <button class="newsletter-btn" type="submit">
                                         <i class="fa-regular fa-paper-plane"></i>
                                     </button>
@@ -164,7 +164,7 @@
             <div class="container">
                 <div class="footer-wrapper d-flex align-items-center justify-content-between">
                     <p class="wow fadeInLeft" data-wow-delay=".3s">
-                        © All Copyright 2025 by <a href="index.html">LibManage</a>
+                        © Tous droits réservés 2025 par <a href="index.html">LibManage</a>
                     </p>
                     <ul class="brand-logo wow fadeInRight" data-wow-delay=".5s">
                         <li>

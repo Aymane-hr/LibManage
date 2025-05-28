@@ -1,58 +1,57 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Login Modal -->
+    <!-- Modal de Connexion -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="close-btn">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="identityBox">
                         <div class="form-wrapper">
-                            <h1 id="loginModalLabel">welcome back!</h1>
-                            <input class="inputField" type="email" name="email" placeholder="Email Address">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Password">
+                            <h1 id="loginModalLabel">Bon retour !</h1>
+                            <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
+                            <input class="inputField" type="password" name="password" placeholder="Mot de passe">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next" id="saveForNext">
-                                    <label for="saveForNext">Remember me</label>
+                                    <label for="saveForNext">Se souvenir de moi</label>
                                 </div>
-                                <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
+                                <div class="text"> <a href="index-2.html">Mot de passe oublié ?</a> </div>
                             </div>
                             <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Log in </a>
+                                <a href="index-2.html" class="theme-btn rounded-0"> Se connecter </a>
                             </div>
                             <div class="orting-badge">
-                                Or
+                                Ou
                             </div>
                             <div>
                                 <a class="another-option" href="https://www.google.com/">
                                     <img src="assets/img/google.png" alt="google">
-                                    Continue With Google
+                                    Continuer avec Google
                                 </a>
                             </div>
                             <div>
                                 <a class="another-option another-option-two" href="https://www.facebook.com/">
                                     <img src="assets/img/facebook.png" alt="google">
-                                    Continue With Facebook
+                                    Continuer avec Facebook
                                 </a>
                             </div>
 
                             <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault">
                                 <label class="form-check-label">
-                                    I Accept Your Terms & Conditions
+                                    J'accepte vos termes et conditions
                                 </label>
                             </div>
                         </div>
 
                         <div class="banner">
                             <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Log in</button>
+                                data-bs-target="#loginModal">Se connecter</button>
                             <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Create
-                                Account</button>
+                                data-bs-target="#registrationModal">Créer un compte</button>
                             <div class="loginBg">
                                 <img src="assets/img/signUpbg.jpg" alt="signUpBg">
                             </div>
@@ -63,61 +62,60 @@
         </div>
     </div>
 
-    <!-- Registration Modal -->
+    <!-- Modal d'Inscription -->
     <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="close-btn">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="identityBox">
                         <div class="form-wrapper">
-                            <h1 id="registrationModalLabel">Create account!</h1>
-                            <input class="inputField" type="text" name="name" id="name2" placeholder="User Name">
-                            <input class="inputField" type="email" name="email" placeholder="Email Address">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Password">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Confirm Password">
+                            <h1 id="registrationModalLabel">Créer un compte !</h1>
+                            <input class="inputField" type="text" name="name" id="name2" placeholder="Nom d'utilisateur">
+                            <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
+                            <input class="inputField" type="password" name="password" placeholder="Mot de passe">
+                            <input class="inputField" type="password" name="password" placeholder="Confirmer le mot de passe">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next" id="rememberMe">
-                                    <label for="rememberMe">Remember me</label>
+                                    <label for="rememberMe">Se souvenir de moi</label>
                                 </div>
-                                <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
+                                <div class="text"> <a href="index-2.html">Mot de passe oublié ?</a> </div>
                             </div>
                             <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Log in </a>
+                                <a href="index-2.html" class="theme-btn rounded-0"> Se connecter </a>
                             </div>
                             <div class="orting-badge">
-                                Or
+                                Ou
                             </div>
                             <div>
                                 <a class="another-option" href="https://www.google.com/">
                                     <img src="assets/img/google.png" alt="google">
-                                    Continue With Google
+                                    Continuer avec Google
                                 </a>
                             </div>
                             <div>
                                 <a class="another-option another-option-two" href="https://www.facebook.com/">
                                     <img src="assets/img/facebook.png" alt="google">
-                                    Continue With Facebook
+                                    Continuer avec Facebook
                                 </a>
                             </div>
                             <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault">
                                 <label class="form-check-label">
-                                    I Accept Your Terms & Conditions
+                                    J'accepte vos termes et conditions
                                 </label>
                             </div>
                         </div>
 
                         <div class="banner">
                             <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Log in</button>
+                                data-bs-target="#loginModal">Se connecter</button>
                             <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Create
-                                Account</button>
+                                data-bs-target="#registrationModal">Créer un compte</button>
                             <div class="signUpBg">
                                 <img src="assets/img/registrationbg.jpg" alt="signUpBg">
                             </div>
@@ -128,29 +126,29 @@
         </div>
     </div>
 
-    <!-- Breadcumb Section Start -->
+    <!-- Section Fil d'Ariane Début -->
     <div class="breadcrumb-wrapper">
         <div class="book1">
-            <img src="assets/img/hero/book1.png" alt="book">
+            <img src="assets/img/hero/book1.png" alt="livre">
         </div>
         <div class="book2">
-            <img src="assets/img/hero/book2.png" alt="book">
+            <img src="assets/img/hero/book2.png" alt="livre">
         </div>
         <div class="container">
             <div class="page-heading">
-                <h1>Blog Details</h1>
+                <h1>Détails du blog</h1>
                 <div class="page-header">
                     <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
                         <li>
                             <a href="index.html">
-                                Home
+                                Accueil
                             </a>
                         </li>
                         <li>
                             <i class="fa-solid fa-chevron-right"></i>
                         </li>
                         <li>
-                            Blog Details
+                            Détails du blog
                         </li>
                     </ul>
                 </div>
@@ -158,7 +156,7 @@
         </div>
     </div>
 
-    <!-- News Details Section Start -->
+    <!-- Section Détails de l'actualité Début -->
     <section class="news-details fix section-padding">
         <div class="container">
             <div class="news-details-area">
@@ -172,15 +170,15 @@
                                     <ul class="post-list d-flex align-items-center">
                                         {{-- <li>
                                             <i class="fa-light fa-user"></i>
-                                            By Admin
+                                            Par Admin
                                         </li>
                                         <li>
                                             <i class="fa-sharp fa-regular fa-comments"></i>
-                                            2 Comments
+                                            2 Commentaires
                                         </li> --}}
                                         <li>
                                             <i class="fa-light fa-tag"></i>
-                                            Book Store
+                                            Librairie
                                         </li>
                                     </ul>
                                     <h3>{{ $titre }} </h3>
@@ -195,51 +193,42 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                        {{-- <div class="col-lg-6">
-                                            <div class="details-image">
-                                                <img src="assets/img/news/post-6.jpg" alt="img">
-                                            </div>
-                                        </div> --}}
                                     </div>
-
-
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                     {{-- <div class="col-xl-3 col-lg-4">
                         <div class="main-sidebar">
                             <div class="single-sidebar-widget">
                                 <div class="wid-title">
-                                    <h3>Search</h3>
+                                    <h3>Recherche</h3>
                                 </div>
                                 <div class="search-widget">
                                     <form action="#">
-                                        <input type="text" placeholder="Search here">
+                                        <input type="text" placeholder="Rechercher ici">
                                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
                                 </div>
                             </div>
                             <div class="single-sidebar-widget">
                                 <div class="wid-title">
-                                    <h3>Categories</h3>
+                                    <h3>Catégories</h3>
                                 </div>
                                 <div class="news-widget-categories">
                                     <ul>
-                                        <li><a href="news-details.html">Adventure</a> <span>(5)</span></li>
-                                        <li><a href="news-details.html">Education</a> <span>(3)</span></li>
+                                        <li><a href="news-details.html">Aventure</a> <span>(5)</span></li>
+                                        <li><a href="news-details.html">Éducation</a> <span>(3)</span></li>
                                         <li class="active"><a href="news-details.html">Romance</a><span>(6)</span></li>
-                                        <li><a href="news-details.html">Modern Fiction</a> <span>(2)</span></li>
-                                        <li><a href="news-details.html">Contemporary</a> <span>(4)</span></li>
-                                        <li><a href="news-details.html">Art & Literature</a> <span>(7)</span></li>
+                                        <li><a href="news-details.html">Fiction Moderne</a> <span>(2)</span></li>
+                                        <li><a href="news-details.html">Contemporain</a> <span>(4)</span></li>
+                                        <li><a href="news-details.html">Art & Littérature</a> <span>(7)</span></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="single-sidebar-widget">
                                 <div class="wid-title">
-                                    <h3>Recent Post</h3>
+                                    <h3>Articles récents</h3>
                                 </div>
                                 <div class="recent-post-area">
                                     <div class="recent-items">
@@ -250,13 +239,12 @@
                                             <ul>
                                                 <li>
                                                     <i class="fa-solid fa-calendar-days"></i>
-                                                    18 Dec, 2024
+                                                    18 Déc, 2024
                                                 </li>
                                             </ul>
                                             <h6>
                                                 <a href="news-details.html">
-                                                    Top 10 Tarot Decks For The
-                                                    Tarot World Summit
+                                                    Top 10 des jeux de tarot pour le sommet mondial du tarot
                                                 </a>
                                             </h6>
                                         </div>
@@ -269,7 +257,7 @@
                                             <ul>
                                                 <li>
                                                     <i class="fa-solid fa-calendar-days"></i>
-                                                    Mar 20, 2024
+                                                    20 Mars, 2024
                                                 </li>
                                             </ul>
                                             <h6>
@@ -287,12 +275,12 @@
                                             <ul>
                                                 <li>
                                                     <i class="fa-solid fa-calendar-days"></i>
-                                                    Mar 10, 2024
+                                                    10 Mars, 2024
                                                 </li>
                                             </ul>
                                             <h6>
                                                 <a href="news-details.html">
-                                                    Students Intelligence in education in Building..
+                                                    Intelligence des étudiants dans l'éducation...
                                                 </a>
                                             </h6>
                                         </div>
@@ -306,11 +294,11 @@
                                 <div class="news-widget-categories">
                                     <div class="tagcloud">
                                         <a href="news-standard.html">Romance</a>
-                                        <a href="news-details.html">Books</a>
-                                        <a href="news-details.html">Tips & Tricks</a>
-                                        <a href="news-details.html">Adventure</a>
-                                        <a href="news-details.html">Education</a>
-                                        <a href="news-details.html">Store</a>
+                                        <a href="news-details.html">Livres</a>
+                                        <a href="news-details.html">Astuces & Conseils</a>
+                                        <a href="news-details.html">Aventure</a>
+                                        <a href="news-details.html">Éducation</a>
+                                        <a href="news-details.html">Librairie</a>
                                     </div>
                                 </div>
                             </div>

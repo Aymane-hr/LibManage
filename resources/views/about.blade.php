@@ -6,54 +6,54 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="close-btn">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="identityBox">
                         <div class="form-wrapper">
-                            <h1 id="loginModalLabel">welcome back!</h1>
-                            <input class="inputField" type="email" name="email" placeholder="Email Address">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Password">
+                            <h1 id="loginModalLabel">Bon retour !</h1>
+                            <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
+                            <input class="inputField" type="password" name="password" placeholder="Mot de passe">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next"
                                         id="saveForNext">
-                                    <label for="saveForNext">Remember me</label>
+                                    <label for="saveForNext">Se souvenir de moi</label>
                                 </div>
-                                <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
+                                <div class="text"> <a href="index-2.html">Mot de passe oublié ?</a> </div>
                             </div>
                             <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Log in </a>
+                                <a href="index-2.html" class="theme-btn rounded-0"> Se connecter </a>
                             </div>
                             <div class="orting-badge">
-                                Or
+                                Ou
                             </div>
                             <div>
                                 <a class="another-option" href="https://www.google.com/">
                                     <img src="assets/img/google.png" alt="google">
-                                    Continue With Google
+                                    Continuer avec Google
                                 </a>
                             </div>
                             <div>
                                 <a class="another-option another-option-two" href="https://www.facebook.com/">
                                     <img src="assets/img/facebook.png" alt="google">
-                                    Continue With Facebook
+                                    Continuer avec Facebook
                                 </a>
                             </div>
 
                             <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault">
                                 <label class="form-check-label">
-                                    I Accept Your Terms & Conditions
+                                    J'accepte vos termes et conditions
                                 </label>
                             </div>
                         </div>
 
                         <div class="banner">
                             <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Log in</button>
+                                data-bs-target="#loginModal">Se connecter</button>
                             <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Create
-                                Account</button>
+                                data-bs-target="#registrationModal">Créer
+                                un compte</button>
                             <div class="loginBg">
                                 <img src="assets/img/signUpbg.jpg" alt="signUpBg">
                             </div>
@@ -71,56 +71,56 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="close-btn">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="identityBox">
                         <div class="form-wrapper">
-                            <h1 id="registrationModalLabel">Create account!</h1>
-                            <input class="inputField" type="text" name="name" id="name" placeholder="User Name">
-                            <input class="inputField" type="email" name="email" placeholder="Email Address">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Password">
+                            <h1 id="registrationModalLabel">Créer un compte !</h1>
+                            <input class="inputField" type="text" name="name" id="name" placeholder="Nom d'utilisateur">
+                            <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
+                            <input class="inputField" type="password" name="password" placeholder="Mot de passe">
                             <input class="inputField" type="password" name="password"
-                                placeholder="Enter Confirm Password">
+                                placeholder="Confirmer le mot de passe">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next"
                                         id="rememberMe">
-                                    <label for="rememberMe">Remember me</label>
+                                    <label for="rememberMe">Se souvenir de moi</label>
                                 </div>
-                                <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
+                                <div class="text"> <a href="index-2.html">Mot de passe oublié ?</a> </div>
                             </div>
                             <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Log in </a>
+                                <a href="index-2.html" class="theme-btn rounded-0"> Se connecter </a>
                             </div>
                             <div class="orting-badge">
-                                Or
+                                Ou
                             </div>
                             <div>
                                 <a class="another-option" href="https://www.google.com/">
                                     <img src="assets/img/google.png" alt="google">
-                                    Continue With Google
+                                    Continuer avec Google
                                 </a>
                             </div>
                             <div>
                                 <a class="another-option another-option-two" href="https://www.facebook.com/">
                                     <img src="assets/img/facebook.png" alt="google">
-                                    Continue With Facebook
+                                    Continuer avec Facebook
                                 </a>
                             </div>
                             <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault">
                                 <label class="form-check-label">
-                                    I Accept Your Terms & Conditions
+                                    J'accepte vos termes et conditions
                                 </label>
                             </div>
                         </div>
 
                         <div class="banner">
                             <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Log in</button>
+                                data-bs-target="#loginModal">Se connecter</button>
                             <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Create
-                                Account</button>
+                                data-bs-target="#registrationModal">Créer
+                                un compte</button>
                             <div class="signUpBg">
                                 <img src="assets/img/registrationbg.jpg" alt="signUpBg">
                             </div>
@@ -134,26 +134,26 @@
     <!-- Breadcumb Section Start -->
     <div class="breadcrumb-wrapper">
         <div class="book1">
-            <img src="assets/img/hero/book1.png" alt="book">
+            <img src="assets/img/hero/book1.png" alt="livre">
         </div>
         <div class="book2">
-            <img src="assets/img/hero/book2.png" alt="book">
+            <img src="assets/img/hero/book2.png" alt="livre">
         </div>
         <div class="container">
             <div class="page-heading">
-                <h1>About Us</h1>
+                <h1>À propos de nous</h1>
                 <div class="page-header">
                     <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
                         <li>
                             <a href="index.html">
-                                Home
+                                Accueil
                             </a>
                         </li>
                         <li>
                             <i class="fa-solid fa-chevron-right"></i>
                         </li>
                         <li>
-                            About Us
+                            À propos de nous
                         </li>
                     </ul>
                 </div>
@@ -180,7 +180,7 @@
                     <div class="col-lg-6">
                         <div class="about-content">
                             <div class="section-title">
-                                <h2 class="wow fadeInUp" data-wow-delay=".3s">About the Bookle <br> Books Store</h2>
+                                <h2 class="wow fadeInUp" data-wow-delay=".3s">À propos de la librairie <br> Bookle</h2>
                             </div>
                             <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".5s">
                                 Nullam convallis ullamcorper nulla. Nam accumsan ac leo quis posuere. Nunc rutrum lorem
@@ -195,7 +195,7 @@
                                 hendrerit ullamcorper dui, quis convallis mauris cursus nec. Interdum et malesuada fames
                                 ac ante ipsum primis in faucibus. Vivamus ac laoreet orci.
                             </p>
-                            <a href="about.html" class="link-btn wow fadeInUp" data-wow-delay=".8s">Overview <i
+                            <a href="about.html" class="link-btn wow fadeInUp" data-wow-delay=".8s">Aperçu <i
                                     class="fa-regular fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -210,15 +210,14 @@
             <div class="cta-banner-wrapper section-padding bg-cover"
                 style="background-image: url('assets/img/cta-banner.jpg');">
                 <div class="book-shape">
-                    <img src="assets/img/book-shape.png" alt="shape-img">
+                    <img src="assets/img/book-shape.png" alt="forme-img">
                 </div>
                 <div class="girl-shape float-bob-x">
-                    <img src="assets/img/girl-shape-2.png" alt="shape-img">
+                    <img src="assets/img/girl-shape-2.png" alt="forme-img">
                 </div>
                 <div class="cta-content text-center">
-                    <h2 class="text-white mb-40 wow fadeInUp" data-wow-delay=".3s">Get 25% discount in all <br> kind of
-                        super Selling</h2>
-                    <a href="shop.html" class="theme-btn white-bg wow fadeInUp" data-wow-delay=".5s">Shop Now <i
+                    <h2 class="text-white mb-40 wow fadeInUp" data-wow-delay=".3s">Obtenez 25% de réduction sur tout <br> type de super vente</h2>
+                    <a href="shop.html" class="theme-btn white-bg wow fadeInUp" data-wow-delay=".5s">Acheter maintenant <i
                             class="fa-solid fa-arrow-right-long"></i></a>
                 </div>
             </div>
@@ -229,7 +228,7 @@
     <section class="testimonial-section fix section-padding pt-0">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="mb-3 wow fadeInUp" data-wow-delay=".3s">Customer Feedback</h2>
+                <h2 class="mb-3 wow fadeInUp" data-wow-delay=".3s">Avis des clients</h2>
                 <p class="wow fadeInUp" data-wow-delay=".5s">Interdum et malesuada fames ac ante ipsum primis in
                     faucibus. <br> Donec at nulla nulla. Duis posuere ex lacus</p>
             </div>
@@ -238,9 +237,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card-items">
                             <p>
-                                One of the most powerful takeaways from this book is the emphasis on adopting a mindset
-                                of abundance and possibility. The idea that we can choose to see opportunities rather
-                                than limitations is a game-changer.
+                                L'un des enseignements les plus puissants de ce livre est l'accent mis sur l'adoption d'un état d'esprit d'abondance et de possibilités. L'idée que nous pouvons choisir de voir des opportunités plutôt que des limites change tout.
                             </p>
                             <div class="client-info-wrapper d-flex align-items-center justify-content-between">
                                 <div class="client-info">
@@ -252,7 +249,7 @@
                                     </div>
                                     <div class="content">
                                         <h3>Ronald Richards</h3>
-                                        <span>Marketing Coordinator</span>
+                                        <span>Coordinateur marketing</span>
                                         <div class="star">
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
@@ -273,9 +270,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card-items">
                             <p>
-                                The idea that we can choose to see opportunities rather than limitations is a
-                                game-changer. The book encourages readers to step out of their comfort zones and embrace
-                                a more positive outlook on life.
+                                L'idée que nous pouvons choisir de voir des opportunités plutôt que des limites change tout. Le livre encourage les lecteurs à sortir de leur zone de confort et à adopter une vision plus positive de la vie.
                             </p>
                             <div class="client-info-wrapper d-flex align-items-center justify-content-between">
                                 <div class="client-info">
@@ -287,7 +282,7 @@
                                     </div>
                                     <div class="content">
                                         <h3>Dianne Russell</h3>
-                                        <span>Project Manager</span>
+                                        <span>Chef de projet</span>
                                         <div class="star">
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
@@ -308,9 +303,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card-items">
                             <p>
-                                "The Art of Possibility" by Rosamund Stone Zander and Benjamin Zander is a
-                                transformative read that challenges conventional thinking and opens up new
-                                possibilities. As a reader, I found myself profoundly .
+                                "L'Art de la Possibilité" de Rosamund Stone Zander et Benjamin Zander est une lecture transformative qui remet en question la pensée conventionnelle et ouvre de nouvelles possibilités. En tant que lecteur, j'ai été profondément touché.
                             </p>
                             <div class="client-info-wrapper d-flex align-items-center justify-content-between">
                                 <div class="client-info">
@@ -322,7 +315,7 @@
                                     </div>
                                     <div class="content">
                                         <h3>Ronald Richards</h3>
-                                        <span>Marketing Coordinator</span>
+                                        <span>Coordinateur marketing</span>
                                         <div class="star">
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
@@ -343,9 +336,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card-items">
                             <p>
-                                From the very first chapter, the authors engage readers with inspiring stories and
-                                practical insights. Benjamin Zander's experiences as a conductor bring a unique
-                                perspective to leadership .
+                                Dès le premier chapitre, les auteurs captivent les lecteurs avec des histoires inspirantes et des conseils pratiques. Les expériences de Benjamin Zander en tant que chef d'orchestre apportent une perspective unique au leadership.
                             </p>
                             <div class="client-info-wrapper d-flex align-items-center justify-content-between">
                                 <div class="client-info">
@@ -357,7 +348,7 @@
                                     </div>
                                     <div class="content">
                                         <h3>Ronald Richards</h3>
-                                        <span>Marketing Coordinator</span>
+                                        <span>Coordinateur marketing</span>
                                         <div class="star">
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
@@ -384,7 +375,7 @@
     <section class="team-section fix section-padding pt-0 margin-bottom-30">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="mb-3 wow fadeInUp" data-wow-delay=".3s">Featured Author</h2>
+                <h2 class="mb-3 wow fadeInUp" data-wow-delay=".3s">Auteur à la une</h2>
                 <p class="wow fadeInUp" data-wow-delay=".5s">Interdum et malesuada fames ac ante ipsum primis in
                     faucibus. <br> Donec at nulla nulla. Duis posuere ex lacus</p>
             </div>
@@ -406,7 +397,7 @@
                             </div>
                             <div class="team-content text-center">
                                 <h6><a href="team-details.html">Esther Howard</a></h6>
-                                <p>10 Published Books</p>
+                                <p>10 livres publiés</p>
                             </div>
                         </div>
                     </div>
@@ -422,7 +413,7 @@
                             </div>
                             <div class="team-content text-center">
                                 <h6><a href="team-details.html">Shikhon Islam</a></h6>
-                                <p>07 Published Books</p>
+                                <p>07 livres publiés</p>
                             </div>
                         </div>
                     </div>
@@ -438,7 +429,7 @@
                             </div>
                             <div class="team-content text-center">
                                 <h6><a href="team-details.html">Kawser Ahmed</a></h6>
-                                <p>04 Published Books</p>
+                                <p>04 livres publiés</p>
                             </div>
                         </div>
                     </div>
@@ -454,7 +445,7 @@
                             </div>
                             <div class="team-content text-center">
                                 <h6><a href="team-details.html">Brooklyn Simmons</a></h6>
-                                <p>15 Published Books</p>
+                                <p>15 livres publiés</p>
                             </div>
                         </div>
                     </div>
@@ -470,7 +461,7 @@
                             </div>
                             <div class="team-content text-center">
                                 <h6><a href="team-details.html">Leslie Alexander</a></h6>
-                                <p>05 Published Books</p>
+                                <p>05 livres publiés</p>
                             </div>
                         </div>
                     </div>
@@ -486,7 +477,7 @@
                             </div>
                             <div class="team-content text-center">
                                 <h6><a href="team-details.html">Guy Hawkins</a></h6>
-                                <p>12 Published Books</p>
+                                <p>12 livres publiés</p>
                             </div>
                         </div>
                     </div>
