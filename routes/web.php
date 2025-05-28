@@ -42,3 +42,8 @@ Route::get('/blog-details/{id}', function ($id) {
 Route::get('/blog', function () {
     return view('blog');
 })->name('blog');
+
+
+Route::post('/save-favori/{id}', [ProduitController::class, 'save'])->name('save-favori');
+Route::get('/favoris', [ProduitController::class, 'showFavoris'])->name('favoris');
+Route::delete('/favoris/{id}', [ProduitController::class, 'deleteFavori'])->name('favoris.delete');

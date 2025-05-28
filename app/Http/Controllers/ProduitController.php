@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorie;
+use App\Models\Favori;
 use App\Models\Produit;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
@@ -81,35 +82,35 @@ class ProduitController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+   public function save($id){
+    $favori=Favori::create([
+        'produit_id'=>$id,
+        'user_id'=>auth()->user()->id ?? null,
+        'date'=>now(),
+    ]);
+    return back()->with('success', 'Produit ajouté aux favoris');
+   }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+   public function deleteFavori($id)
+   {
+       $favori = Favori::where('produit_id', $id)->where('user_id', auth()->user()->id)->first();
+       if ($favori) {
+           $favori->delete();
+           return back()->with('success', 'Produit supprimé des favoris');
+       }
+       return back()->with('error', 'Produit non trouvé dans les favoris');
+   }
+   public function showFavoris()
+   {
+       $favoris = Favori::where('user_id', auth()->user()->id)->get();
+       $produits = [];
+       foreach ($favoris as $favori) {
+           $produit = Produit::find($favori->produit_id);
+           if ($produit) {
+               $produits[] = $produit;
+           }
+       }
+       return view('favoris', compact('produits'));
+   }
 }
