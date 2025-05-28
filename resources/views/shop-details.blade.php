@@ -173,7 +173,7 @@
                                 @foreach ($images as $key =>$image )
                                 <div id="thumb{{$loop->index + 1}}" class="tab-pane fade @if($key == 0) show active @endif">
                                     <div class="shop-details-thumb">
-                                        <img src="{{ $image->image }}" alt="img">
+                                        <img src="{{ $image->image }}" width="450" height="450" alt="img">
                                     </div>
                                 </div>
                                 @endforeach
@@ -205,7 +205,7 @@
                                 <a href="shop-details.html"> <i class="fas fa-star"></i></a>
                                 <a href="shop-details.html"><i class="fas fa-star"></i></a>
                                 <a href="shop-details.html"><i class="fa-regular fa-star"></i></a>
-                                <span>(1 Customer Reviews)</span>
+                                {{-- <span>(1 Customer Reviews)</span> --}}
                             </div>
 
                             <div class="price-list">
@@ -213,14 +213,9 @@
                             </div>
                             <div class="cart-wrapper">
                                 <div class="d-flex align-items-center gap-3 flex-wrap">
-                                    <form action="{{ route('add-to-cart') }}" method="POST" class="d-flex align-items-center gap-3 flex-wrap mb-0">
+                                    <form action="{{ route('add-to-cart',$id) }}" method="POST" class="d-flex align-items-center gap-3 flex-wrap mb-0">
                                         @csrf
                                         @method('POST')
-                                        <input type="hidden" name="image" value="{{ $images[0]['image'] }}">
-                                        <input type="hidden" name="id" value="{{ $id }}">
-                                        <input type="hidden" name="prix" value="{{ $prix }}">
-                                        <input type="hidden" name="designation" value="{{ $designation }}">
-                                        <input type="hidden" name="isbn" value="{{ $isbn }}">
                                         <div class="quantity-basket mb-0">
                                             <p class="qty mb-0">
                                                 <button class="qtyminus" aria-hidden="true" type="button">−</button>

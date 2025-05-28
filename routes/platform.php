@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Resources\ProduitResource;
 use Tabuna\Breadcrumbs\Trail;
 use App\Orchid\Screens\ImageScreen;
 use Illuminate\Support\Facades\Route;
@@ -34,7 +35,10 @@ use App\Orchid\Screens\Examples\ExampleFieldsAdvancedScreen;
 */
 
 // Main
-Route::screen('/main', PlatformScreen::class)
+// Route::screen('/main', PlatformScreen::class)
+//     ->name('platform.main');
+
+Route::redirect('/main', '/admin/crud/list/' . ProduitResource::uriKey())
     ->name('platform.main');
 
 // Platform > Profile

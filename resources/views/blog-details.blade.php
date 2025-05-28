@@ -191,7 +191,7 @@
                                         @foreach ($images as $image)
                                             <div class="col-lg-6">
                                                 <div class="details-image">
-                                                    <img src="{{ asset('storage/' . $image->image) }}" alt="img">
+                                                    <img src="{{ asset($image->image) }}" alt="img">
                                                 </div>
                                             </div>
                                         @endforeach

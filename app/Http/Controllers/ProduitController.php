@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Produit;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
@@ -24,14 +25,34 @@ class ProduitController extends Controller
         $category= $produit->categorie->categorie;
         $stock = $produit->stock;
         $produits = Produit::where('id', '!=', $id)->inRandomOrder()->take(4)->get();
-        return view('shop-details', compact('designation', 'images','prix', 'isbn','category','produits','stock','id'));
+        return view('shop-details', compact('id','designation', 'images','prix', 'isbn','category','produits','stock','id'));
     }
 
     public function index2()
     {
         $produits = Produit::paginate(10);
+        $categorys = Categorie::all();
 
-        return view('shop-default', compact('produits'));
+        return view('shop-default', compact('produits','categorys'));
+    }
+
+
+     public function indexRcherche($id_categorie = null, $search = null)
+    {
+
+        $produits = Produit::where('categorie_id',$id_categorie)->paginate(10);
+        $categorys = Categorie::all();
+
+        return view('shop-default', compact('produits','categorys','id_categorie','search'));
+    }
+
+      public function search(Request $request)
+    {
+
+        $search = $request->input('search');
+        $produits = Produit::where('designation','like',$search)->paginate(10);
+        $categorys = Categorie::all();
+        return view('shop-default', compact('produits','categorys','search'));
     }
 
     /**

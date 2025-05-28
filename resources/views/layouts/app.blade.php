@@ -36,7 +36,7 @@
 <body>
 
     @include('layouts.navbar')
-    
+
     <div>
         @yield('content')
     </div>
@@ -65,6 +65,8 @@
     <script src="{{ asset('assets/js/wow.min.js') }}"></script>
     <!-- Gsap -->
     <script src="{{ asset('assets/js/gsap.min.js') }}"></script>
+    <!--<< SweetAlert2 >>-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--<< Main.js >>-->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
