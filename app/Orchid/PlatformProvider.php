@@ -72,6 +72,10 @@ class PlatformProvider extends OrchidServiceProvider
             //     ->route('platform.example.cards')
             //     ->divider(),
 
+            Menu::make('Commmandes') // Resource manually added
+            ->icon('bs.box-seam')
+            ->route('platform.commande.list'),
+
             Menu::make('Produits') // Resource manually added
             ->icon('bs.box-seam')
             ->route('platform.resource.list', ['resource' => ProduitResource::uriKey()]),

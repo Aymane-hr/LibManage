@@ -2,16 +2,18 @@
 
 declare(strict_types=1);
 
-use App\Orchid\Resources\ProduitResource;
 use Tabuna\Breadcrumbs\Trail;
 use App\Orchid\Screens\ImageScreen;
 use Illuminate\Support\Facades\Route;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\ImageEditScreen;
+use App\Orchid\Resources\ProduitResource;
+use App\Orchid\Screens\CommandeListScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
+use App\Orchid\Screens\CommandeDetailScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use App\Orchid\Screens\Examples\ExampleGridScreen;
@@ -137,3 +139,7 @@ Route::screen('images/{image}/edit', ImageEditScreen::class)
             ->parent('platform.images')
             ->push('Edit Image')
     );
+
+Route::screen('commandes', CommandeListScreen::class)->name('platform.commande.list');
+Route::screen('commandes/{commande}', CommandeDetailScreen::class)->name('platform.commande.detail');
+
