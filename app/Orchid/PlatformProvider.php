@@ -73,7 +73,7 @@ class PlatformProvider extends OrchidServiceProvider
             //     ->divider(),
 
             Menu::make('Commmandes') // Resource manually added
-            ->icon('bs.box-seam')
+            ->icon('bs.cart-check')
             ->route('platform.commande.list'),
 
             Menu::make('Produits') // Resource manually added

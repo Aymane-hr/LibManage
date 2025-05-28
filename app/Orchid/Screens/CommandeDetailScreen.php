@@ -7,6 +7,7 @@ use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Alert;
+use Orchid\Support\Facades\Toast;
 use Orchid\Screen\Fields\Switcher;
 use Orchid\Support\Facades\Layout;
 
@@ -77,7 +78,9 @@ class CommandeDetailScreen extends Screen
         $commande->regle = $request->input('commande.regle') ? 1 : 0;
         $commande->save();
 
-        Alert::info('Commande mise à jour avec succès.');
+        Toast::success('Commande mise à jour avec succès.')->delay(5000);
+
+
 
         return redirect()->route('platform.commande.list');
     }
