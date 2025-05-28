@@ -139,4 +139,5 @@ class BlogResource extends Resource
     {
         return 10;
     }
+
 }

@@ -120,4 +120,5 @@ class ReglementResource extends Resource
     {
         return 10;
     }
+
 }

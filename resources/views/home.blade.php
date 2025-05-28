@@ -237,14 +237,15 @@
                 <div class="swiper-wrapper">
                     @foreach ($produits as $produit)
                         @php
-                            // $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()->image;
-                            $imagePath='';
+                            $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()->image;
 
                         @endphp
                         <div class="swiper-slide">
                             <div class="shop-box-items style-2">
                                 <div class="book-thumb center">
-                                    <a href="shop-details"><img src="{{ $imagePath }}" alt="img"></a>
+                                    <a href="shop-details">
+                                        <img src="{{ asset('storage/' . $produit->images->first()->image) }}" alt="img">
+                                    </a>
                                     <ul class="shop-icon d-grid justify-content-center align-items-center">
                                         <li>
                                             <a href="shop-cart.html"><i class="far fa-heart"></i></a>
@@ -1312,7 +1313,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                         <div class="news-card-items">
                             <div class="news-image">
-
+                               
                                 @foreach ($blog->images as $image)
                                     <img src="{{ $image->image }}" alt="img">
                                 @endforeach

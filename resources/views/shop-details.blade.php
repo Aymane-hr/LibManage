@@ -212,56 +212,27 @@
                                 <h3>{{$prix}}</h3>
                             </div>
                             <div class="cart-wrapper">
-                                <form action="{{route('add-to-cart')}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <input type="text" name="image" value="{{$images[0]['image']}} ?? ' '" hidden>
-                                        <input type="hidden" name="id" value="{{$id}}">
-                                    <input type="hidden" name="prix" value="{{$prix}}">
-                                    <input type="hidden" name="designation" value="{{$designation}}">
-                                    <input type="hidden" name="isbn" value="{{$isbn}}">
-                                <div class="quantity-basket">
-                                    <p class="qty">
-                                        <button class="qtyminus" aria-hidden="true">−</button>
-                                        <input type="number" name="qty" id="qty2" min="1" max="10" step="1" value="1">
-                                        <button class="qtyplus" aria-hidden="true">+</button>
-                                    </p>
-                                </div>
-                                {{-- <button type="button"  class="theme-btn style-2" data-bs-toggle="modal" data-bs-target="#readMoreModal">
-                                    Read A little
-                                  </button> --}}
-                                  <!-- Read More Modal -->
-                                {{-- <div class="modal fade" id="readMoreModal" tabindex="-1" aria-labelledby="readMoreModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body" style="background-image: url(assets/img/popupBg.png);">
-                                                <div class="close-btn">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="readMoreBox">
-                                                    <div class="content">
-                                                        <h3 id="readMoreModalLabel">The Role Of Book</h3>
-                                                        <p>
-                                                            Educating the Public <br>
-                                                            Political books play a crucial role in educating the public about political theories, historical events, policies, and the workings of governments. They provide readers with insights into complex political concepts and the historical context behind current events, helping to foster a more informed citizenry. <br><br>
-
-                                                            Shaping Public Opinion <br>
-                                                            Authors of political books often aim to influence public opinion by presenting arguments and perspectives on various issues. These books can sway readers' views, either reinforcing their existing beliefs or challenging them to consider alternative viewpoints. This influence can extend to political debates and discussions in the public sphere. <br><br>
-
-                                                            Documenting History <br>
-                                                            Political books serve as valuable records of historical events and political movements. They document the thoughts, actions, and decisions of political leaders and activists, providing future generations with a detailed account of significant periods and events. This historical documentation is essential for understanding the evolution of political systems and ideologies.
-
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="d-flex align-items-center gap-3 flex-wrap">
+                                    <form action="{{ route('add-to-cart') }}" method="POST" class="d-flex align-items-center gap-3 flex-wrap mb-0">
+                                        @csrf
+                                        @method('POST')
+                                        <input type="hidden" name="image" value="{{ $images[0]['image'] }}">
+                                        <input type="hidden" name="id" value="{{ $id }}">
+                                        <input type="hidden" name="prix" value="{{ $prix }}">
+                                        <input type="hidden" name="designation" value="{{ $designation }}">
+                                        <input type="hidden" name="isbn" value="{{ $isbn }}">
+                                        <div class="quantity-basket mb-0">
+                                            <p class="qty mb-0">
+                                                <button class="qtyminus" aria-hidden="true" type="button">−</button>
+                                                <input type="number" name="qty" id="qty2" min="1" max="10" step="1" value="1">
+                                                <button class="qtyplus" aria-hidden="true" type="button">+</button>
+                                            </p>
                                         </div>
-                                    </div>
-                                </div> --}}
-                                <button type="submit" class="theme-btn"><i
-                                        class="fa-solid fa-basket-shopping"></i> Add To Cart</button>
+                                        <button type="submit" class="theme-btn mb-0">
+                                            <i class="fa-solid fa-basket-shopping"></i> Add To Cart
+                                        </button>
                                     </form>
+                                </div>
                                 <div class="icon-box">
                                     <a href="shop-details.html" class="icon">
                                         <i class="far fa-heart"></i>

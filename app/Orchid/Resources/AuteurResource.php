@@ -119,4 +119,5 @@ class AuteurResource extends Resource
     {
         return 10;
     }
+
 }

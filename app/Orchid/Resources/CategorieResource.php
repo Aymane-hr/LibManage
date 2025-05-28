@@ -115,4 +115,5 @@ class CategorieResource extends Resource
     {
         return 10;
     }
+
 }

@@ -84,26 +84,26 @@
                                 </a>
                                 <a href="{{route('shop-cart')}}" class="cart-icon">
                                     <i class="fa-regular fa-cart-shopping"></i>
-                                    {{-- <span class="cart-count" id="cart-count">5</span>
+                                    <span class="cart-count" id="cart-count1"></span>
                                     <script>
                                         document.addEventListener('DOMContentLoaded', function () {
                                             fetch('/cart')
                                                 .then(response => response.json())
                                                 .then(data => {
-                                                    const cartCountElement = document.getElementById('cart-count');
+                                                    const cartCountElement = document.getElementById('cart-count1');
                                                     cartCountElement.textContent = data.cartCount || 0;
                                                 })
                                                 .catch(error => console.error('Error fetching cart data:', error));
                                         });
-                                    </script> --}}
+                                    </script>
                                 </a>
-                                <div class="header-humbager ml-30">
+                                {{-- <div class="header-humbager ml-30">
                                     <a class="sidebar__toggle" href="javascript:void(0)">
                                         <div class="bar-icon-2">
                                             <img src="assets/img/icon/icon-13.svg" alt="img">
                                         </div>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

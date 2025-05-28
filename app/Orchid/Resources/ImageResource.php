@@ -278,13 +278,6 @@ class ImageResource extends Resource
         return 'Image';
     }
 
-    /**
-     * Get the text for the create resource button.
-     */
-    public static function createButtonLabel(): string
-    {
-        return 'Create Image';
-    }
 
     /**
      * Get the text for the create resource toast.
@@ -345,12 +338,14 @@ class ImageResource extends Resource
         ];
     }
     /**
- * Get the resource should be displayed in the navigation
- *
- * @return bool
- */
-public static function displayInNavigation(): bool
-{
-    return false;
-}
+     * Get the resource should be displayed in the navigation
+     *
+     * @return bool
+     */
+    public static function displayInNavigation(): bool
+    {
+        return false;
+    }
+
+
 }

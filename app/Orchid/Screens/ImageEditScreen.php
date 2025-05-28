@@ -9,12 +9,14 @@ use Orchid\Screen\Screen;
 use Orchid\Attachment\File;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Attach;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Toast;
 use Orchid\Support\Facades\Layout;
 use Illuminate\Support\Facades\Log;
+use Orchid\Attachment\Models\Attachment;
 
 class ImageEditScreen extends Screen
 {
@@ -45,7 +47,7 @@ class ImageEditScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'Create or edit image for blogs and products';
+        return __('Créer ou modifier l\'image pour les blogs et produits');
     }
 
     /**
@@ -73,11 +75,20 @@ class ImageEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Upload::make('image.attachment')
+
+                Attach::make('image.attachment')
                     ->title('Image')
-                    ->acceptedFiles('image/*')
+                    ->groups('image') // Optional, for grouping
                     ->maxFiles(1)
+                    ->acceptedFiles('image/*')
                     ->help('Upload your image file'),
+
+                    // Upload::make('image.attachment')
+                    // ->title('Image')
+                    // ->acceptedFiles('image/*')
+                    // ->maxFiles(1)
+                    // ->help('Upload your image file'),
+
 
                 Select::make('image.image_type')
                     ->title('Image Type')
@@ -108,6 +119,9 @@ class ImageEditScreen extends Screen
         ];
     }
 
+
+
+
     /**
      * Get the current image type for existing images.
      */
@@ -121,86 +135,50 @@ class ImageEditScreen extends Screen
         return null;
     }
 
-    /**
-     * Save the image.
-     */
-    public function save(Request $request, Image $image)
-    {
-        // Get all form data
-        $formData = $request->all();
+   public function save(Request $request, Image $image)
+{
+    $data = $request->validate([
+        'image.attachment' => 'nullable',
+        'image.image_type' => 'required|in:blog,product',
+        'image.blog_id' => 'nullable|exists:blogs,id',
+        'image.produit_id' => 'nullable|exists:produits,id',
+    ]);
 
-        // Debug: Log the received data
-        Log::info('Form data received:', $formData);
+    $imageData = $data['image'];
 
-        $data = $request->validate([
-            'image.attachment' => 'nullable',
-            'image.image_type' => 'required|in:blog,product',
-            'image.blog_id' => 'nullable|exists:blogs,id',
-            'image.produit_id' => 'nullable|exists:produits,id',
-        ]);
+    if (isset($imageData['attachment'])) {
+    $attachmentId = $imageData['attachment'];
+    $attachment = Attachment::find($attachmentId);
 
-        $imageData = $data['image'];
+    if ($attachment) {
+        $sourcePath = storage_path("app/public/{$attachment->path}{$attachment->name}.{$attachment->extension}");
 
-        // Debug: Log the validated data
-        Log::info('Validated image data:', $imageData);
+        // Set the custom folder path based on type
+        $folder = $imageData['image_type'] === 'blog' ? 'images/blog' : 'images/product';
+        $targetDir = storage_path("app/public/{$folder}");
+        $targetPath = "{$targetDir}/{$attachment->name}.{$attachment->extension}";
 
-        // Handle attachment
-        if (isset($imageData['attachment'])) {
-            $attachment = $imageData['attachment'];
-            if (is_array($attachment) && count($attachment) > 0) {
-                $imageData['image'] = $attachment[0]; // Get first attachment ID
-            }
-            unset($imageData['attachment']);
+        // Make sure the directory exists
+        if (!file_exists($targetDir)) {
+            mkdir($targetDir, 0755, true);
         }
 
-        // Prepare data for saving
-        $saveData = [];
+        // Copy or move the file
+        copy($sourcePath, $targetPath);
 
-        // Clear both foreign keys first
-        $saveData['blog_id'] = null;
-        $saveData['produit_id'] = null;
-
-        // Set the appropriate foreign key based on type
-        if ($imageData['image_type'] === 'blog') {
-            $blogId = $imageData['blog_id'] ?? null;
-
-            if (!$blogId) {
-                Toast::error('Please select a blog.');
-                return back()->withInput();
-            }
-
-            $saveData['blog_id'] = $blogId;
-
-        } elseif ($imageData['image_type'] === 'product') {
-            $productId = $imageData['produit_id'] ?? null;
-
-            if (!$productId) {
-                Toast::error('Please select a product.');
-                return back()->withInput();
-            }
-
-            $saveData['produit_id'] = $productId;
-        }
-
-        // Add other fields if they exist
-        if (isset($imageData['image'])) {
-            $saveData['image'] = $imageData['image'];
-        }
-
-        // Debug: Log the data being saved
-        Log::info('Data being saved:', $saveData);
-
-        $image->fill($saveData)->save();
-
-        // Sync attachments
-        if (isset($data['image']['attachment'])) {
-            $image->attachment()->syncWithoutDetaching($data['image']['attachment']);
-        }
-
-        Toast::info('Image saved successfully.');
-
-        return redirect()->route('platform.images');
+        // Save the new path to the DB
+        $image->image = "/storage/{$folder}/{$attachment->name}.{$attachment->extension}";
     }
+}
+
+    $image->blog_id = $imageData['blog_id'] ?? null;
+    $image->produit_id = $imageData['produit_id'] ?? null;
+
+    $image->save();
+
+    Toast::info('Image uploaded successfully.');
+    return redirect()->route('platform.images');
+}
 
     /**
      * Remove the image.
@@ -213,4 +191,5 @@ class ImageEditScreen extends Screen
 
         return redirect()->route('platform.images');
     }
+
 }

@@ -120,6 +120,12 @@ Route::screen('images/create', ImageEditScreen::class)
         ->parent('platform.images')
         ->push('Create Image'));
 
+Route::screen('images/delete', ImageEditScreen::class)
+    ->name('platform.images.delete')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.images')
+        ->push('Delete Image'));
+
 Route::screen('images/{image}/edit', ImageEditScreen::class)
     ->name('platform.images.edit')
     ->breadcrumbs(fn (Trail $trail, $image) =>
