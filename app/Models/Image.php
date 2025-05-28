@@ -17,7 +17,7 @@ use Orchid\Attachment\Models\Attachment;
 
 class Image extends Model
 {
-    use HasFactory, AsSource, Filterable, Attachable;
+    use HasFactory, AsSource, Filterable, Attachable,HasFactory;
 
     protected $fillable = [
         'image',
