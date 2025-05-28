@@ -234,10 +234,7 @@
 
                 <div class="swiper-wrapper">
                     @foreach ($produits as $produit)
-                        @php
-                            $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()->image;
-
-                        @endphp
+                       
                         <div class="swiper-slide">
                             <div class="shop-box-items style-2">
                                 <div class="book-thumb center">

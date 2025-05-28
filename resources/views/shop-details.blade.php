@@ -265,50 +265,56 @@
           <div class="swiper book-slider">
              <div class="swiper-wrapper">
                 @foreach($produits as $produit)
-                @php
-                    $imagePath = App\Models\Image::where('produit_id', $produit->id)->first()->image;
+            
+               <div class="swiper-slide">
+                            <div class="shop-box-items style-2">
+                                <div class="book-thumb center">
+                                    <a href="{{ route('shop-details', $produit->id) }}">
+                                        <img src="{{ asset($produit->images->first()->image) }}" alt="img">
+                                    </a>
+                                    <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                        <li>
+                                            <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('shop-details', $produit->id) }}"><i
+                                                    class="far fa-eye"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="shop-content">
+                                    <h5> {{ $produit->designation }}</h5>
+                                    <h3><a href="{{ route('shop-details', $produit->id) }}">{{ $produit->designation }}</a></h3>
+                                    <ul class="price-list">
+                                        <li>{{ $produit->prix_ht }}</li>
+                                    </ul>
+                                    <ul class="author-post">
+                                        <li class="authot-list">
+                                            <span class="thumb">
+                                            </span>
+                                            <span class="content">{{ $produit->auteur->nom }}</span>
+                                        </li>
+                                        <li class="star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="shop-button">
+                                    <form  action="{{ route('add-to-cart',$produit->id) }}" method="POST" class="d-flex align-items-center gap-3 flex-wrap mb-0">
+                                        @csrf
+                                        @method('POST')
+                                         <button class="theme-btn"><i
+                                            class="fa-solid fa-basket-shopping"></i>
+                                        Ajouter au panier</button>
+                                    </form>
 
-                @endphp
-                <div class="swiper-slide">
-                    <div class="shop-box-items style-2">
-                       <div class="book-thumb center">
-                          <a href="shop-details"><img src="{{ $imagePath }}" alt="img"></a>
-                          <ul class="shop-icon d-grid justify-content-center align-items-center">
-                             <li>
-                                <a href="shop-cart.html"><i class="far fa-heart"></i></a>
-                             </li>
-                             <li>
-                                <a href="{{route('shop-details',$produit->id)}}"><i class="far fa-eye"></i></a>
-                             </li>
-                          </ul>
-                       </div>
-                       <div class="shop-content">
-                          <h5> {{$produit->designation}}</h5>
-                          <h3><a href="shop-details.html">{{$produit->designation}}</a></h3>
-                          <ul class="price-list">
-                             <li>{{$produit->prix_ht}}</li>
-                          </ul>
-                          <ul class="author-post">
-                             <li class="authot-list">
-                                <span class="thumb">
-                                </span>
-                                <span class="content">{{$produit->auteur->nom}}</span>
-                             </li>
-                             <li class="star">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                             </li>
-                          </ul>
-                       </div>
-                       <div class="shop-button">
-                          <a href="shop-details.html" class="theme-btn"><i class="fa-solid fa-basket-shopping"></i>
-                             Ajouter au panier</a>
-                       </div>
-                    </div>
-                </div>
+                                </div>
+                            </div>
+                        </div>
                 @endforeach
              </div>
           </div>
