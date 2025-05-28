@@ -45,10 +45,10 @@ class PlatformProvider extends OrchidServiceProvider
             //     ->title('Navigation')
             //     ->route(config('platform.index')),
 
-            // Menu::make('Sample Screen')
-            //     ->icon('bs.collection')
-            //     ->route('platform.example')
-            //     ->badge(fn () => 6),
+            Menu::make('Dashboard')
+                ->icon('bs.speedometer')
+                ->route('platform.example'),
+                // ->badge(fn () => 6),
 
             // Menu::make('Form Elements')
             //     ->icon('bs.card-list')
@@ -98,7 +98,7 @@ class PlatformProvider extends OrchidServiceProvider
 
              // Add your Images menu item here
             Menu::make('Images')
-                ->icon('bs.image')
+                ->icon('bs.images')
                 ->route('platform.images'),
                 // ->permission('platform.images')
 

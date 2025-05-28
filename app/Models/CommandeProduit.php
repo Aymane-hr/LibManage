@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CommandeProduit extends Model
 {
-    //
+    public function commande()
+    {
+        return $this->belongsTo(Commande::class);
+    }
+
 }
