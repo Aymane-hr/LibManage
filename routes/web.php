@@ -10,29 +10,51 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+// Home page route
 Route::get('/', [HomeController::class, 'index']);
+
+// Shop routes
 Route::get('/shop', function () {
     return view('shop');
 })->name('shop');
-Route::get('/shop-default', [ProduitController::class, 'index2'])->name('shop-default');
-Route::get('/shop-default/{id_categorie}', [ProduitController::class, 'indexRcherche'])->name('shop-default-filter');
-Route::post('/shop-default', [ProduitController::class, 'search'])->name('shop-default-search');
-Route::get('/shop-details/{id}', [ProduitController::class, 'index'])->name('shop-details');
-Route::post('/shop-details/{id}', [ProduitController::class, 'store'])->name('shop-details.store');
-    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
-Route::middleware('auth')->group(function () {
-    Route::get('/shop-cart', [CartController::class, 'index'])->name('shop-cart');
-    Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add-to-cart');
-    Route::delete('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
-    Route::post('/clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
 
+// Shop with default listing
+Route::get('/shop-default', [ProduitController::class, 'index2'])->name('shop-default');
+
+// Shop filtered by category
+Route::get('/shop-default/{id_categorie}', [ProduitController::class, 'indexRcherche'])->name('shop-default-filter');
+
+// Shop search
+Route::post('/shop-default', [ProduitController::class, 'search'])->name('shop-default-search');
+
+// Product details
+Route::get('/shop-details/{id}', [ProduitController::class, 'index'])->name('shop-details');
+
+// Add product (e.g., to cart or wishlist) from details page
+Route::post('/shop-details/{id}', [ProduitController::class, 'store'])->name('shop-details.store');
+
+// View cart (public)
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
+
+// Cart operations (protected by auth middleware)
+Route::middleware('auth')->group(function () {
+    // View authenticated user's cart
+    Route::get('/shop-cart', [CartController::class, 'index'])->name('shop-cart');
+    // Add item to cart
+    Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add-to-cart');
+    // Remove item from cart
+    Route::delete('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
+    // Clear cart
+    Route::post('/clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
 });
+
+// Checkout page
 Route::get('/checkout', function () {
     return view('checkout');
 })->name('checkout');
-Route::get('/blog-details/{id}', function ($id) {
 
+// Blog details page
+Route::get('/blog-details/{id}', function ($id) {
     $blog = Blog::find($id);
     if (!$blog) {
         abort(404);
@@ -42,18 +64,24 @@ Route::get('/blog-details/{id}', function ($id) {
     $images = $blog->images;
     return view('blog-details', compact('titre', 'description', 'images'));
 })->name('blog-details');
+
+// Blog listing page
 Route::get('/blog', function () {
     return view('blog');
 })->name('blog');
 
+// Favoris (favorites) operations (protected by auth middleware)
 Route::middleware('auth')->group(function () {
+    // Save product to favorites
     Route::post('/save-favori/{id}', [ProduitController::class, 'save'])->name('save-favori');
+    // Show user's favorites
     Route::get('/favoris', [ProduitController::class, 'showFavoris'])->name('favoris');
+    // Delete favorite
     Route::delete('/favoris/{id}', [ProduitController::class, 'deleteFavori'])->name('favoris.delete');
 });
 
+// Authentication routes (login, register, etc.)
 Auth::routes();
 
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Home route (after login)
+Route::get('/home', [HomeController::class, 'index'])->name('home');

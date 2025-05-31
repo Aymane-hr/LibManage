@@ -3,7 +3,7 @@
 @section('content')
 <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
     <div class="card shadow border-0 p-4" style="max-width: 400px; width: 100%;">
-     
+
         <div class="text-center mb-4">
             <p class="text-muted mb-0">Connectez-vous à votre compte</p>
         </div>
@@ -30,9 +30,9 @@
                     <input type="checkbox" class="form-check-input" name="remember" id="saveForNext" {{ old('remember') ? 'checked' : '' }}>
                     <label class="form-check-label" for="saveForNext">Se souvenir de moi</label>
                 </div>
-                @if (Route::has('password.request'))
+                {{-- @if (Route::has('password.request'))
                     <a href="{{ route('password.request') }}" class="small">Mot de passe oublié ?</a>
-                @endif
+                @endif --}}
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary w-100">Se connecter</button>
