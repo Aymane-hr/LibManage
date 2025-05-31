@@ -79,14 +79,35 @@
                                 </form>
                             </div> --}}
                             <div class="menu-cart">
-                                <a href="wishlist.html" class="cart-icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <a href="{{route('shop-cart')}}" class="cart-icon">
-                                    <i class="fa-regular fa-cart-shopping"></i>
-                                    <span class="cart-count" id="cart-count1"></span>
-                                    <script>
-                                       document.addEventListener('DOMContentLoaded', function () {
+                                @auth
+                                    <a href="wishlist.html" class="cart-icon">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </a>
+                                    <a href="{{ route('shop-cart') }}" class="cart-icon">
+                                        <i class="fa-regular fa-cart-shopping"></i>
+                                        <span class="cart-count" id="cart-count"></span>
+                                    </a>
+                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-danger" style="margin-left: 10px; border-radius: 20px; padding: 6px 18px; font-size: 15px;">
+                                            <i class="fa-solid fa-right-from-bracket"></i> Déconnexion
+                                        </button>
+                                    </form>
+                                @endauth
+                                {{-- <div class="header-humbager ml-30">
+                                    <a class="sidebar__toggle" href="javascript:void(0)">
+                                        <div class="bar-icon-2">
+                                            <img src="assets/img/icon/icon-13.svg" alt="img">
+                                        </div>
+                                    </a>
+                                </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
                                             fetch('/cart')
                                                 .then(response => response.json())
                                                 .then(data => {
@@ -103,19 +124,6 @@
                                                 .catch(error => console.error('Erreur lors de la récupération du panier :', error));
                                         });
                                     </script>
-                                </a>
-                                {{-- <div class="header-humbager ml-30">
-                                    <a class="sidebar__toggle" href="javascript:void(0)">
-                                        <div class="bar-icon-2">
-                                            <img src="assets/img/icon/icon-13.svg" alt="img">
-                                        </div>
-                                    </a>
-                                </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
         </div>
@@ -161,9 +169,11 @@
                                                     Blog
                                                 </a>
                                             </li>
-                                            <li>
-                                                <a href="login.html">Connexion</a>
-                                            </li>
+                                            @guest
+                                                <li class="has-dropdown">
+                                                    <a href="{{ route('login') }}">Connexion</a>
+                                                </li>
+                                            @endguest
                                         </ul>
                                     </nav>
                                 </div>
@@ -203,31 +213,22 @@
                                 </form>
                             </div> --}}
                             <div class="menu-cart">
-                                <a href="wishlist.html" class="cart-icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <a href="{{route('shop-cart')}}" class="cart-icon">
-                                    <i class="fa-regular fa-cart-shopping"></i>
-                                    <span class="cart-count" id="cart-count"></span>
-                                    <script>
-                                        document.addEventListener('DOMContentLoaded', function () {
-                                            fetch('/cart')
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    let count = 0;
-                                                    for (const item of Object.values(data)) {
-                                                        if (item.quantity) {
-                                                            count += 1;
-                                                        }
-                                                    }
-                                                    console.log('count :', count);
-                                                    const cartCountElement = document.getElementById('cart-count');
-                                                    cartCountElement.textContent = count || 0;
-                                                })
-                                                .catch(error => console.error('Erreur lors de la récupération du panier :', error));
-                                        });
-                                    </script>
-                                </a>
+                                @auth
+                                    <a href="wishlist.html" class="cart-icon">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </a>
+                                    <a href="{{ route('shop-cart') }}" class="cart-icon">
+                                        <i class="fa-regular fa-cart-shopping"></i>
+                                        <span class="cart-count" id="cart-count"></span>
+                                    </a>
+                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-danger" style="margin-left: 10px; border-radius: 20px; padding: 6px 18px; font-size: 15px;">
+                                            <i class="fa-solid fa-right-from-bracket"></i> Déconnexion
+                                        </button>
+                                    </form>
+                                @endauth
+
                                 {{-- <div class="header-humbager ml-30">
                                     <a class="sidebar__toggle" href="javascript:void(0)">
                                         <div class="bar-icon-2">
@@ -236,6 +237,24 @@
                                     </a>
                                 </div> --}}
                             </div>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    fetch('/cart')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            let count = 0;
+                                            for (const item of Object.values(data)) {
+                                                if (item.quantity) {
+                                                    count += 1;
+                                                }
+                                            }
+                                            console.log('count :', count);
+                                            const cartCountElement = document.getElementById('cart-count');
+                                            cartCountElement.textContent = count || 0;
+                                        })
+                                        .catch(error => console.error('Erreur lors de la récupération du panier :', error));
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
