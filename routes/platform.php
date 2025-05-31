@@ -40,7 +40,7 @@ use App\Orchid\Screens\Examples\ExampleFieldsAdvancedScreen;
 // Route::screen('/main', PlatformScreen::class)
 //     ->name('platform.main');
 
-Route::redirect('/main', '/admin/crud/list/' . ProduitResource::uriKey())
+Route::redirect('/main', '/admin/dashboard')
     ->name('platform.main');
 
 // Platform > Profile
@@ -93,11 +93,11 @@ Route::screen('roles', RoleListScreen::class)
         ->push(__('Roles'), route('platform.systems.roles')));
 
 // Example...
-Route::screen('example', ExampleScreen::class)
+Route::screen('dashboard', ExampleScreen::class)
     ->name('platform.example')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
-        ->push('Example Screen'));
+        ->push('Tableau de bord'));
 
 Route::screen('/examples/form/fields', ExampleFieldsScreen::class)->name('platform.example.fields');
 Route::screen('/examples/form/advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
