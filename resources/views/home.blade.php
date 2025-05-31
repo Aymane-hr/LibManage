@@ -75,10 +75,12 @@
                     <div class="identityBox">
                         <div class="form-wrapper">
                             <h1 id="registrationModalLabel">Créer un compte !</h1>
-                            <input class="inputField" type="text" name="name" id="name" placeholder="Nom d'utilisateur">
+                            <input class="inputField" type="text" name="name" id="name"
+                                placeholder="Nom d'utilisateur">
                             <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
                             <input class="inputField" type="password" name="password" placeholder="Mot de passe">
-                            <input class="inputField" type="password" name="password" placeholder="Confirmer le mot de passe">
+                            <input class="inputField" type="password" name="password"
+                                placeholder="Confirmer le mot de passe">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next" id="rememberMe">
@@ -156,7 +158,8 @@
                         </div>
                         <div class="hero-content">
                             <h6 class="wow fadeInUp" data-wow-delay=".3s">Jusqu'à 30% de réduction</h6>
-                            <h1 class="wow fadeInUp" data-wow-delay=".5s">Obtenez votre nouveau livre <br> au meilleur prix
+                            <h1 class="wow fadeInUp" data-wow-delay=".5s">Obtenez votre nouveau livre <br> au meilleur
+                                prix
                             </h1>
                             <div class="form-clt wow fadeInUp" data-wow-delay=".9s">
                                 <button type="submit" class="theme-btn">
@@ -234,7 +237,6 @@
 
                 <div class="swiper-wrapper">
                     @foreach ($produits as $produit)
-                       
                         <div class="swiper-slide">
                             <div class="shop-box-items style-2">
                                 <div class="book-thumb center">
@@ -253,7 +255,8 @@
                                 </div>
                                 <div class="shop-content">
                                     <h5> {{ $produit->designation }}</h5>
-                                    <h3><a href="{{ route('shop-details', $produit->id) }}">{{ $produit->designation }}</a></h3>
+                                    <h3><a href="{{ route('shop-details', $produit->id) }}">{{ $produit->designation }}</a>
+                                    </h3>
                                     <ul class="price-list">
                                         <li>{{ $produit->prix_ht }}</li>
                                     </ul>
@@ -271,16 +274,6 @@
                                             <i class="fa-regular fa-star"></i>
                                         </li>
                                     </ul>
-                                </div>
-                                <div class="shop-button">
-                                    <form  action="{{ route('add-to-cart',$produit->id) }}" method="POST" class="d-flex align-items-center gap-3 flex-wrap mb-0">
-                                        @csrf
-                                        @method('POST')
-                                         <button class="theme-btn"><i
-                                            class="fa-solid fa-basket-shopping"></i>
-                                        Ajouter au panier</button>
-                                    </form>
-
                                 </div>
                             </div>
                         </div>
@@ -307,13 +300,14 @@
                             <div class="swiper-slide">
                                 <div class="book-catagories-items">
                                     <div class="book-thumb">
-                                        <img src="{{ asset($categorie->image) }}" width="100" height="100" alt="img">
+                                        <img src="{{ asset($categorie->image) }}" width="100" height="100"
+                                            alt="img">
                                         <div class="circle-shape">
                                             <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
                                         </div>
                                     </div>
                                     <div class="number"> 01 </div>
-                                    <h3><a href="shop-details.html">{{$categorie->categorie}}</a></h3>
+                                    <h3><a href="shop-details.html">{{ $categorie->categorie }}</a></h3>
                                 </div>
                             </div>
                         @endforeach
@@ -337,7 +331,8 @@
                 </div>
                 <div class="cta-content text-center">
                     <h2 class="mb-40 wow fadeInUp" data-wow-delay=".3s"
-                        style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Obtenez 25% de réduction sur
+                        style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Obtenez 25% de
+                        réduction sur
                         tous <br> les types de super ventes</h2>
                     <a href="shop.html" class="theme-btn wow fadeInUp" data-wow-delay=".5s"
                         style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">Acheter maintenant <i
@@ -348,7 +343,7 @@
     </section>
 
     <!-- Testimonial Section start  -->
-    <section class="testimonial-section fix section-padding pt-0">
+    {{-- <section class="testimonial-section fix section-padding pt-0">
         <div class="container">
             <div class="section-title text-left">
                 <h2 class="mb-3 wow fadeInUp" data-wow-delay=".3s">Ce que disent nos clients</h2>
@@ -389,7 +384,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Team Section start  -->
     <section class="team-section fix section-padding pt-0 margin-bottom-30">
@@ -411,7 +406,8 @@
                             <div class="team-box-items">
                                 <div class="team-image">
                                     <div class="thumb">
-<img src="{{$auteur->image}}" width="100" height="100" style="border-radius: 50%; object-fit: cover;" alt="img">
+                                        <img src="{{ $auteur->image }}" width="100" height="100"
+                                            style="border-radius: 50%; object-fit: cover;" alt="img">
                                     </div>
                                     <div class="shape-img">
                                         <img src="assets/img/team/shape-img.png" alt="img">
@@ -445,7 +441,6 @@
                         <div class="news-card-items">
                             <div class="news-image">
                                 @foreach ($blog->images as $image)
-
                                     <img src="{{ $image->image }}" alt="img">
                                 @endforeach
                                 @foreach ($blog->blogsTags as $tag)

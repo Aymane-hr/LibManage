@@ -37,9 +37,11 @@
                                                     Blog
                                                 </a>
                                             </li>
-                                            <li>
-                                                <a href="login.html">Connexion</a>
-                                            </li>
+                                            @guest
+                                                <li class="has-dropdown">
+                                                    <a href="{{ route('login') }}">Connexion</a>
+                                                </li>
+                                            @endguest
                                         </ul>
                                     </nav>
                                 </div>
@@ -85,11 +87,12 @@
                                     </a>
                                     <a href="{{ route('shop-cart') }}" class="cart-icon">
                                         <i class="fa-regular fa-cart-shopping"></i>
-                                        <span class="cart-count" id="cart-count"></span>
+                                        <span class="cart-count" id="cart-count1"></span>
                                     </a>
                                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                         @csrf
-                                        <button type="submit" class="btn btn-outline-danger" style="margin-left: 10px; border-radius: 20px; padding: 6px 18px; font-size: 15px;">
+                                        <button type="submit" class="btn btn-outline-danger"
+                                            style="margin-left: 10px; border-radius: 20px; padding: 6px 18px; font-size: 15px;">
                                             <i class="fa-solid fa-right-from-bracket"></i> Déconnexion
                                         </button>
                                     </form>
@@ -106,24 +109,24 @@
                     </div>
                 </div>
             </div>
-              <script>
-                                        document.addEventListener('DOMContentLoaded', function() {
-                                            fetch('/cart')
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    let count = 0;
-                                                    for (const item of Object.values(data)) {
-                                                        if (item.quantity) {
-                                                            count += 1;
-                                                        }
-                                                    }
-                                                    console.log('count :', count);
-                                                    const cartCountElement = document.getElementById('cart-count1');
-                                                    cartCountElement.textContent = count || 0;
-                                                })
-                                                .catch(error => console.error('Erreur lors de la récupération du panier :', error));
-                                        });
-                                    </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    fetch('/cart')
+                        .then(response => response.json())
+                        .then(data => {
+                            let count = 0;
+                            for (const item of Object.values(data)) {
+                                if (item.quantity) {
+                                    count += 1;
+                                }
+                            }
+                            console.log('count :', count);
+                            const cartCountElement = document.getElementById('cart-count1');
+                            cartCountElement.textContent = count || 0;
+                        })
+                        .catch(error => console.error('Erreur lors de la récupération du panier :', error));
+                });
+            </script>
 
 
         </div>
@@ -223,7 +226,8 @@
                                     </a>
                                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                         @csrf
-                                        <button type="submit" class="btn btn-outline-danger" style="margin-left: 10px; border-radius: 20px; padding: 6px 18px; font-size: 15px;">
+                                        <button type="submit" class="btn btn-outline-danger"
+                                            style="margin-left: 10px; border-radius: 20px; padding: 6px 18px; font-size: 15px;">
                                             <i class="fa-solid fa-right-from-bracket"></i> Déconnexion
                                         </button>
                                     </form>

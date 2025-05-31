@@ -20,7 +20,7 @@ class HomeController extends Controller
         $categoris=Categorie::all();
         $commentaires=Commentaire::all();
         $auteurs = Auteur::all();
-        $blogs = Blog::all();
+        $blogs = Blog::latest()->take(4)->get();
         return view('home', compact('produits','categoris','commentaires','auteurs','blogs'));
     }
 

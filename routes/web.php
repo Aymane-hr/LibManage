@@ -20,12 +20,13 @@ Route::get('/shop-default/{id_categorie}', [ProduitController::class, 'indexRche
 Route::post('/shop-default', [ProduitController::class, 'search'])->name('shop-default-search');
 Route::get('/shop-details/{id}', [ProduitController::class, 'index'])->name('shop-details');
 Route::post('/shop-details/{id}', [ProduitController::class, 'store'])->name('shop-details.store');
+    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
 Route::middleware('auth')->group(function () {
     Route::get('/shop-cart', [CartController::class, 'index'])->name('shop-cart');
     Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add-to-cart');
     Route::delete('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
     Route::post('/clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
-    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
+
 });
 Route::get('/checkout', function () {
     return view('checkout');
