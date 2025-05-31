@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -8,8 +9,8 @@ use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/login',[AuthController::class,'index'])->name('login');
-Route::post('/register',[AuthController::class,'index2'])->name('register');
+// Route::get('/login',[AuthController::class,'index'])->name('login');
+// Route::post('/register',[AuthController::class,'index2'])->name('register');
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/shop', function () {
@@ -47,3 +48,17 @@ Route::get('/blog', function () {
 Route::post('/save-favori/{id}', [ProduitController::class, 'save'])->name('save-favori');
 Route::get('/favoris', [ProduitController::class, 'showFavoris'])->name('favoris');
 Route::delete('/favoris/{id}', [ProduitController::class, 'deleteFavori'])->name('favoris.delete');
+
+Auth::routes();
+
+// // In routes/web.php
+// Route::middleware('guest')->group(function () {
+//     Route::get('/login', [LoginController::class, 'showLoginForm']);
+//     Route::post('/login', [LoginController::class, 'login']);
+// });
+
+// Route::middleware('auth')->group(function () {
+//     Route::post('/logout', [LoginController::class, 'logout']);
+// });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
