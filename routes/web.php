@@ -9,36 +9,37 @@ use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::get('/login',[AuthController::class,'index'])->name('login');
-// Route::post('/register',[AuthController::class,'index2'])->name('register');
+
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/shop', function () {
     return view('shop');
 })->name('shop');
-Route::get('/shop-cart', [CartController::class,'index'])->name('shop-cart');
-Route::get('/shop-default',[ProduitController::class,'index2'])->name('shop-default');
+Route::get('/shop-default', [ProduitController::class, 'index2'])->name('shop-default');
 Route::get('/shop-default/{id_categorie}', [ProduitController::class, 'indexRcherche'])->name('shop-default-filter');
 Route::post('/shop-default', [ProduitController::class, 'search'])->name('shop-default-search');
-Route::get('/shop-details/{id}', [ProduitController::class,'index'])->name('shop-details');
-Route::post('/shop-details/{id}', [ProduitController::class,'store'])->name('shop-details.store');
-Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add-to-cart');
-Route::delete('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
-Route::post('/clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
-Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
+Route::get('/shop-details/{id}', [ProduitController::class, 'index'])->name('shop-details');
+Route::post('/shop-details/{id}', [ProduitController::class, 'store'])->name('shop-details.store');
+Route::middleware('auth')->group(function () {
+    Route::get('/shop-cart', [CartController::class, 'index'])->name('shop-cart');
+    Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add-to-cart');
+    Route::delete('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
+    Route::post('/clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
+    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
+});
 Route::get('/checkout', function () {
     return view('checkout');
 })->name('checkout');
 Route::get('/blog-details/{id}', function ($id) {
 
-    $blog=Blog::find($id);
+    $blog = Blog::find($id);
     if (!$blog) {
         abort(404);
     }
     $titre = $blog->titre;
     $description = $blog->contenu;
-    $images=$blog->images;
-    return view('blog-details',compact('titre', 'description','images'));
+    $images = $blog->images;
+    return view('blog-details', compact('titre', 'description', 'images'));
 })->name('blog-details');
 Route::get('/blog', function () {
     return view('blog');
@@ -52,14 +53,6 @@ Route::middleware('auth')->group(function () {
 
 Auth::routes();
 
-// // In routes/web.php
-// Route::middleware('guest')->group(function () {
-//     Route::get('/login', [LoginController::class, 'showLoginForm']);
-//     Route::post('/login', [LoginController::class, 'login']);
-// });
 
-// Route::middleware('auth')->group(function () {
-//     Route::post('/logout', [LoginController::class, 'logout']);
-// });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

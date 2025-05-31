@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         $tags = Tag::factory(10)->create();
 
         // Blogs with tags and images
-        Blog::factory(10)->create()->each(function ($blog) use ($tags) {
-            $blog->tags()->attach($tags->random(rand(1, 3))->pluck('id'));
-            Image::factory()->create(['blog_id' => $blog->id]);
-        });
+        // Blog::factory(10)->create()->each(function ($blog) use ($tags) {
+        //     $blog->tags()->attach($tags->random(rand(1, 3))->pluck('id'));
+        //     Image::factory()->create(['blog_id' => $blog->id]);
+        // });
 
         // Produits with authors, categories, and images
         $produits = Produit::factory(20)->make()->each(function ($produit) use ($auteurs, $categories) {
@@ -45,10 +45,10 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $user->id,
                     'produit_id' => $produit->id,
                 ]);
-                Avi::factory()->create([
-                    'user_id' => $user->id,
-                    'produit_id' => $produit->id,
-                ]);
+                // Avi::factory()->create([
+                //     'user_id' => $user->id,
+                //     'produit_id' => $produit->id,
+                // ]);
                 Favori::factory()->create([
                     'user_id' => $user->id,
                     'produit_id' => $produit->id,
