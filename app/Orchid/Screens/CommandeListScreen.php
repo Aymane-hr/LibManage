@@ -31,7 +31,7 @@ class CommandeListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'CommandeListScreen';
+        return 'Commandes';
     }
 
     /**
