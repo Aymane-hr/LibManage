@@ -34,7 +34,7 @@ class ProduitController extends Controller
 
     public function index2()
     {
-        $produits = Produit::paginate(12);
+        $produits = Produit::paginate(20);
         $categorys = Categorie::all();
 
         return view('shop-default', compact('produits','categorys'));
@@ -44,7 +44,7 @@ class ProduitController extends Controller
      public function indexRcherche($id_categorie = null, $search = null)
     {
 
-        $produits = Produit::where('categorie_id',$id_categorie)->paginate(12);
+        $produits = Produit::where('categorie_id',$id_categorie)->paginate(20);
         $categorys = Categorie::all();
 
         return view('shop-default', compact('produits','categorys','id_categorie','search'));
@@ -54,7 +54,7 @@ class ProduitController extends Controller
     {
 
         $search = $request->input('search');
-        $produits = Produit::where('designation','like',$search)->paginate(12);
+        $produits = Produit::where('designation','like',$search)->paginate(20);
         $categorys = Categorie::all();
         return view('shop-default', compact('produits','categorys','search'));
     }
@@ -68,7 +68,7 @@ class ProduitController extends Controller
             ]);
 
             foreach($request->produits as $produit) {
-               
+
                 $produitModel = Produit::find($produit['id']);
                 if ($produitModel) {
                     CommandeProduit::create([
