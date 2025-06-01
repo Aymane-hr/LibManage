@@ -144,4 +144,8 @@ class BlogResource extends Resource
     {
         return false;
     }
+    public static function permission(): ?string
+    {
+        return 'platform.blogs.view';
+    }
 }

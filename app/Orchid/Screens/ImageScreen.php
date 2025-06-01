@@ -125,4 +125,14 @@ class ImageScreen extends Screen
             ]),
         ];
     }
+
+    /**
+     * The permissions required to access this screen.
+     */
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.images.view'
+        ];
+    }
 }

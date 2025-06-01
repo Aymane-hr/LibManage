@@ -207,4 +207,14 @@ class ExampleScreen extends Screen
     {
         Toast::warning($request->get('toast', 'Hello, world! This is a toast message.'));
     }
+
+    /**
+     * The permissions required to access this screen.
+     */
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.dashboard'
+        ];
+    }
 }

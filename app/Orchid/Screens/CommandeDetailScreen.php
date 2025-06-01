@@ -84,5 +84,15 @@ class CommandeDetailScreen extends Screen
 
         return redirect()->route('platform.commande.list');
     }
+
+    /**
+     * The permissions required to access this screen.
+     */
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.commande-produit.view'
+        ];
+    }
 }
 

@@ -124,4 +124,8 @@ class ReglementResource extends Resource
     {
         return false;
     }
+    public static function permission(): ?string
+    {
+        return 'platform.reglements.view';
+    }
 }

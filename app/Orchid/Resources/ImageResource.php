@@ -348,4 +348,8 @@ class ImageResource extends Resource
     }
 
 
+    public static function permission(): ?string
+    {
+        return 'platform.images.view';
+    }
 }

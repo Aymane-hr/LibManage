@@ -213,4 +213,8 @@ class ProduitResource extends Resource
         return false;
     }
 
+    public static function permission(): ?string
+    {
+        return 'platform.produits.view';
+    }
 }

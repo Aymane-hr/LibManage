@@ -173,4 +173,8 @@ class TagResource extends Resource
     {
         return false;
     }
+    public static function permission(): ?string
+    {
+        return 'platform.tags.view';
+    }
 }

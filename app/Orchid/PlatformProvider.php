@@ -47,8 +47,9 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make('Dashboard')
                 ->icon('bs.speedometer')
-                ->route('platform.example'),
-                // ->badge(fn () => 6),
+                ->route('platform.example')
+                ->permission('platform.dashboard'),
+            // ->badge(fn () => 6),
 
             // Menu::make('Form Elements')
             //     ->icon('bs.card-list')
@@ -73,38 +74,45 @@ class PlatformProvider extends OrchidServiceProvider
             //     ->divider(),
 
             Menu::make('Commmandes') // Resource manually added
-            ->icon('bs.cart-check')
-            ->route('platform.commande.list'),
+                ->icon('bs.cart-check')
+                ->route('platform.commande.list')
+                ->permission('platform.commande.view'),
 
             Menu::make('Produits') // Resource manually added
-            ->icon('bs.box-seam')
-            ->route('platform.resource.list', ['resource' => ProduitResource::uriKey()]),
+                ->icon('bs.box-seam')
+                ->route('platform.resource.list', ['resource' => ProduitResource::uriKey()])
+                ->permission('platform.produits.view'),
 
             Menu::make('Auteurs') // Resource manually added
-            ->icon('bs.person-lines-fill')
-            ->route('platform.resource.list', ['resource' => AuteurResource::uriKey()]),
+                ->icon('bs.person-lines-fill')
+                ->route('platform.resource.list', ['resource' => AuteurResource::uriKey()])
+                ->permission('platform.auteurs.view'),
 
             Menu::make('Blogs') // Resource manually added
-            ->icon('bs.file-text')
-            ->route('platform.resource.list', ['resource' => BlogResource::uriKey()]),
+                ->icon('bs.file-text')
+                ->route('platform.resource.list', ['resource' => BlogResource::uriKey()])
+                ->permission('platform.blogs.view'),
 
             Menu::make('Categories') // Resource manually added
-            ->icon('bs.tags')
-            ->route('platform.resource.list', ['resource' => CategorieResource::uriKey()]),
+                ->icon('bs.tags')
+                ->route('platform.resource.list', ['resource' => CategorieResource::uriKey()])
+                ->permission('platform.categories.view'),
 
             Menu::make('Reglements') // Resource manually added
-            ->icon('bs.credit-card-2-front')
-            ->route('platform.resource.list', ['resource' => ReglementResource::uriKey()]),
+                ->icon('bs.credit-card-2-front')
+                ->route('platform.resource.list', ['resource' => ReglementResource::uriKey()])
+                ->permission('platform.reglements.view'),
 
             Menu::make('Tags') // Resource manually added
-            ->icon('bs.tag')
-            ->route('platform.resource.list', ['resource' => TagResource::uriKey()]),
+                ->icon('bs.tag')
+                ->route('platform.resource.list', ['resource' => TagResource::uriKey()])
+                ->permission('platform.tags.view'),
 
-             // Add your Images menu item here
+            // Add your Images menu item here
             Menu::make('Images')
                 ->icon('bs.images')
-                ->route('platform.images'),
-                // ->permission('platform.images')
+                ->route('platform.images')
+            ->permission('platform.images.view'),
 
 
 
@@ -134,7 +142,18 @@ class PlatformProvider extends OrchidServiceProvider
         return [
             ItemPermission::group(__('System'))
                 ->addPermission('platform.systems.roles', __('Roles'))
-                ->addPermission('platform.systems.users', __('Users')),
+                ->addPermission('platform.systems.users', __('Users'))
+                ->addPermission('platform.dashboard', __('Dashboard'))
+                ->addPermission('platform.auteurs.view', 'auteurs')
+                ->addPermission('platform.blogs.view', 'blogs')
+                ->addPermission('platform.tags.view', 'tags')
+                ->addPermission('platform.categories.view', 'catégories')
+                ->addPermission('platform.commandes.view', 'commandes')
+                ->addPermission('platform.produits.view', 'produits')
+                ->addPermission('platform.images.view', 'images')
+                ->addPermission('platform.reglements.view', 'reglements')
+                ->addPermission('platform.commande.view', 'commandes')
+                ->addPermission('platform.commande-produit.view', 'commande produit')
         ];
     }
 }

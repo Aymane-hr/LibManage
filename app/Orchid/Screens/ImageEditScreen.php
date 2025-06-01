@@ -192,4 +192,14 @@ class ImageEditScreen extends Screen
         return redirect()->route('platform.images');
     }
 
+    /**
+     * The permissions required to access this screen.
+     */
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.images.view'
+        ];
+    }
+
 }

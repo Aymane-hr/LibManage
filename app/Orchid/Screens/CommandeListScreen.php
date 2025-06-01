@@ -61,4 +61,14 @@ class CommandeListScreen extends Screen
             ])
         ];
     }
+
+    /**
+     * The permissions required to access this screen.
+     */
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.commande.view'
+        ];
+    }
 }

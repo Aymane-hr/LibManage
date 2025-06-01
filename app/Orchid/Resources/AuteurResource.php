@@ -94,12 +94,12 @@ class AuteurResource extends Resource
             Sight::make('id'),
             Sight::make('nom'),
             Sight::make('image')
-            ->render(function ($model) {
-                if ($model->image) {
-                    return "<img src='{$model->image}' alt='Image' style='max-width: 150px; max-height: 150px; object-fit: contain;' />";
-                }
-                return '--';
-            }),
+                ->render(function ($model) {
+                    if ($model->image) {
+                        return "<img src='{$model->image}' alt='Image' style='max-width: 150px; max-height: 150px; object-fit: contain;' />";
+                    }
+                    return '--';
+                }),
 
         ];
     }
@@ -202,6 +202,15 @@ class AuteurResource extends Resource
 
         // Redirect back to your resource list page or wherever you want
         return redirect()->route('platform.resource.list', ['resource' => static::uriKey()]);
+    }
+    /**
+     * Get the permission key for the resource.
+     *
+     * @return string|null
+     */
+    public static function permission(): ?string
+    {
+        return 'platform.auteurs.view';
     }
 
 }

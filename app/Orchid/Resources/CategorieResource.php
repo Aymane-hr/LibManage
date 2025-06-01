@@ -181,4 +181,8 @@ class CategorieResource extends Resource
         return redirect()->route('platform.resource.list', ['resource' => static::uriKey()]);
     }
 
+    public static function permission(): ?string
+    {
+        return 'platform.categories.view';
+    }
 }
