@@ -74,10 +74,12 @@
                     <div class="identityBox">
                         <div class="form-wrapper">
                             <h1 id="registrationModalLabel">Créer un compte !</h1>
-                            <input class="inputField" type="text" name="name" id="name" placeholder="Nom d'utilisateur">
+                            <input class="inputField" type="text" name="name" id="name"
+                                placeholder="Nom d'utilisateur">
                             <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
                             <input class="inputField" type="password" name="password" placeholder="Mot de passe">
-                            <input class="inputField" type="password" name="password" placeholder="Confirmer le mot de passe">
+                            <input class="inputField" type="password" name="password"
+                                placeholder="Confirmer le mot de passe">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next" id="rememberMe">
@@ -221,7 +223,20 @@
                                                             src="{{ $imagePath }}" alt="img"></a>
                                                     <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                         <li>
-                                                            <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                                            <form action="{{ route('save-favori', $produit->id) }}"
+                                                                method="POST" style="display:inline;">
+                                                                @csrf
+                                                                @method('POST')
+
+                                                                <button type="submit" class="icon"
+                                                                    style="background: none; border: none; padding: 0;">
+                                                                    @if ($produit->ifHaveFavori())
+                                                                        <i class="fas fa-heart" style="color: red;"></i>
+                                                                    @else
+                                                                        <i class="far fa-heart"></i>
+                                                                    @endif
+                                                                </button>
+                                                            </form>
                                                         </li>
                                                         <li>
                                                             <a href="{{ route('shop-details', $produit->id) }}"><i
@@ -241,11 +256,13 @@
                                                         </li>
                                                     </ul>
                                                     <div class="shop-button">
-                                                        <form action="{{ route('add-to-cart',$produit->id) }}" method="POST"
+                                                        <form action="{{ route('add-to-cart', $produit->id) }}"
+                                                            method="POST"
                                                             class="d-flex align-items-center gap-3 flex-wrap mb-0">
                                                             @csrf
                                                             @method('POST')
-                                                            <button type="submit" href="{{ route('shop-details', $produit->id) }}"
+                                                            <button type="submit"
+                                                                href="{{ route('shop-details', $produit->id) }}"
                                                                 class="theme-btn"><i
                                                                     class="fa-solid fa-basket-shopping"></i>
                                                                 Ajouter au panier</button>

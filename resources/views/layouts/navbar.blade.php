@@ -82,7 +82,7 @@
                             </div> --}}
                             <div class="menu-cart">
                                 @auth
-                                    <a href="wishlist.html" class="cart-icon">
+                                    <a href="{{route('favoris')}}" class="cart-icon">
                                         <i class="fa-regular fa-heart"></i>
                                         <span class="cart-count" id="favoris-count1"></span>
                                     </a>
@@ -201,7 +201,7 @@
                             </div> --}}
                             <div class="menu-cart">
                                 @auth
-                                    <a href="wishlist.html" class="cart-icon">
+                                    <a href="{{route('favoris')}}" class="cart-icon">
                                         <i class="fa-regular fa-heart"></i>
                                         <span class="cart-count" id="favoris-count"></span>
                                     </a>

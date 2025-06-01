@@ -114,9 +114,9 @@ class ProduitController extends Controller
        $favori = Favori::where('produit_id', $id)->where('user_id', auth()->user()->id)->first();
        if ($favori) {
            $favori->delete();
-           return back()->with('success', 'Produit supprimé des favoris');
+           return response()->json(['success' => true, 'message' => 'Produit supprimé des favoris']);
        }
-       return back()->with('error', 'Produit non trouvé dans les favoris');
+    return response()->json(['success' => false, 'message' => 'Produit non trouvé dans les favoris'], 404);
    }
    public function showFavoris()
    {
