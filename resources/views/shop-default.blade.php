@@ -262,7 +262,7 @@
 
                         </div>
                         <div class="page-nav-wrap text-center">
-                            {{ $produits->links() }}
+                            {{ $produits->links('pagination::bootstrap-5') }}
                         </div>
                     </div>
                 </div>

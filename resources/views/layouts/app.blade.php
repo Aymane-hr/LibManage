@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
     <!--<< Main.css >>-->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body>
@@ -69,6 +71,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--<< Main.js >>-->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoA6DQD021OlistMZ4lZpHRF0sA7MsXZV9p1FAd/4vYX0aD" crossorigin="anonymous"></script>
 </body>
 
 </html>
