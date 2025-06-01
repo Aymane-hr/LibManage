@@ -5,10 +5,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProduitController;
+use App\Models\Auteur;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
-
-
+use PharIo\Manifest\Author;
 
 // Home page route
 Route::get('/', [HomeController::class, 'index']);
@@ -76,7 +76,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/about', function () {
-    return view('about');
+    $auteurs=Auteur::all();
+    return view('about',compact('auteurs'));
 })->name('about');
 
 
