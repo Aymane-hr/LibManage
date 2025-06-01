@@ -28,7 +28,7 @@
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
-                                                <a href="about.html">
+                                                <a href="{{route('about')}}">
                                                     À propos de nous
                                                 </a>
                                             </li>
@@ -163,7 +163,7 @@
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
-                                                <a href="about.html">
+                                                <a href="{{route('about')}}">
                                                     À propos de nous
                                                 </a>
                                             </li>

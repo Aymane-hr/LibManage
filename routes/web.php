@@ -54,21 +54,9 @@ Route::get('/checkout', function () {
 })->name('checkout');
 
 // Blog details page
-Route::get('/blog-details/{id}', function ($id) {
-    $blog = Blog::find($id);
-    if (!$blog) {
-        abort(404);
-    }
-    $titre = $blog->titre;
-    $description = $blog->contenu;
-    $images = $blog->images;
-    return view('blog-details', compact('titre', 'description', 'images'));
-})->name('blog-details');
 
-// Blog listing page
-Route::get('/blog', function () {
-    return view('blog');
-})->name('blog');
+
+
 
 // Favoris (favorites) operations (protected by auth middleware)
 Route::middleware('auth')->group(function () {
@@ -85,3 +73,19 @@ Auth::routes();
 
 // Home route (after login)
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+
+
+//blogs
+
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{id}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog-details');
+
+
+
+
