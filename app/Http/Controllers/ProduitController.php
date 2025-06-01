@@ -9,6 +9,7 @@ use App\Models\Favori;
 use App\Models\Produit;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProduitController extends Controller
 {
@@ -59,6 +60,7 @@ class ProduitController extends Controller
     }
     public function store(Request $request)
     {
+        DB::beginTransaction();
         try {
             $commande=Commande::create([
                 'date' => now(),
@@ -75,8 +77,11 @@ class ProduitController extends Controller
                     ]);
                 }
             }
+            DB::commit();
+            app('App\Http\Controllers\CartController')->clearCart();
             return response()->json(['message' => 'Produit created successfully'], 201);
         } catch (\Exception $e) {
+            DB::rollBack();
             dd($e->getMessage());
             return response()->json(['error' => 'Failed to create produit'], 500);
         }

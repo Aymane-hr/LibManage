@@ -239,7 +239,7 @@
                                     })
                                     .then(response => response.json())
                                     .then(data => {
-                                        if (data.success) {
+                                        if (data.message) {
                                             Swal.fire('Succès', 'Votre commande a été passée !', 'success').then(() => {
                                                 window.location.href = data.redirect || '/';
                                             });
