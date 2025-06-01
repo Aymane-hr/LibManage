@@ -15,7 +15,7 @@ class CartController extends Controller
         $this->cart = $cart;
     }
 
-    public function addToCart(Request $request,$id)
+    public function addToCart(Request $request, $id)
     {
         $product = Produit::find($id);
         $qty = $request->input('qty', 1); // Default quantity to 1 if not provided
@@ -37,10 +37,10 @@ class CartController extends Controller
 
     public function removeFromCart($id)
     {
-        // dd($id);
-        $r=$this->cart->remove($id);
-        // dd($r);
-return response()->json(['message' => 'Item removed from cart successfully']);
+ 
+        $r = $this->cart->remove($id);
+
+        return response()->json(['message' => 'Item removed from cart successfully']);
     }
 
     public function clearCart()
@@ -54,7 +54,8 @@ return response()->json(['message' => 'Item removed from cart successfully']);
         return response()->json($this->cart->getCart());
     }
 
-    public function index(){
+    public function index()
+    {
         $cart = $this->cart->getCart();
         $total = $this->cart->total();
         return view('shop-cart', compact('cart', 'total'));
