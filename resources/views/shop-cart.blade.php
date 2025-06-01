@@ -245,7 +245,7 @@
                                                 location.reload();
                                             });
                                         } else {
-                                            Swal.fire('Erreur', data.message || 'Une erreur est survenue.', 'error');
+                                            Swal.fire('Erreur', data.error || 'Une erreur est survenue.', 'error');
                                         }
                                     })
                                     .catch(() => {

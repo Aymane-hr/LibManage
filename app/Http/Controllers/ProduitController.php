@@ -63,6 +63,9 @@ class ProduitController extends Controller
 
         DB::beginTransaction();
         try {
+            if($request->produits == null || count($request->produits) == 0) {
+                return response()->json(['error' => 'Aucun produit fourni'], 400);
+            }
             $commande=Commande::create([
                 'date' => now(),
                 'user_id' => auth()->user()->id ?? null,
