@@ -212,7 +212,7 @@
                                 </tbody>
                             </table>
                             <form id="checkout-form">
-                                <button type="submit" class="theme-btn w-100">Procéder au paiement</button>
+                                <button type="submit" class="theme-btn w-100">Commander</button>
                             </form>
                             <script>
                                 document.getElementById('checkout-form').addEventListener('submit', function(e) {
