@@ -441,6 +441,7 @@
                         <div class="news-card-items">
                             <div class="news-image">
                                 @foreach ($blog->images as $image)
+                               <p></p>
                                     <img src="{{ $image->image }}" alt="img">
                                 @endforeach
                                 @foreach ($blog->blogsTags as $tag)
