@@ -245,13 +245,18 @@
                                     </a>
                                     <ul class="shop-icon d-grid justify-content-center align-items-center">
                                         <li>
-                                            <form action="{{ route('save-favori', $produit->id) }}" method="POST"
+                                           <form action="{{ route('save-favori', $produit->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('POST')
+
                                                 <button type="submit" class="icon"
                                                     style="background: none; border: none; padding: 0;">
-                                                    <i class="far fa-heart"></i>
+                                                    @if ($produit->ifHaveFavori())
+                                                        <i class="fas fa-heart" style="color: red;"></i>
+                                                    @else
+                                                        <i class="far fa-heart"></i>
+                                                    @endif
                                                 </button>
                                             </form>
                                         </li>
@@ -350,49 +355,7 @@
         </div>
     </section>
 
-    <!-- Testimonial Section start  -->
-    {{-- <section class="testimonial-section fix section-padding pt-0">
-        <div class="container">
-            <div class="section-title text-left">
-                <h2 class="mb-3 wow fadeInUp" data-wow-delay=".3s">Ce que disent nos clients</h2>
-            </div>
-            <div class="swiper testimonial-slider">
-                <div class="swiper-wrapper">
-                    @foreach ($commentaires as $commentaire)
-                        <div class="swiper-slide">
-                            <div class="testimonial-card-items">
-                                <p>
-                                    {{ $commentaire->commentaire }}
-                                </p>
-                                <div class="client-info-wrapper d-flex align-items-center justify-content-between">
-                                    <div class="client-info">
-                                        <div class="client-img bg-cover"
-                                            style="background-image: url('assets/img/testimonial/01.jpg');">
-                                            <div class="icon">
-                                                <img class="shape" src="assets/img/testimonial/shape.svg"
-                                                    alt="img">
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <h3> {{ $commentaire->user->name }}</h3>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-regular fa-star"></i>
-                                                <i class="fa-regular fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
 
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
     <!-- Team Section start  -->
     <section class="team-section fix section-padding pt-0 margin-bottom-30">
