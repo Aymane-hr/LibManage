@@ -60,12 +60,15 @@ class ProduitController extends Controller
     }
     public function store(Request $request)
     {
+
         DB::beginTransaction();
         try {
             $commande=Commande::create([
                 'date' => now(),
             ]);
+
             foreach($request->produits as $produit) {
+               
                 $produitModel = Produit::find($produit['id']);
                 if ($produitModel) {
                     CommandeProduit::create([

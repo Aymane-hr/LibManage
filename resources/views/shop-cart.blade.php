@@ -222,7 +222,8 @@
                                     let items = [];
                                     document.querySelectorAll('input[name="qty"]').forEach((input, index) => {
                                         const row = input.closest('tr');
-                                        const id = @json($cart)[index+1]?.id;
+                                        console.log(@json($cart));
+                                        const id = row.querySelector('.remove-icon')?.getAttribute('onclick').match(/\d+/)?.[0];
                                         const name = row.querySelector('.cart-title')?.textContent.trim();
                                         const price = parseFloat(input.dataset.price);
                                         const quantity = parseInt(input.value);
@@ -241,7 +242,7 @@
                                     .then(data => {
                                         if (data.message) {
                                             Swal.fire('Succès', 'Votre commande a été passée !', 'success').then(() => {
-                                                window.location.href = data.redirect || '/';
+                                                location.reload();
                                             });
                                         } else {
                                             Swal.fire('Erreur', data.message || 'Une erreur est survenue.', 'error');
