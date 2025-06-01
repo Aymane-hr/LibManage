@@ -195,5 +195,6 @@
     "Day": "Jour",
     "Orders by day this week" : "Commandes par jour cette semaine",
     "Users by day this week" : "Utilisateurs par jour cette semaine",
-    "Users by day this month" : "Utilisateurs par jour ce mois-ci"
+    "Users by day this month" : "Utilisateurs par jour ce mois-ci",
+    "Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain." : "Une fois le compte supprimé, toutes ses ressources et données seront supprimées de manière permanente. Avant de supprimer votre compte, veuillez télécharger toutes les données ou informations que vous souhaitez conserver."
 }
