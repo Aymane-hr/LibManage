@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorie;
+use App\Models\Commande;
+use App\Models\CommandeProduit;
 use App\Models\Favori;
 use App\Models\Produit;
 use Illuminate\Console\Command;
@@ -55,29 +57,27 @@ class ProduitController extends Controller
         $categorys = Categorie::all();
         return view('shop-default', compact('produits','categorys','search'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         try {
-            $commande=Command::create([
-                'produit_id' => $request->input('produit_id'),
-                'quantite' => $request->input('quantite'),
-                'prix' => $request->input('prix'),
-                'client_id' => $request->input('client_id'),
+            $commande=Commande::create([
+                'date' => now(),
             ]);
+            foreach($request->produits as $produit) {
+                $produitModel = Produit::find($produit['id']);
+                if ($produitModel) {
+                    CommandeProduit::create([
+                        'commande_id' => $commande->id,
+                        'produit_id' => $produitModel->id,
+                        'qte' => $produit['quantity'],
+                        'prix_ht' => $produitModel->prix_ht,
+                        'tva'=>20
+                    ]);
+                }
+            }
             return response()->json(['message' => 'Produit created successfully'], 201);
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return response()->json(['error' => 'Failed to create produit'], 500);
         }
     }

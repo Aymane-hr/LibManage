@@ -31,7 +31,7 @@ Route::post('/shop-default', [ProduitController::class, 'search'])->name('shop-d
 Route::get('/shop-details/{id}', [ProduitController::class, 'index'])->name('shop-details');
 
 // Add product (e.g., to cart or wishlist) from details page
-Route::post('/shop-details/{id}', [ProduitController::class, 'store'])->name('shop-details.store');
+Route::post('/shop-details', [ProduitController::class, 'store'])->name('checkout.ajax');
 
 // View cart (public)
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
