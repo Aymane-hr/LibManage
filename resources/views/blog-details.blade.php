@@ -176,17 +176,19 @@
                                             <i class="fa-sharp fa-regular fa-comments"></i>
                                             2 Commentaires
                                         </li> --}}
+                                        @foreach ( $blog->blogsTags as $tag )
                                         <li>
-                                            <i class="fa-light fa-tag"></i>
-                                            Librairie
+                                           {{ $tag->tag->tag }}
                                         </li>
+                                        @endforeach
+
                                     </ul>
-                                    <h3>{{ $titre }} </h3>
+                                    <h3>{{ $blog->titre }} </h3>
                                     <p class="mb-3">
-                                        {{ $description }}
+                                        {{ $blog->contenu }}
                                     </p>
                                     <div class="row g-4 mt-4">
-                                        @foreach ($images as $image)
+                                        @foreach ($blog->images as $image)
                                             <div class="col-lg-6">
                                                 <div class="details-image">
                                                     <img src="{{ asset($image->image) }}" alt="img">

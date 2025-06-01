@@ -17,18 +17,18 @@
                                         <ul >
                                             {{-- hadi ghi khlih --}}
                                             <li class="has-dropdown">
-                                                <a href="accuiller.html">
+                                                <a href="{{route('home')}}">
                                                     Accueil
                                                 </a>
                                             </li>
                                             {{-- ok --}}
                                             <li>
-                                                <a href="home.html">
+                                                <a href="{{route('shop-default')}}">
                                                     Boutique
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
-                                                <a href="about.html">
+                                                <a href="{{route('about')}}">
                                                     À propos de nous
                                                 </a>
                                             </li>
@@ -151,19 +151,19 @@
                                     <nav>
                                         <ul>
                                             {{-- hadi ghi khlih --}}
-                                            <li class="has-dropdown">
-                                                <a href="accuiller.html">
+                                           <li class="has-dropdown">
+                                                <a href="{{route('home')}}">
                                                     Accueil
                                                 </a>
                                             </li>
                                             {{-- ok --}}
-                                            <li class="has-dropdown">
-                                                <a href="home.html">
+                                            <li>
+                                                <a href="{{route('shop-default')}}">
                                                     Boutique
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
-                                                <a href="about.html">
+                                                <a href="{{route('about')}}">
                                                     À propos de nous
                                                 </a>
                                             </li>
