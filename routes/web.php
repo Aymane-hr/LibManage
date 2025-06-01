@@ -84,7 +84,7 @@ Route::get('/about', function () {
 
 //blogs
 
-Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog');
 Route::get('/blog/{id}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog-details');
 
 

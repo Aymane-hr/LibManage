@@ -33,7 +33,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="blog.html">
+                                                <a href="{{ route('blog') }}">
                                                     Blog
                                                 </a>
                                             </li>
@@ -168,7 +168,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="blog.html">
+                                                <a href="{{ route('blog') }}">
                                                     Blog
                                                 </a>
                                             </li>
