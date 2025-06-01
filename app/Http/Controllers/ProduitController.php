@@ -22,14 +22,14 @@ class ProduitController extends Controller
         if (!$produit) {
             abort(404);
         }
-        $designation = $produit->designation;
-        $images = $produit->images;
-        $prix = $produit->prix_ht;
-        $isbn = $produit->isbn;
-        $category= $produit->categorie->categorie;
-        $stock = $produit->stock;
+        // $designation = $produit->designation;
+        // $images = $produit->images;
+        // $prix = $produit->prix_ht;
+        // $isbn = $produit->isbn;
+        // $category= $produit->categorie->categorie;
+        // $stock = $produit->stock;
         $produits = Produit::where('id', '!=', $id)->where('categorie_id',$produit->categorie_id)->inRandomOrder()->take(4)->get();
-        return view('shop-details', compact('id','designation', 'images','prix', 'isbn','category','produits','stock','id'));
+        return view('shop-details', compact('id','produit','produits','id'));
     }
 
     public function index2()
@@ -92,6 +92,11 @@ class ProduitController extends Controller
     }
 
    public function save($id){
+    $produit = Favori::where('produit_id',$id)->where('user_id', auth()->user()->id)->first();
+    if ($produit) {
+        $produit->delete();
+        return back()->with('success', 'Produit supprimé des favoris');
+    }
     $favori=Favori::create([
         'produit_id'=>$id,
         'user_id'=>auth()->user()->id ?? null,
@@ -121,5 +126,23 @@ class ProduitController extends Controller
            }
        }
        return view('favoris', compact('produits'));
+   }
+
+
+
+   public function getFavoris()
+   {
+       $favoris = Favori::where('user_id', auth()->user()->id)->get();
+       $produits = [];
+       foreach ($favoris as $favori) {
+           $produit = Produit::find($favori->produit_id);
+           if ($produit) {
+               $produits[] = $produit;
+           }
+       }
+       return response()->json([
+              'favoris' => $produits,
+              'count' => count($produits)
+       ]);
    }
 }

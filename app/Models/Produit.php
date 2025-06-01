@@ -30,6 +30,15 @@ class Produit extends Model
         return $this->hasMany(Image::class, 'produit_id');
     }
 
-   
+    public function favoris()
+    {
+        return $this->hasMany(Favori::class);
+    }
+
+    public function ifHaveFavori(){
+        return $this->favoris()->where('user_id', auth()->id())->exists();
+    }
+
+
 
 }

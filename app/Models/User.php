@@ -66,4 +66,9 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+
+    public function favoris(){
+        return $this->hasMany(Favori::class);
+    }
 }

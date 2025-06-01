@@ -245,7 +245,15 @@
                                     </a>
                                     <ul class="shop-icon d-grid justify-content-center align-items-center">
                                         <li>
-                                            <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                            <form action="{{ route('save-favori', $produit->id) }}" method="POST"
+                                                style="display:inline;">
+                                                @csrf
+                                                @method('POST')
+                                                <button type="submit" class="icon"
+                                                    style="background: none; border: none; padding: 0;">
+                                                    <i class="far fa-heart"></i>
+                                                </button>
+                                            </form>
                                         </li>
                                         <li>
                                             <a href="{{ route('shop-details', $produit->id) }}"><i
@@ -441,7 +449,7 @@
                         <div class="news-card-items">
                             <div class="news-image">
                                 @foreach ($blog->images as $image)
-                               <p></p>
+                                    <p></p>
                                     <img src="{{ $image->image }}" alt="img">
                                 @endforeach
                                 @foreach ($blog->blogsTags as $tag)

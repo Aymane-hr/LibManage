@@ -57,6 +57,7 @@ Route::get('/checkout', function () {
 
 
 
+Route::get('/fovorisByuser', [ProduitController::class, 'getFavoris'])->name('favorisByUser');
 
 // Favoris (favorites) operations (protected by auth middleware)
 Route::middleware('auth')->group(function () {
@@ -66,6 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/favoris', [ProduitController::class, 'showFavoris'])->name('favoris');
     // Delete favorite
     Route::delete('/favoris/{id}', [ProduitController::class, 'deleteFavori'])->name('favoris.delete');
+
+
 });
 
 // Authentication routes (login, register, etc.)

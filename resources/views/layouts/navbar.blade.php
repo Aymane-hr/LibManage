@@ -14,21 +14,21 @@
                             <div class="mean__menu-wrapper">
                                 <div class="main-menu" style="margin-left: 100px;">
                                     <nav>
-                                        <ul >
+                                        <ul>
                                             {{-- hadi ghi khlih --}}
                                             <li class="has-dropdown">
-                                                <a href="{{route('home')}}">
+                                                <a href="{{ route('home') }}">
                                                     Accueil
                                                 </a>
                                             </li>
                                             {{-- ok --}}
                                             <li>
-                                                <a href="{{route('shop-default')}}">
+                                                <a href="{{ route('shop-default') }}">
                                                     Boutique
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
-                                                <a href="{{route('about')}}">
+                                                <a href="{{ route('about') }}">
                                                     À propos de nous
                                                 </a>
                                             </li>
@@ -84,6 +84,7 @@
                                 @auth
                                     <a href="wishlist.html" class="cart-icon">
                                         <i class="fa-regular fa-heart"></i>
+                                        <span class="cart-count" id="favoris-count1"></span>
                                     </a>
                                     <a href="{{ route('shop-cart') }}" class="cart-icon">
                                         <i class="fa-regular fa-cart-shopping"></i>
@@ -109,24 +110,7 @@
                     </div>
                 </div>
             </div>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    fetch('/cart')
-                        .then(response => response.json())
-                        .then(data => {
-                            let count = 0;
-                            for (const item of Object.values(data)) {
-                                if (item.quantity) {
-                                    count += 1;
-                                }
-                            }
-                            console.log('count :', count);
-                            const cartCountElement = document.getElementById('cart-count1');
-                            cartCountElement.textContent = count || 0;
-                        })
-                        .catch(error => console.error('Erreur lors de la récupération du panier :', error));
-                });
-            </script>
+
 
 
         </div>
@@ -143,7 +127,7 @@
                         <div class="header-left">
                             <div class="logo" style="margin-bottom: 68px;">
                                 <a href="index.html" class="header-logo">
-                                    <img src="assets/img/logo/logo.png" alt="logo-img" >
+                                    <img src="assets/img/logo/logo.png" alt="logo-img">
                                 </a>
                             </div>
                             <div class="mean__menu-wrapper">
@@ -151,19 +135,19 @@
                                     <nav>
                                         <ul>
                                             {{-- hadi ghi khlih --}}
-                                           <li class="has-dropdown">
-                                                <a href="{{route('home')}}">
+                                            <li class="has-dropdown">
+                                                <a href="{{ route('home') }}">
                                                     Accueil
                                                 </a>
                                             </li>
                                             {{-- ok --}}
                                             <li>
-                                                <a href="{{route('shop-default')}}">
+                                                <a href="{{ route('shop-default') }}">
                                                     Boutique
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
-                                                <a href="{{route('about')}}">
+                                                <a href="{{ route('about') }}">
                                                     À propos de nous
                                                 </a>
                                             </li>
@@ -219,6 +203,7 @@
                                 @auth
                                     <a href="wishlist.html" class="cart-icon">
                                         <i class="fa-regular fa-heart"></i>
+                                        <span class="cart-count" id="favoris-count"></span>
                                     </a>
                                     <a href="{{ route('shop-cart') }}" class="cart-icon">
                                         <i class="fa-regular fa-cart-shopping"></i>
@@ -254,10 +239,24 @@
                                             }
                                             console.log('count :', count);
                                             const cartCountElement = document.getElementById('cart-count');
+                                            const cartCountElement1 = document.getElementById('cart-count1');
                                             cartCountElement.textContent = count || 0;
+                                            cartCountElement1.textContent = count || 0;
                                         })
                                         .catch(error => console.error('Erreur lors de la récupération du panier :', error));
                                 });
+                                fetch('/fovorisByuser')
+                                    .then(response => response.json())
+                                    .then(data => {
+
+                                        const favorisCountElement = document.getElementById('favoris-count');
+                                        const favorisCountElement1 = document.getElementById('favoris-count1');
+                                        if (favorisCountElement && favorisCountElement1) {
+                                            favorisCountElement.textContent = data.count || 0;
+                                            favorisCountElement1.textContent = data.count || 0;
+                                        }
+                                    })
+                                    .catch(error => console.error('Erreur lors de la récupération des favoris :', error));
                             </script>
                         </div>
                     </div>
