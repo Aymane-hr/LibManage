@@ -65,6 +65,7 @@ class ProduitController extends Controller
         try {
             $commande=Commande::create([
                 'date' => now(),
+                'user_id' => auth()->user()->id ?? null,
             ]);
 
             foreach($request->produits as $produit) {
