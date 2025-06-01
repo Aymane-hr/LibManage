@@ -22,12 +22,6 @@ class ProduitController extends Controller
         if (!$produit) {
             abort(404);
         }
-        // $designation = $produit->designation;
-        // $images = $produit->images;
-        // $prix = $produit->prix_ht;
-        // $isbn = $produit->isbn;
-        // $category= $produit->categorie->categorie;
-        // $stock = $produit->stock;
         $produits = Produit::where('id', '!=', $id)->where('categorie_id',$produit->categorie_id)->inRandomOrder()->take(4)->get();
         return view('shop-details', compact('id','produit','produits','id'));
     }
