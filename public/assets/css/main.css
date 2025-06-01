@@ -2116,6 +2116,7 @@ span {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 97px;
 }
 
 @media (max-width: 1199px) {
@@ -2366,7 +2367,7 @@ span {
 }
 
 .header-1 .header-left .logo {
-    margin-bottom: 50px;
+    margin-bottom: 0px;
 }
 
 @media (max-width: 1199px) {
@@ -2524,7 +2525,7 @@ span {
 @media (max-width: 1399px) {
     .header-1 .header-main:before {
         width: 350px;
-        height: 170px;
+        height: 100px;
     }
 }
 
@@ -2567,7 +2568,7 @@ span {
 @media (max-width: 1399px) {
     .header-1 .header-main:after {
         width: 360px;
-        height: 170px;
+        height: 100px;
     }
 }
 
@@ -3401,7 +3402,7 @@ span {
 @media (max-width: 1399px) {
     .sticky-header .header-main:before {
         width: 350px;
-        height: 119px;
+        height: 100px;
     }
 }
 
@@ -3444,7 +3445,7 @@ span {
 @media (max-width: 1399px) {
     .sticky-header .header-main:after {
         width: 360px;
-        height: 119px;
+        height: 100px;
     }
 }
 
