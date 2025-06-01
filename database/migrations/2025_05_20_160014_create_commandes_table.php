@@ -16,7 +16,8 @@ return new class extends Migration
             $table->date('date')->default(now());
             $table->double('remise')->default(0);
             $table->boolean('regle')->default(0);
-            $table->foreignId('reglement_id')->constrained()->onDelete('cascade');
+            $table->foreignId('reglement_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

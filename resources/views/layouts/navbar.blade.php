@@ -12,28 +12,28 @@
                                 </a>
                             </div>
                             <div class="mean__menu-wrapper">
-                                <div class="main-menu">
+                                <div class="main-menu" style="margin-left: 100px;">
                                     <nav>
-                                        <ul>
+                                        <ul >
                                             {{-- hadi ghi khlih --}}
                                             <li class="has-dropdown">
-                                                <a href="accuiller.html">
+                                                <a href="{{route('home')}}">
                                                     Accueil
                                                 </a>
                                             </li>
                                             {{-- ok --}}
                                             <li>
-                                                <a href="home.html">
+                                                <a href="{{route('shop-default')}}">
                                                     Boutique
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
-                                                <a href="about.html">
+                                                <a href="{{route('about')}}">
                                                     À propos de nous
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="blog.html">
+                                                <a href="{{ route('blog') }}">
                                                     Blog
                                                 </a>
                                             </li>
@@ -141,34 +141,34 @@
                 <div class="row">
                     <div class="col-6 col-md-6 col-lg-10 col-xl-8 col-xxl-10">
                         <div class="header-left">
-                            <div class="logo">
+                            <div class="logo" style="margin-bottom: 68px;">
                                 <a href="index.html" class="header-logo">
-                                    <img src="assets/img/logo/logo.png" alt="logo-img">
+                                    <img src="assets/img/logo/logo.png" alt="logo-img" >
                                 </a>
                             </div>
                             <div class="mean__menu-wrapper">
-                                <div class="main-menu">
+                                <div class="main-menu" style="margin-left: 100px;">
                                     <nav>
                                         <ul>
                                             {{-- hadi ghi khlih --}}
-                                            <li class="has-dropdown">
-                                                <a href="accuiller.html">
+                                           <li class="has-dropdown">
+                                                <a href="{{route('home')}}">
                                                     Accueil
                                                 </a>
                                             </li>
                                             {{-- ok --}}
-                                            <li class="has-dropdown">
-                                                <a href="home.html">
+                                            <li>
+                                                <a href="{{route('shop-default')}}">
                                                     Boutique
                                                 </a>
                                             </li>
                                             <li class="has-dropdown">
-                                                <a href="about.html">
+                                                <a href="{{route('about')}}">
                                                     À propos de nous
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="blog.html">
+                                                <a href="{{ route('blog') }}">
                                                     Blog
                                                 </a>
                                             </li>

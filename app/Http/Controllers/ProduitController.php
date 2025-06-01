@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorie;
+use App\Models\Commande;
+use App\Models\CommandeProduit;
 use App\Models\Favori;
 use App\Models\Produit;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProduitController extends Controller
 {
@@ -31,7 +34,7 @@ class ProduitController extends Controller
 
     public function index2()
     {
-        $produits = Produit::paginate(10);
+        $produits = Produit::paginate(12);
         $categorys = Categorie::all();
 
         return view('shop-default', compact('produits','categorys'));
@@ -41,7 +44,7 @@ class ProduitController extends Controller
      public function indexRcherche($id_categorie = null, $search = null)
     {
 
-        $produits = Produit::where('categorie_id',$id_categorie)->paginate(10);
+        $produits = Produit::where('categorie_id',$id_categorie)->paginate(12);
         $categorys = Categorie::all();
 
         return view('shop-default', compact('produits','categorys','id_categorie','search'));
@@ -51,33 +54,38 @@ class ProduitController extends Controller
     {
 
         $search = $request->input('search');
-        $produits = Produit::where('designation','like',$search)->paginate(10);
+        $produits = Produit::where('designation','like',$search)->paginate(12);
         $categorys = Categorie::all();
         return view('shop-default', compact('produits','categorys','search'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
+
+        DB::beginTransaction();
         try {
-            $commande=Command::create([
-                'produit_id' => $request->input('produit_id'),
-                'quantite' => $request->input('quantite'),
-                'prix' => $request->input('prix'),
-                'client_id' => $request->input('client_id'),
+            $commande=Commande::create([
+                'date' => now(),
             ]);
+
+            foreach($request->produits as $produit) {
+               
+                $produitModel = Produit::find($produit['id']);
+                if ($produitModel) {
+                    CommandeProduit::create([
+                        'commande_id' => $commande->id,
+                        'produit_id' => $produitModel->id,
+                        'qte' => $produit['quantity'],
+                        'prix_ht' => $produitModel->prix_ht,
+                        'tva'=>20
+                    ]);
+                }
+            }
+            DB::commit();
+            app('App\Http\Controllers\CartController')->clearCart();
             return response()->json(['message' => 'Produit created successfully'], 201);
         } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
             return response()->json(['error' => 'Failed to create produit'], 500);
         }
     }

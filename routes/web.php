@@ -5,10 +5,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProduitController;
+use App\Models\Auteur;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
-
-
+use PharIo\Manifest\Author;
 
 // Home page route
 Route::get('/', [HomeController::class, 'index']);
@@ -31,7 +31,7 @@ Route::post('/shop-default', [ProduitController::class, 'search'])->name('shop-d
 Route::get('/shop-details/{id}', [ProduitController::class, 'index'])->name('shop-details');
 
 // Add product (e.g., to cart or wishlist) from details page
-Route::post('/shop-details/{id}', [ProduitController::class, 'store'])->name('shop-details.store');
+Route::post('/shop-details', [ProduitController::class, 'store'])->name('checkout.ajax');
 
 // View cart (public)
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
@@ -54,21 +54,9 @@ Route::get('/checkout', function () {
 })->name('checkout');
 
 // Blog details page
-Route::get('/blog-details/{id}', function ($id) {
-    $blog = Blog::find($id);
-    if (!$blog) {
-        abort(404);
-    }
-    $titre = $blog->titre;
-    $description = $blog->contenu;
-    $images = $blog->images;
-    return view('blog-details', compact('titre', 'description', 'images'));
-})->name('blog-details');
 
-// Blog listing page
-Route::get('/blog', function () {
-    return view('blog');
-})->name('blog');
+
+
 
 // Favoris (favorites) operations (protected by auth middleware)
 Route::middleware('auth')->group(function () {
@@ -85,3 +73,20 @@ Auth::routes();
 
 // Home route (after login)
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+Route::get('/about', function () {
+    $auteurs=Auteur::all();
+    return view('about',compact('auteurs'));
+})->name('about');
+
+
+
+//blogs
+
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{id}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog-details');
+
+
+
+

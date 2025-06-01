@@ -16,6 +16,7 @@ class CommandeFactory extends Factory
             'remise' => $this->faker->randomFloat(2, 0, 100),
             'regle' => $this->faker->boolean,
             'reglement_id' => \App\Models\Reglement::factory(),
+            'user_id' => \App\Models\User::factory(),
         ];
     }
 }

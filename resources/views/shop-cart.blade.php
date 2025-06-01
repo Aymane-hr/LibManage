@@ -1,130 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Modal de Connexion -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="close-btn">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-                    </div>
-                    <div class="identityBox">
-                        <div class="form-wrapper">
-                            <h1 id="loginModalLabel">Bon retour !</h1>
-                            <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
-                            <input class="inputField" type="password" name="password" placeholder="Mot de passe">
-                            <div class="input-check remember-me">
-                                <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next" id="saveForNext">
-                                    <label for="saveForNext">Se souvenir de moi</label>
-                                </div>
-                                <div class="text"> <a href="index-2.html">Mot de passe oublié ?</a> </div>
-                            </div>
-                            <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Se connecter </a>
-                            </div>
-                            <div class="orting-badge">
-                                Ou
-                            </div>
-                            <div>
-                                <a class="another-option" href="https://www.google.com/">
-                                    <img src="assets/img/google.png" alt="google">
-                                    Continuer avec Google
-                                </a>
-                            </div>
-                            <div>
-                                <a class="another-option another-option-two" href="https://www.facebook.com/">
-                                    <img src="assets/img/facebook.png" alt="google">
-                                    Continuer avec Facebook
-                                </a>
-                            </div>
 
-                            <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault">
-                                <label class="form-check-label">
-                                    J'accepte vos termes & conditions
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="banner">
-                            <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Se connecter</button>
-                            <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Créer un compte</button>
-                            <div class="loginBg">
-                                <img src="assets/img/signUpbg.jpg" alt="signUpBg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal d'Inscription -->
-    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="close-btn">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-                    </div>
-                    <div class="identityBox">
-                        <div class="form-wrapper">
-                            <h1 id="registrationModalLabel">Créer un compte !</h1>
-                            <input class="inputField" type="text" name="name" id="name" placeholder="Nom d'utilisateur">
-                            <input class="inputField" type="email" name="email" placeholder="Adresse e-mail">
-                            <input class="inputField" type="password" name="password" placeholder="Mot de passe">
-                            <input class="inputField" type="password" name="password" placeholder="Confirmer le mot de passe">
-                            <div class="input-check remember-me">
-                                <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next" id="rememberMe">
-                                    <label for="rememberMe">Se souvenir de moi</label>
-                                </div>
-                                <div class="text"> <a href="index-2.html">Mot de passe oublié ?</a> </div>
-                            </div>
-                            <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Se connecter </a>
-                            </div>
-                            <div class="orting-badge">
-                                Ou
-                            </div>
-                            <div>
-                                <a class="another-option" href="https://www.google.com/">
-                                    <img src="assets/img/google.png" alt="google">
-                                    Continuer avec Google
-                                </a>
-                            </div>
-                            <div>
-                                <a class="another-option another-option-two" href="https://www.facebook.com/">
-                                    <img src="assets/img/facebook.png" alt="google">
-                                    Continuer avec Facebook
-                                </a>
-                            </div>
-                            <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault">
-                                <label class="form-check-label">
-                                    J'accepte vos termes & conditions
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="banner">
-                            <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Se connecter</button>
-                            <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Créer un compte</button>
-                            <div class="signUpBg">
-                                <img src="assets/img/registrationbg.jpg" alt="signUpBg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Section Fil d'Ariane -->
     <div class="breadcrumb-wrapper">
@@ -182,6 +58,7 @@
 @endif
                                     @foreach ($cart as $cartItem)
                                         <tr>
+
                                             <td>
                                                 <span class="d-flex gap-5 align-items-center">
                                                     <span class="cart">
@@ -334,7 +211,48 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="checkout.html" class="theme-btn">Procéder au paiement</a>
+                            <form id="checkout-form">
+                                <button type="submit" class="theme-btn w-100">Procéder au paiement</button>
+                            </form>
+                            <script>
+                                document.getElementById('checkout-form').addEventListener('submit', function(e) {
+                                    e.preventDefault();
+
+                                    // Collect cart data
+                                    let items = [];
+                                    document.querySelectorAll('input[name="qty"]').forEach((input, index) => {
+                                        const row = input.closest('tr');
+                                        console.log(@json($cart));
+                                        const id = row.querySelector('.remove-icon')?.getAttribute('onclick').match(/\d+/)?.[0];
+                                        const name = row.querySelector('.cart-title')?.textContent.trim();
+                                        const price = parseFloat(input.dataset.price);
+                                        const quantity = parseInt(input.value);
+                                        items.push({ id, name, price, quantity });
+                                    });
+
+                                    fetch('{{ route("checkout.ajax") }}', {
+                                        method: 'POST',
+                                        headers: {
+                                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({ produits: items })
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.message) {
+                                            Swal.fire('Succès', 'Votre commande a été passée !', 'success').then(() => {
+                                                location.reload();
+                                            });
+                                        } else {
+                                            Swal.fire('Erreur', data.message || 'Une erreur est survenue.', 'error');
+                                        }
+                                    })
+                                    .catch(() => {
+                                        Swal.fire('Erreur', 'Impossible de soumettre la commande.', 'error');
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
