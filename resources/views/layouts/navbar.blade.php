@@ -96,7 +96,7 @@
                         <div class="col-6 col-md-6 col-lg-10 col-xl-8 col-xxl-10">
                             <div class="header-left">
                                 <div class="logo">
-                                    <a href="index.html" class="header-logo">
+                                    <a href="{{route('home')}}" class="header-logo">
                                         <img src="assets/img/logo/logo.png" alt="logo-img">
                                     </a>
                                 </div>

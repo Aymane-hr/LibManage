@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+
 <!-- Section Fil d'Ariane Début -->
 <div class="breadcrumb-wrapper mb-0" style="margin-bottom:0;">
     <div class="book1">
