@@ -34,7 +34,7 @@
                                 prix
                             </h1>
                             <div class="form-clt wow fadeInUp" data-wow-delay=".9s">
-                                <a href="{{ route('shop-cart') }}" class="theme-btn">
+                                <a href="{{ route('shop-default') }}" class="theme-btn">
                                     Acheter maintenant <i class="fa-solid fa-arrow-right-long"></i>
                                 </a>
                             </div>
@@ -191,7 +191,7 @@
                                             <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
                                         </div>
                                     </div>
-                                    <div class="number"> 01 </div>
+                                    <div class="number"> {{ sprintf('%02d', $categorie->produits->count()) }} </div>
                                     <h3><a href="shop-details.html">{{ $categorie->categorie }}</a></h3>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@
     </section>
 
     <!-- Cta Banner Section start  -->
-    <section class="cta-banner-section fix section-padding pt-0">
+    <section class="cta-banner-section fix section-padding pt-5">
         <div class="container">
             <div class="cta-banner-wrapper section-padding bg-cover"
                 style="background-image: url('assets/img/cta-banner.jpg');">
@@ -219,7 +219,7 @@
                         style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Obtenez 25% de
                         réduction sur
                         tous <br> les types de super ventes</h2>
-                    <a href="shop.html" class="theme-btn wow fadeInUp" data-wow-delay=".5s"
+                    <a href="{{route('shop-default')}}" class="theme-btn wow fadeInUp" data-wow-delay=".5s"
                         style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">Acheter maintenant <i
                             class="fa-solid fa-arrow-right-long"></i></a>
                 </div>
