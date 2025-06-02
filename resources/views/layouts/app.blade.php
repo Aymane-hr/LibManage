@@ -12,7 +12,7 @@
     <!-- ======== Page title ============ -->
     <title>Bookle - Book Store WooCommerce Html Template</title>
     <!--<< Favcion >>-->
-    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets\img\logo\logo-icon.png') }}">
     <!--<< Bootstrap min.css >>-->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <!--<< All Min Css >>-->
