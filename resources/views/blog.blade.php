@@ -170,7 +170,7 @@
                             <div class="news-image">
                                 @foreach ($blog->images as $image)
                                 <p></p>
-                                       <img src="{{ $image->image }}" alt="img"/>
+                                                                          <img src="{{ $image->image }}" alt="img" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
                                 @endforeach
                                 @foreach ($blog->blogsTags as $tag)
                                     <div class="post-box">
