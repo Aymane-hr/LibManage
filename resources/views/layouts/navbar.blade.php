@@ -61,6 +61,13 @@
                                         <i class="fa-regular fa-cart-shopping"></i>
                                         <span class="cart-count" id="cart-count1"></span>
                                     </a>
+                                    <div class="header-humbager ml-30">
+                                        <a class="sidebar__toggle" href="javascript:void(0)">
+                                            <div class="bar-icon-2">
+                                                <img src="{{asset('assets/img/icon/icon-13.svg')}}" alt="img">
+                                            </div>
+                                        </a>
+                                    </div>
                                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                         @csrf
                                         <button type="submit" class="btn btn-outline-danger"
@@ -150,6 +157,13 @@
                                         <i class="fa-regular fa-cart-shopping"></i>
                                         <span class="cart-count" id="cart-count"></span>
                                     </a>
+                                    <div class="header-humbager ml-30">
+                                        <a class="sidebar__toggle" href="javascript:void(0)">
+                                            <div class="bar-icon-2">
+                                                <img src="{{asset('assets/img/icon/icon-13.svg')}}" alt="img">
+                                            </div>
+                                        </a>
+                                    </div>
                                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                         @csrf
                                         <button type="submit" class="btn btn-outline-danger"
