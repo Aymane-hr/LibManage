@@ -2,7 +2,7 @@
     <footer class="footer-section footer-bg">
         <div class="footer-widgets-wrapper">
             <div class="plane-shape float-bob-y">
-                <img src="assets/img/plane-shape.png" alt="img">
+                <img src="{{ asset('assets/img/plane-shape.png') }}" alt="img">
             </div>
             <div class="container">
                 <div class="row">
@@ -10,7 +10,7 @@
                         <div class="single-footer-widget">
                             <div class="widget-head">
                                 <a href="index.html">
-                                    <img src="assets/img/logo/logo.png" alt="logo-img">
+                                    <img src="{{ asset('assets/img/logo/logo.png') }}" alt="logo-img">
                                 </a>
                             </div>
                             <div class="footer-content">

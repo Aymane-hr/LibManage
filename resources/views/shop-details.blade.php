@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
- 
+
     <!-- Breadcumb Section Start -->
     <div class="breadcrumb-wrapper">
         <div class="book1">
@@ -122,7 +122,7 @@
                                             <span>ISBN :</span> {{ $produit->isbn }}
                                         </li>
                                         <li>
-                                            <span>Catégorie :</span> {{ $produit->category->category ?? null }}
+                                            <span>Catégorie :</span> {{ $produit->categorie->categorie ?? null }}
                                         </li>
                                     </ul>
                                 </div>

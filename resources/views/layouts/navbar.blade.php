@@ -8,7 +8,7 @@
                             <div class="header-left">
                                 <div class="logo">
                                     <a href="{{ route('home') }}" class="header-logo">
-                                    <img src="assets/img/logo/logo.png" alt="logo-img">
+                                    <img src="{{ asset('assets/img/logo/logo.png') }}" alt="logo-img">
                                 </a>
                                 </div>
                                 <div class="mean__menu-wrapper">
@@ -97,7 +97,7 @@
                             <div class="header-left">
                                 <div class="logo">
                                     <a href="{{route('home')}}" class="header-logo">
-                                        <img src="assets/img/logo/logo.png" alt="logo-img">
+                                        <img src="{{ asset('assets/img/logo/logo.png') }}" alt="logo-img">
                                     </a>
                                 </div>
                                 <div class="mean__menu-wrapper">
