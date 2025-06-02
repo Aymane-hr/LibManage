@@ -184,7 +184,7 @@
                                         <i class="fa-light fa-calendar-days"></i>{{ $blog->created_at->format('d M Y') }}
                                     </li>
                                 </ul>
-                                <h3><a href="news-details.html">{{ $blog->titre }}</a></h3>
+                                <h3><a href="{{ route('blog-details', $blog->id) }}">{{ $blog->titre }}</a></h3>
                                 <a href="{{ route('blog-details', $blog->id) }}" class="theme-btn-2">Lire la suite <i
                                         class="fa-regular fa-arrow-right-long"></i></a>
                             </div>
