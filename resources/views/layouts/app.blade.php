@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
     <!--<< Main.css >>-->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-   
+
 </head>
 
 <body>

@@ -8,7 +8,7 @@
                 <div class="col-12 col-xl-8 col-lg-6">
                     <div class="hero-items">
                         <div class="book-shape">
-                            <img src="assets/img/hero/book.png" alt="shape-img">
+                            <img src="{{asset('assets/img/hero/book.png')}}" alt="shape-img">
                         </div>
                         <div class="frame-shape1 float-bob-x">
                             <img src="assets/img/hero/frame.png" alt="shape-img">

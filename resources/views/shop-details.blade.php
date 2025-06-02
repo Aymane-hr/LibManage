@@ -101,7 +101,7 @@
                                         @csrf
                                         @method('POST')
                                         <button type="submit" class="icon">
-                                         
+
                                             @if ($produit->ifHaveFavori())
                                                 <i class="fas fa-heart" style="color: red;"></i>
                                             @else

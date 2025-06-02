@@ -131,10 +131,10 @@
     <!-- Section Fil d'Ariane Début -->
     <div class="breadcrumb-wrapper">
         <div class="book1">
-            <img src="assets/img/hero/book1.png" alt="livre">
+            <img src="{{asset('assets/img/hero/book.png')}}" alt="livre">
         </div>
         <div class="book2">
-            <img src="assets/img/hero/book2.png" alt="livre">
+            <img src="{{asset('assets/img/hero/book.png')}}" alt="livre">
         </div>
         <div class="container">
             <div class="page-heading">
